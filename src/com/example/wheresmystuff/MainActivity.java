@@ -15,6 +15,8 @@ public class MainActivity extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		View register = findViewById(R.id.btn_register);
+		register.setOnClickListener(this);
 		
 	}
 
@@ -32,8 +34,9 @@ public class MainActivity extends Activity implements OnClickListener{
 		int button = v.getId();
 		if(button == R.id.btn_register){
 			Intent i = new Intent(this, Register.class);
-			startActivity(i);
 			Log.d("MainActivity", "RegisterButton Clicked");
+			startActivity(i);
+			
 			
 		}
 		
