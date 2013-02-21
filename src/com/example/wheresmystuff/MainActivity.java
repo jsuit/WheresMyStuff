@@ -22,8 +22,12 @@ public class MainActivity extends Activity implements OnClickListener{
 		setContentView(R.layout.activity_main);
 		View register = findViewById(R.id.btn_register);
 		register.setOnClickListener(this);
+<<<<<<< HEAD
 		View login = findViewById(R.id.btnLogin);
 		login.setOnClickListener(this);
+=======
+		
+>>>>>>> bug fix
 	}
 
 	@Override
@@ -40,8 +44,8 @@ public class MainActivity extends Activity implements OnClickListener{
 		int button = v.getId();
 		if(button == R.id.btn_register){
 			Intent i = new Intent(this, Register.class);
-			startActivity(i);
 			Log.d("MainActivity", "RegisterButton Clicked");
+<<<<<<< HEAD
 		}else if(button == R.id.btnLogin){
 			TextView textView = new TextView(this);
 	        textView.setBackgroundColor(Color.DKGRAY);
@@ -57,6 +61,11 @@ public class MainActivity extends Activity implements OnClickListener{
 			 t.setGravity(Gravity.FILL_HORIZONTAL|Gravity.CENTER_HORIZONTAL, 0, 0);
 			 t.setView(textView);
 			 t.show();
+=======
+			startActivity(i);
+			
+			
+>>>>>>> bug fix
 		}
 		
 	}

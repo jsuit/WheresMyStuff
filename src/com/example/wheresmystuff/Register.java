@@ -54,6 +54,7 @@ public class Register extends Activity implements OnClickListener{
 			String check_password = ((EditText) findViewById(R.id.retype_password)).getText().toString();
 			String zip = ((EditText) findViewById(R.id.zip_code)).getText().toString();
 			String street = ((EditText) findViewById(R.id.Street)).getText().toString(); 
+<<<<<<< HEAD
 
 			
 			String email = ((EditText) findViewById(R.id.email)).getText().toString(); 
@@ -83,6 +84,12 @@ public class Register extends Activity implements OnClickListener{
 		
 		
 	}
+=======
+			boolean correct_info = Validation.validate(name, phone, zip + " " + street ,email, password, check_password);		
+		}
+		
+		
+>>>>>>> bug fix
 	}
 
 	
