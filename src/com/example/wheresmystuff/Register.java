@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class Register extends Activity implements OnClickListener{
 	
@@ -19,7 +20,8 @@ public class Register extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
 	
-		
+		View save = findViewById(R.id.Save);
+		save.setOnClickListener(this);
 		
 		
 	}
@@ -34,10 +36,14 @@ public class Register extends Activity implements OnClickListener{
 			String phone = ((EditText) findViewById(R.id.phone)).getText().toString();
 			String password = ((EditText) findViewById(R.id.password)).getText().toString();
 			String zip = ((EditText) findViewById(R.id.zip_code)).getText().toString();
+			String check_password = ((EditText) findViewById(R.id.retype_password)).getText().toString();
 			String street = ((EditText) findViewById(R.id.Street)).getText().toString(); 
-			Validation.validate(name, phone, zip + " " + street ,email, password);
+			boolean check = Validation.validate(name, phone, zip + " " + street ,email, password, check_password);
 			
-			
+			if(!check){
+				 Toast.makeText(this, "Error in input", Toast.LENGTH_LONG).show();
+				
+			}
 		}
 		
 	}
