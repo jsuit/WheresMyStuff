@@ -4,8 +4,11 @@ public class ValidateName {
 
 	
 	protected static boolean validate(String name){
-		return false;
+		if (name == null) {
+			return false;
+		}
 		
+		return true;
 		
 	}
 }
