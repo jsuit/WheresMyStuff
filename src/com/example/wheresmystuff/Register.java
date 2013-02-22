@@ -45,19 +45,9 @@ public class Register extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 	
-<<<<<<< HEAD
-		
-		
-		
-		// TODO Auto-generated method stub
-	
-		if(v.getId() == R.id.Save){
-			Log.d("button", "msg");
-=======
 	
 		if(v.getId() == R.id.Save){
 			Log.d("RegisterForm", "Save button");
->>>>>>> master
 			String name = ((EditText) findViewById(R.id.Name)).getText().toString();
 			String phone = ((EditText) findViewById(R.id.phone)).getText().toString();
 			String password = ((EditText) findViewById(R.id.password)).getText().toString();
@@ -85,8 +75,8 @@ public class Register extends Activity implements OnClickListener{
 		        textView.setText(errorMessage.toString());
 		        Toast t = Toast.makeText(this,null, Toast.LENGTH_LONG);
 				t.setGravity(Gravity.RELATIVE_LAYOUT_DIRECTION|Gravity.CENTER_HORIZONTAL, 0, 0);
-				t.setView(textView);
-				t.show();
+				 t.setView(textView);
+				 t.show();
 			}
 				
 		}
