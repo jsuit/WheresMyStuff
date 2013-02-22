@@ -23,11 +23,16 @@ public class MainActivity extends Activity implements OnClickListener{
 		View register = findViewById(R.id.btn_register);
 		register.setOnClickListener(this);
 <<<<<<< HEAD
+<<<<<<< HEAD
 		View login = findViewById(R.id.btnLogin);
 		login.setOnClickListener(this);
 =======
 		
 >>>>>>> bug fix
+=======
+		View login = findViewById(R.id.btnLogin);
+		login.setOnClickListener(this);
+>>>>>>> UI changes to Toast error message
 	}
 
 	@Override
@@ -44,6 +49,7 @@ public class MainActivity extends Activity implements OnClickListener{
 		int button = v.getId();
 		if(button == R.id.btn_register){
 			Intent i = new Intent(this, Register.class);
+<<<<<<< HEAD
 			Log.d("MainActivity", "RegisterButton Clicked");
 <<<<<<< HEAD
 		}else if(button == R.id.btnLogin){
@@ -66,6 +72,26 @@ public class MainActivity extends Activity implements OnClickListener{
 			
 			
 >>>>>>> bug fix
+=======
+			startActivity(i);
+			Log.d("MainActivity", "RegisterButton Clicked");
+		}else if(button == R.id.btnLogin){
+			Log.d("MainActivity", "LOGINBUTTON Clicked");
+			TextView textView = new TextView(this);
+	        textView.setBackgroundColor(Color.DKGRAY);
+	        textView.setTextColor(Color.WHITE);
+	        textView.setTextSize(30);
+			Typeface typeface = Typeface.create("serif", Typeface.BOLD);
+	        textView.setTypeface(typeface);
+	        textView.setGravity(Gravity.CENTER);
+	        textView.setText("User not found or Invalid Password");
+	        
+	      
+			 Toast t = Toast.makeText(this, null, Toast.LENGTH_LONG);
+			 t.setGravity(Gravity.FILL_HORIZONTAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+			 t.setView(textView);
+			 t.show();
+>>>>>>> UI changes to Toast error message
 		}
 		
 	}
