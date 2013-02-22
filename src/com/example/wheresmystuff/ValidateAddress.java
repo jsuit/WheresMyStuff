@@ -6,9 +6,9 @@ public class ValidateAddress {
 
 	
 	
-	protected static boolean validate(String addr){
+	protected static String validate(String addr){
 		
-		return true;
+		return null;
 		
 	}
 }
