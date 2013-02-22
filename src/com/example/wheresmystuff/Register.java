@@ -76,8 +76,7 @@ public class Register extends Activity implements OnClickListener{
 			Log.d("RegisterForm", "Save button");
 =======
 		// TODO Auto-generated method stub
-		Intent i = new Intent(this, MainActivity.class);
-		startActivity(i);
+	
 		if(v.getId() == R.id.Save){
 			Log.d("button", "msg");
 >>>>>>> register.java changed
@@ -116,6 +115,7 @@ public class Register extends Activity implements OnClickListener{
 				t.setView(textView);
 				t.show();
 			}
+<<<<<<< HEAD
 				
 		}
 		
@@ -134,6 +134,9 @@ public class Register extends Activity implements OnClickListener{
 				
 			}
 >>>>>>> register.java changed
+=======
+				
+>>>>>>> Some more weird changes
 		}
 		
 		
