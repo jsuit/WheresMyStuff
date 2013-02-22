@@ -2,12 +2,41 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <EditText
+     <EditText
         android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/user_name"
+        android:inputType="textPersonName" />
+        
+    <EditText
+<<<<<<< HEAD
+        android:id="@+id/Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+=======
+        android:id="@+id/Street"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/email"
+        android:layout_below="@+id/email"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="@string/Street" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Street"
+        android:layout_below="@+id/Street"
+        android:layout_marginTop="5dp"
+>>>>>>> master
         android:ems="10"
         android:hint="@string/user_name"
         android:inputType="textPersonName" />
@@ -18,11 +47,16 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/Name"
         android:layout_below="@+id/Name"
+<<<<<<< HEAD
+=======
+        android:layout_marginTop="5dp"
+>>>>>>> master
         android:ems="10"
         android:hint="@string/Email"
         android:inputType="textEmailAddress" />
 
     <EditText
+<<<<<<< HEAD
         android:id="@+id/Street"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -42,6 +76,8 @@
         android:inputType="textPassword" />
 
     <EditText
+=======
+>>>>>>> master
         android:id="@+id/retype_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -49,6 +85,10 @@
         android:layout_below="@+id/password"
         android:ems="10"
         android:hint="@string/Retype_Password"
+<<<<<<< HEAD
+=======
+         android:layout_marginTop="5dp"
+>>>>>>> master
         android:inputType="textPassword" />
 
     <EditText
@@ -59,12 +99,17 @@
         android:layout_below="@+id/retype_password"
         android:ems="10"
         android:hint="@string/Zip"
+<<<<<<< HEAD
+=======
+         android:layout_marginTop="5dp"
+>>>>>>> master
         android:inputType="textPostalAddress" />
 
     <Button
         android:id="@+id/FindMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_alignLeft="@+id/phone"
         android:layout_below="@+id/phone"
         android:layout_marginTop="28dp"
@@ -81,6 +126,14 @@
         android:background="@color/White"
         android:drawableTop="@drawable/save_button" />
 
+=======
+        android:layout_alignLeft="@+id/zip_code"
+        android:layout_below="@+id/zip_code"
+        android:ems="10"
+         android:layout_marginTop="5dp"
+        android:hint="@string/Country" />
+
+>>>>>>> master
     <EditText
         android:id="@+id/country"
         android:layout_width="wrap_content"
@@ -96,8 +149,36 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/country"
         android:layout_below="@+id/country"
+<<<<<<< HEAD
+=======
+        android:layout_marginTop="5dp"
+>>>>>>> master
         android:ems="10"
         android:hint="@string/Phone_Number"
         android:inputType="phone" />
 
+<<<<<<< HEAD
+=======
+    <Button
+        android:id="@+id/FindMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/phone"
+        android:layout_alignTop="@+id/Save"
+        android:background="@color/White"
+        android:drawableTop="@drawable/crosshairs"
+        android:text="@string/FindMe" />
+
+   
+
+    <Button
+        android:id="@+id/Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/phone"
+        android:background="@color/White"
+        android:drawableTop="@drawable/save_button" />
+
+>>>>>>> master
 </RelativeLayout>
