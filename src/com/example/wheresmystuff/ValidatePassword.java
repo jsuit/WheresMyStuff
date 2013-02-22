@@ -2,13 +2,7 @@ package com.example.wheresmystuff;
 
 public class ValidatePassword {
 
-<<<<<<< HEAD
-	protected static boolean validate(String password, String check_password){
-		return false;
-		
-=======
-	protected static String validate(String password, String check_password){
->>>>>>> master
+static String validate(String password, String check_password){
 		
 		if (password == null || check_password == null || "".compareTo(password) == 0) {
 			return "Invalid Password\n";

@@ -1,28 +1,28 @@
 package com.example.wheresmystuff;
 
 import android.app.Activity;
-<<<<<<< HEAD
+
 import android.content.Intent;
 import android.location.Address;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
-=======
+
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.location.Address;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.Gravity;
->>>>>>> master
+
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-<<<<<<< HEAD
-=======
+
+
 import android.widget.TextView;
->>>>>>> master
+
 import android.widget.Toast;
 
 public class Register extends Activity implements OnClickListener{
@@ -33,10 +33,7 @@ public class Register extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
-<<<<<<< HEAD
-=======
-	
->>>>>>> master
+
 		View save = findViewById(R.id.Save);
 		save.setOnClickListener(this);
 		
@@ -61,19 +58,16 @@ public class Register extends Activity implements OnClickListener{
 			String password = ((EditText) findViewById(R.id.password)).getText().toString();
 			String check_password = ((EditText) findViewById(R.id.retype_password)).getText().toString();
 			String zip = ((EditText) findViewById(R.id.zip_code)).getText().toString();
-			String check_password = ((EditText) findViewById(R.id.retype_password)).getText().toString();
 			String street = ((EditText) findViewById(R.id.Street)).getText().toString(); 
-<<<<<<< HEAD
-			boolean correct_info = false;//Validation.validate(name, phone, zip + " " + street ,email, password, check_password);	
-=======
+
+			
 			String email = ((EditText) findViewById(R.id.email)).getText().toString(); 
 			String [] check = Validation.validate(name, phone, zip + " " + street ,email, password, check_password);
 			 StringBuffer errorMessage = new StringBuffer();
 			//change 5 to some variable
-			for(int i=0; i<5; i++) {
-				if(check[i] != null) errorMessage.append(check[i]);
+			for(int i1=0; i1<5; i1++) {
+				if(check[i1] != null) errorMessage.append(check[i1]);
 			}
->>>>>>> master
 			
 			if(errorMessage.length() != 0){
 				TextView textView = new TextView(this);
