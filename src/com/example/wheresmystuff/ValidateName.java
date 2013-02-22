@@ -4,7 +4,7 @@ public class ValidateName {
 
 	
 	protected static boolean validate(String name){
-		if (name == null) {
+		if (name.compareTo("") == 0 || name == null) {
 			return false;
 		}
 		

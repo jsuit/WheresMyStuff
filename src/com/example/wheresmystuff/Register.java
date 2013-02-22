@@ -12,8 +12,7 @@ import android.widget.Toast;
 
 public class Register extends Activity implements OnClickListener{
 	
-	private String name = null;
-	private String email = null;
+
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -30,6 +29,10 @@ public class Register extends Activity implements OnClickListener{
 
 	@Override
 	public void onClick(View v) {
+	
+		
+		
+		
 		// TODO Auto-generated method stub
 		if(v.getId() == R.id.Save){
 			String name = ((EditText) findViewById(R.id.Name)).getText().toString();
@@ -38,6 +41,7 @@ public class Register extends Activity implements OnClickListener{
 			String zip = ((EditText) findViewById(R.id.zip_code)).getText().toString();
 			String check_password = ((EditText) findViewById(R.id.retype_password)).getText().toString();
 			String street = ((EditText) findViewById(R.id.Street)).getText().toString(); 
+			String email = ((EditText) findViewById(R.id.email)).getText().toString(); 
 			boolean check = Validation.validate(name, phone, zip + " " + street ,email, password, check_password);
 			
 			if(!check){
@@ -47,7 +51,6 @@ public class Register extends Activity implements OnClickListener{
 		}
 		
 	}
+	}
 
 	
-
-}

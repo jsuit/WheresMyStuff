@@ -5,10 +5,11 @@ public class ValidatePhone {
 	
 	protected static boolean validate(String phone){
 		
-		if (phone == null) {
+		if (phone == null || phone.compareTo("") == 0) {
 			return true;
 		}
-		return phone.matches("(0-9){10,11}");
+		return true;
+				//phone.matches("(0-9){10,11}");
 			
 	}
 	
