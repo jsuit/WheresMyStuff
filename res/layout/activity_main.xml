@@ -40,7 +40,7 @@
 		      android:hint="@string/user_name"
 		      android:text="@string/user_name"
 		      android:textColor="#372c24"
-		      android:textSize="25dip" />
+		      android:textSize="25sp" />
 
 		  <EditText android:layout_width="fill_parent"
 		  		android:layout_height="wrap_content"
