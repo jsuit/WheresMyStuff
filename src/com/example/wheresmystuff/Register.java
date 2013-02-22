@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.location.Address;
 import android.os.Bundle;
 import android.text.Editable;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -43,9 +44,10 @@ public class Register extends Activity implements OnClickListener{
 			String street = ((EditText) findViewById(R.id.Street)).getText().toString(); 
 			String email = ((EditText) findViewById(R.id.email)).getText().toString(); 
 			boolean check = Validation.validate(name, phone, zip + " " + street ,email, password, check_password);
-			
 			if(!check){
-				 Toast.makeText(this, "Error in input", Toast.LENGTH_LONG).show();
+				 Toast t = Toast.makeText(this, "Error in input", Toast.LENGTH_LONG);
+				 t.setGravity(Gravity.FILL_HORIZONTAL|Gravity.CENTER_HORIZONTAL, 0, 0);
+				 t.show();
 				
 			}
 		}
