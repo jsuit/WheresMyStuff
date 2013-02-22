@@ -45,10 +45,6 @@ public class Register extends Activity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 	
-		
-		
-		
-		// TODO Auto-generated method stub
 	
 		if(v.getId() == R.id.Save){
 			Log.d("RegisterForm", "Save button");
@@ -78,9 +74,9 @@ public class Register extends Activity implements OnClickListener{
 		        textView.setGravity(Gravity.CENTER);
 		        textView.setText(errorMessage.toString());
 		        Toast t = Toast.makeText(this,null, Toast.LENGTH_LONG);
-				 t.setGravity(Gravity.RELATIVE_LAYOUT_DIRECTION|Gravity.CENTER_HORIZONTAL, 0, 0);
-				 t.setView(textView);
-				 t.show();
+				t.setGravity(Gravity.RELATIVE_LAYOUT_DIRECTION|Gravity.CENTER_HORIZONTAL, 0, 0);
+				t.setView(textView);
+				t.show();
 			}
 				
 		}
