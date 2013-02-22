@@ -46,7 +46,8 @@
 		  		android:layout_height="wrap_content"
 		  		android:layout_marginTop="5dip"
 		  		android:layout_marginBottom="20dip"
-		  		android:singleLine="true"/>
+		  		android:singleLine="true"
+		  		android:id="@+id/userId"/>
 		  <!--  Password Label -->
 		  <TextView android:layout_width="fill_parent"
 		  		android:layout_height="wrap_content"
@@ -58,15 +59,18 @@
 		  		android:layout_height="wrap_content"
 		  		android:layout_marginTop="5dip"
 		  		android:singleLine="true"
-		  		android:password="true"/>
+		  		android:password="true"
+		  		android:id="@+id/login_password"/>
 		  <!-- Login button -->	
+		  
 		  <Button android:id="@+id/btnLogin" 
 		  		android:layout_width="fill_parent"
 		  		android:layout_height="wrap_content"
 		  		android:layout_marginTop="10dip"
 		  		android:textColor="#0b84aa"
 		  		android:textSize="30dip"
-		  		android:text="Login"/>
+		  		android:text="Login"
+		  		android:onClick="save"/>
 		  <!-- Link to Registration Screen -->		
 		  <Button android:id="@+id/btn_register" 
 		  		android:layout_width="fill_parent"
@@ -76,7 +80,8 @@
 		  		android:text="New? Register Here"
 		  		android:gravity="center"
 		  		android:textSize="20dip"
-		  		android:textColor="#0b84aa"/>
+		  		android:textColor="#0b84aa"
+		  		android:onClick="register"/>
 		    
 		</LinearLayout>
   		<!-- Login Form Ends --> 		
