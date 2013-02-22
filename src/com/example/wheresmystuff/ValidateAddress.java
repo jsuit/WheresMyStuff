@@ -6,8 +6,11 @@ public class ValidateAddress {
 
 	
 	
-	protected static boolean validate(String addr){
+	protected static String validate(String addr){
 		
+		return null;
+		
+<<<<<<< HEAD
 		if(addr == null) return false;
 		else{
 			String[] zip_street = addr.split("\\s+");
@@ -19,5 +22,7 @@ public class ValidateAddress {
 			
 		}
 		return false;
+=======
+>>>>>>> master
 	}
 }

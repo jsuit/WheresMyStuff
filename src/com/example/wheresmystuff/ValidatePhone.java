@@ -3,6 +3,7 @@ package com.example.wheresmystuff;
 public class ValidatePhone {
 
 	
+<<<<<<< HEAD
 	protected static boolean validate(String phone){
 		int length = phone.length();
 		if(length >= 15) return false;
@@ -16,7 +17,15 @@ public class ValidatePhone {
 		if(buffer.toString().length() == 10) return true;
 		return false;
 		
+=======
+	protected static String validate(String phone){
+>>>>>>> master
 		
+		if (phone == null || "".compareTo(phone) == 0 || !phone.matches("(0-9){10,11}")) {
+			return null;
+		}
+		return "Invalid Phone Number\n";
+			
 	}
 
 	
