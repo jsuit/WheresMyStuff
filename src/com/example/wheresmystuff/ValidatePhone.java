@@ -3,12 +3,12 @@ package com.example.wheresmystuff;
 public class ValidatePhone {
 
 	
-	protected static boolean validate(String phone){
+	protected static String validate(String phone){
 		
-		if (phone == null) {
-			return true;
+		if (phone == null || !phone.matches("(0-9){10,11}")) {
+			return null;
 		}
-		return phone.matches("(0-9){10,11}");
+		return "Invalid Phone Number\n";
 			
 	}
 	

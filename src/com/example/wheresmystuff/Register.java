@@ -38,10 +38,15 @@ public class Register extends Activity implements OnClickListener{
 			String zip = ((EditText) findViewById(R.id.zip_code)).getText().toString();
 			String check_password = ((EditText) findViewById(R.id.retype_password)).getText().toString();
 			String street = ((EditText) findViewById(R.id.Street)).getText().toString(); 
-			boolean check = Validation.validate(name, phone, zip + " " + street ,email, password, check_password);
+			String errorMessage = "";
+			String[] check = Validation.validate(name, phone, zip + " " + street ,email, password, check_password);
 			
-			if(!check){
-				 Toast.makeText(this, "Error in input", Toast.LENGTH_LONG).show();
+			for(int i=0; i<5; i++) {
+				errorMessage.concat(check[i]);
+			}
+			
+			if(errorMessage!=""){
+				 Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
 				
 			}
 		}

@@ -4,9 +4,9 @@ package com.example.wheresmystuff;
 
 	
 	
-	public static boolean validate(String name, String phone_num, String  address, String email, String password, String check_password){
-		
-		 return ValidateAddress.validate(address) && ValidatePhone.validate(phone_num) && ValidateEmail.validate(email) && ValidatePassword.validate(password, check_password); 
+	public static String[] validate(String name, String phone_num, String  address, String email, String password, String check_password){
+		String[] validate = {ValidateAddress.validate(address), ValidatePhone.validate(phone_num), ValidateEmail.validate(email), ValidatePassword.validate(password, check_password)};
+		return validate; //ValidateAddress.validate(address) && ValidatePhone.validate(phone_num) && ValidateEmail.validate(email) && ValidatePassword.validate(password, check_password); 
 	}
 
 	
