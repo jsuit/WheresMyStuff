@@ -4,6 +4,7 @@ public class ValidatePhone {
 
 	
 <<<<<<< HEAD
+<<<<<<< HEAD
 	protected static String validate(String phone){
 =======
 	protected static boolean validate(String phone){
@@ -20,6 +21,11 @@ public class ValidatePhone {
 		return false;
 		
 >>>>>>> bug fix
+=======
+
+	protected static String validate(String phone){
+
+>>>>>>> fix weird things
 		
 		if (phone == null || "".compareTo(phone) == 0 || !phone.matches("(0-9){10,11}")) {
 			return null;

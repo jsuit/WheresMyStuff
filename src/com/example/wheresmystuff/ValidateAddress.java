@@ -11,6 +11,7 @@ public class ValidateAddress {
 		return null;
 		
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 		if(addr == null) return false;
 		else{
@@ -24,5 +25,7 @@ public class ValidateAddress {
 		}
 		return false;
 >>>>>>> bug fix
+=======
+>>>>>>> fix weird things
 	}
 }

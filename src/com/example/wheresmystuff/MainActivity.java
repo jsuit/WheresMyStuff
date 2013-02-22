@@ -76,7 +76,13 @@ public class MainActivity extends Activity implements OnClickListener{
 			startActivity(i);
 			Log.d("MainActivity", "RegisterButton Clicked");
 		}else if(button == R.id.btnLogin){
+<<<<<<< HEAD
 			Log.d("MainActivity", "LOGINBUTTON Clicked");
+=======
+
+			Log.d("MainActivity", "LOGINBUTTON Clicked");
+
+>>>>>>> fix weird things
 			TextView textView = new TextView(this);
 	        textView.setBackgroundColor(Color.DKGRAY);
 	        textView.setTextColor(Color.WHITE);

@@ -2,6 +2,9 @@ package com.example.wheresmystuff;
 
 import android.app.Activity;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fix weird things
 
 import android.content.Intent;
 import android.location.Address;
@@ -16,6 +19,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.view.Gravity;
 
+<<<<<<< HEAD
 =======
 import android.content.Intent;
 import android.location.Address;
@@ -23,11 +27,16 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
 >>>>>>> register.java changed
+=======
+>>>>>>> fix weird things
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+<<<<<<< HEAD
 import android.widget.Toast;
+=======
+>>>>>>> fix weird things
 
 
 import android.widget.TextView;
@@ -43,9 +52,13 @@ public class Register extends Activity implements OnClickListener{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
 >>>>>>> register.java changed
+=======
+
+>>>>>>> fix weird things
 		View save = findViewById(R.id.Save);
 		save.setOnClickListener(this);
 		
@@ -76,6 +89,9 @@ public class Register extends Activity implements OnClickListener{
 			String street = ((EditText) findViewById(R.id.Street)).getText().toString(); 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> fix weird things
 
 			
 			String email = ((EditText) findViewById(R.id.email)).getText().toString(); 
