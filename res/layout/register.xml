@@ -3,10 +3,6 @@
     android:layout_height="fill_parent" >
 
     <EditText
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fix small things
         android:id="@+id/Street"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,18 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/Street"
         android:layout_below="@+id/Street"
-<<<<<<< HEAD
-        android:layout_marginTop="5dp"
-=======
-        android:id="@+id/Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
->>>>>>> register.java changed
-=======
         android:layout_marginTop="10dp"
->>>>>>> fix small things
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword" />
@@ -44,44 +29,12 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/Name"
         android:layout_below="@+id/Name"
-<<<<<<< HEAD
-<<<<<<< HEAD
-        android:layout_marginTop="5dp"
-=======
->>>>>>> register.java changed
-=======
         android:layout_marginTop="10dp"
->>>>>>> fix small things
         android:ems="10"
         android:hint="@string/Email"
         android:inputType="textEmailAddress" />
 
     <EditText
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        android:id="@+id/Street"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/email"
-        android:layout_below="@+id/email"
-        android:ems="10"
-        android:hint="@string/Street" />
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Street"
-        android:layout_below="@+id/Street"
-        android:ems="10"
-        android:hint="@string/password"
-        android:inputType="textPassword" />
-
-    <EditText
->>>>>>> register.java changed
-=======
->>>>>>> fix small things
         android:id="@+id/retype_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -89,14 +42,7 @@
         android:layout_below="@+id/password"
         android:ems="10"
         android:hint="@string/Retype_Password"
-<<<<<<< HEAD
-<<<<<<< HEAD
-         android:layout_marginTop="5dp"
-=======
->>>>>>> register.java changed
-=======
          android:layout_marginTop="10dp"
->>>>>>> fix small things
         android:inputType="textPassword" />
 
     <EditText
@@ -107,49 +53,11 @@
         android:layout_below="@+id/retype_password"
         android:ems="10"
         android:hint="@string/Zip"
-<<<<<<< HEAD
-<<<<<<< HEAD
-         android:layout_marginTop="5dp"
-=======
->>>>>>> register.java changed
-        android:inputType="textPostalAddress" />
-
-    <Button
-        android:id="@+id/FindMe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:layout_alignLeft="@+id/zip_code"
-        android:layout_below="@+id/zip_code"
-        android:ems="10"
-         android:layout_marginTop="5dp"
-        android:hint="@string/Country" />
-
-=======
-        android:layout_alignLeft="@+id/phone"
-        android:layout_below="@+id/phone"
-        android:layout_marginTop="28dp"
-        android:background="@color/White"
-        android:drawableTop="@drawable/crosshairs"
-        android:text="@string/FindMe" />
-
-    <Button
-        android:id="@+id/Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/phone"
-        android:layout_alignTop="@+id/FindMe"
-        android:background="@color/White"
-        android:drawableTop="@drawable/save_button" />
-
->>>>>>> register.java changed
-=======
          android:layout_marginTop="10dp"
         android:inputType="textPostalAddress" />
 
      
 
->>>>>>> fix small things
     <EditText
         android:id="@+id/country"
         android:layout_width="wrap_content"
@@ -166,22 +74,11 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/country"
         android:layout_below="@+id/country"
-<<<<<<< HEAD
-<<<<<<< HEAD
-        android:layout_marginTop="5dp"
-=======
->>>>>>> register.java changed
-=======
         android:layout_marginTop="14dp"
->>>>>>> fix small things
         android:ems="10"
         android:hint="@string/Phone_Number"
         android:inputType="phone" />
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> fix small things
     <Button
         android:id="@+id/FindMe"
         android:layout_width="wrap_content"
@@ -202,10 +99,6 @@
         android:drawableTop="@drawable/save_button" 
         android:onClick="saveNewPerson"/>
 
-<<<<<<< HEAD
-=======
->>>>>>> register.java changed
-=======
     <EditText
         android:id="@+id/Name"
         android:layout_width="wrap_content"
@@ -216,5 +109,4 @@
         android:hint="@string/user_name"
         android:inputType="textPersonName" />
 
->>>>>>> fix small things
 </RelativeLayout>
