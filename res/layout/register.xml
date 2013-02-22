@@ -35,20 +35,6 @@
         android:inputType="textEmailAddress" />
 
     <EditText
-        android:id="@+id/Name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="@string/user_name"
-        android:inputType="textPersonName">
-        
-           <requestFocus />
-    </EditText>
-
-    <EditText
         android:id="@+id/retype_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,15 +68,6 @@
          android:layout_marginTop="10dp"
         android:hint="@string/Country" />
 
-    <Button
-        android:id="@+id/Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/phone"
-        android:background="@color/White"
-        android:drawableTop="@drawable/save_button" />
-
     <EditText
         android:id="@+id/phone"
         android:layout_width="wrap_content"
@@ -111,5 +88,24 @@
         android:background="@color/White"
         android:drawableTop="@drawable/crosshairs"
         android:text="@string/FindMe" />
+
+    <Button
+        android:id="@+id/Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/phone"
+        android:background="@color/White"
+        android:drawableTop="@drawable/save_button" />
+
+    <EditText
+        android:id="@+id/Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:ems="10"
+        android:hint="@string/user_name"
+        android:inputType="textPersonName" />
 
 </RelativeLayout>

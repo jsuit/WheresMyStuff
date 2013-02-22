@@ -3,12 +3,13 @@ package com.example.wheresmystuff;
 public class ValidateName {
 
 	
-	protected static boolean validate(String name){
-		if (name == null) {
-			return false;
+	protected static String validate(String name){
+		if (name.compareTo("") == 0 || name == null) {
+			return "Invalid Name\n";
 		}
 		
-		return true;
+		return null;
+
 		
 	}
 }
