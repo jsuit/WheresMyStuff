@@ -199,7 +199,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/phone"
         android:background="@color/White"
-        android:drawableTop="@drawable/save_button" />
+        android:drawableTop="@drawable/save_button" 
+        android:onClick="saveNewPerson"/>
 
 <<<<<<< HEAD
 =======
