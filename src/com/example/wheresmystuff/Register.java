@@ -49,8 +49,7 @@ public class Register extends Activity implements OnClickListener{
 		
 		
 		// TODO Auto-generated method stub
-		Intent i = new Intent(this, MainActivity.class);
-		startActivity(i);
+	
 		if(v.getId() == R.id.Save){
 			Log.d("button", "msg");
 			String name = ((EditText) findViewById(R.id.Name)).getText().toString();
@@ -83,16 +82,7 @@ public class Register extends Activity implements OnClickListener{
 				 t.setView(textView);
 				 t.show();
 			}
-				 
 				
-				
-			
-			if(true){
-				
-				Toast.makeText(this, "Error in Input", Toast.LENGTH_LONG).show();
-				
-				
-			}
 		}
 		
 		
