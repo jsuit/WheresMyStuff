@@ -1,17 +1,28 @@
 package com.example.wheresmystuff;
 
 import android.app.Activity;
+
+import android.content.Intent;
+import android.location.Address;
+import android.os.Bundle;
+import android.text.Editable;
+import android.util.Log;
+
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.location.Address;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.Gravity;
+
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+
+
 import android.widget.TextView;
+
 import android.widget.Toast;
 
 public class Register extends Activity implements OnClickListener{
@@ -22,7 +33,7 @@ public class Register extends Activity implements OnClickListener{
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
-	
+
 		View save = findViewById(R.id.Save);
 		save.setOnClickListener(this);
 		
@@ -38,19 +49,23 @@ public class Register extends Activity implements OnClickListener{
 		
 		
 		// TODO Auto-generated method stub
+	
 		if(v.getId() == R.id.Save){
+			Log.d("RegisterForm", "Save button");
 			String name = ((EditText) findViewById(R.id.Name)).getText().toString();
 			String phone = ((EditText) findViewById(R.id.phone)).getText().toString();
 			String password = ((EditText) findViewById(R.id.password)).getText().toString();
-			String zip = ((EditText) findViewById(R.id.zip_code)).getText().toString();
 			String check_password = ((EditText) findViewById(R.id.retype_password)).getText().toString();
+			String zip = ((EditText) findViewById(R.id.zip_code)).getText().toString();
 			String street = ((EditText) findViewById(R.id.Street)).getText().toString(); 
+
+			
 			String email = ((EditText) findViewById(R.id.email)).getText().toString(); 
 			String [] check = Validation.validate(name, phone, zip + " " + street ,email, password, check_password);
 			 StringBuffer errorMessage = new StringBuffer();
 			//change 5 to some variable
-			for(int i=0; i<5; i++) {
-				if(check[i] != null) errorMessage.append(check[i]);
+			for(int i1=0; i1<5; i1++) {
+				if(check[i1] != null) errorMessage.append(check[i1]);
 			}
 			
 			if(errorMessage.length() != 0){
@@ -67,11 +82,9 @@ public class Register extends Activity implements OnClickListener{
 				 t.setView(textView);
 				 t.show();
 			}
-				 
 				
-				
-			
 		}
+		
 		
 	}
 	}
