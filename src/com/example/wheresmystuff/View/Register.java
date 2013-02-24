@@ -1,6 +1,7 @@
 package com.example.wheresmystuff.View;
 
 import com.example.wheresmystuff.R;
+import com.example.wheresmystuff.RegularUser;
 import com.example.wheresmystuff.Validation;
 import com.example.wheresmystuff.R.id;
 import com.example.wheresmystuff.R.layout;
@@ -59,8 +60,12 @@ public class Register extends Activity implements ILoginView{
 			String zip = ((EditText) findViewById(R.id.zip_code)).getText().toString();
 			String street = ((EditText) findViewById(R.id.Street)).getText().toString();
 			String address = "street/"+"zip/";
+			
 			if(reg_presenter.validate(name, phone, address, email, password, check_password)){
 				//reg_presenter.save(new User)
+				
+				//newUser is temporary, address better implementation later.
+				RegularUser newUser = new RegularUser(email, name, password, phone, zip, street);
 				call_intent(MainActivity.class);
 			}
 				
