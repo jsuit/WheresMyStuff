@@ -1,10 +1,10 @@
 package com.example.wheresmystuff.View;
 
 import com.example.wheresmystuff.R;
-import com.example.wheresmystuff.RegularUser;
 import com.example.wheresmystuff.Validation;
 import com.example.wheresmystuff.R.id;
 import com.example.wheresmystuff.R.layout;
+import com.example.wheresmystuff.Model.RegularUser;
 import com.example.wheresmystuff.Presenter.Register_Presenter;
 
 import android.app.Activity;
