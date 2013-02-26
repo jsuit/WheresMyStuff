@@ -1,0 +1,86 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Black"
+    tools:context=".MainUserScreen" >
+
+    <!--
+         The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc.
+    -->
+
+    <!--
+         This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows.
+    -->
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="409dp"
+            android:orientation="vertical" >
+
+            <QuickContactBadge
+                android:id="@+id/quickContactBadge1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dip"
+                android:layout_marginBottom="10dip"
+                android:ems="10"
+                android:text="Search..." >
+
+                <requestFocus />
+            </AutoCompleteTextView>
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginBottom="10dip"
+                android:text="Add Lost Item"
+                android:textColor="@color/White" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginBottom="10dip"
+                android:text="Add Found Item"
+                android:textColor="@color/White" />
+            
+            <Button 
+                android:id="@+id/button3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginBottom="10dip"
+                android:text="Button"
+                android:textColor="@color/White" />
+
+            <Button
+                android:id="@+id/button4"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginBottom="10dip"
+                android:text="Button"
+                android:textColor="@color/White" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</FrameLayout>
