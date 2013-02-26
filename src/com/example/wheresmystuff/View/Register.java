@@ -4,11 +4,15 @@ import com.example.wheresmystuff.R;
 import com.example.wheresmystuff.Validation;
 import com.example.wheresmystuff.R.id;
 import com.example.wheresmystuff.R.layout;
+import com.example.wheresmystuff.Model.DB;
 import com.example.wheresmystuff.Model.RegularUser;
 import com.example.wheresmystuff.Presenter.Register_Presenter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.DialogFragment;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Address;
 import android.os.Bundle;
@@ -40,7 +44,7 @@ public class Register extends Activity implements ILoginView{
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
-		reg_presenter = new Register_Presenter(this, null);
+		reg_presenter = new Register_Presenter(this, new DB(this));
 	}
 
 	/**
@@ -59,15 +63,10 @@ public class Register extends Activity implements ILoginView{
 			String check_password = ((EditText) findViewById(R.id.retype_password)).getText().toString();
 			String zip = ((EditText) findViewById(R.id.zip_code)).getText().toString();
 			String street = ((EditText) findViewById(R.id.Street)).getText().toString();
-			String address = "street/"+"zip/";
+			String address = street+" "+ zip;
 			
-			if(reg_presenter.validate(name, phone, address, email, password, check_password)){
-				//reg_presenter.save(new User)
-				
-				//newUser is temporary, address better implementation later.
-				RegularUser newUser = new RegularUser(email, name, password, phone, zip, street);
-				call_intent(MainActivity.class);
-			}
+			reg_presenter.validate(name, phone, address, email, password, check_password);
+			 
 				
 	}
 		@Override
@@ -93,6 +92,23 @@ public class Register extends Activity implements ILoginView{
 			startActivity(i);
 			Log.d("Register.java", "new intent called"+ c.getSimpleName());
 			
+		}
+		
+		public void alreadyTaken(String str){
+			
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage(str);
+			builder.setTitle("Error");
+			builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+				      public void onClick(DialogInterface dialog, int id) {
+				    	  return;
+
+				         }
+
+				     });
+			
+			builder.create().show();
 		}
 		
 		

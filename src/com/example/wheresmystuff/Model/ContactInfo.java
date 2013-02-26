@@ -74,4 +74,13 @@ public class ContactInfo {
 		
 	}
 	
+	public String [] getContactInfoAsArray(){
+		String [] array = {this.email,
+						   this.name,
+						   this.phoneNum,
+						   this.zip,
+						   this.street};
+		return array;
+	}
+	
 }

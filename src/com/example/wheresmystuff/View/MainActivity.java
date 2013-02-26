@@ -1,27 +1,22 @@
 package com.example.wheresmystuff.View;
 
 
-import com.example.wheresmystuff.R;
-import com.example.wheresmystuff.Validation;
-import com.example.wheresmystuff.R.id;
-import com.example.wheresmystuff.R.layout;
-import com.example.wheresmystuff.R.menu;
-import com.example.wheresmystuff.Presenter.Login_Presenter;
-
-import android.os.Bundle;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.wheresmystuff.R;
+import com.example.wheresmystuff.Model.DB;
+import com.example.wheresmystuff.Presenter.Login_Presenter;
 
 public class MainActivity extends Activity implements ILoginView{
 
@@ -30,7 +25,7 @@ public class MainActivity extends Activity implements ILoginView{
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		myPresenter = new Login_Presenter(this, null);
+		myPresenter = new Login_Presenter(this, new DB(this));
 	}
 
 	@Override
@@ -50,15 +45,12 @@ public class MainActivity extends Activity implements ILoginView{
 				String user_name = ((EditText) findViewById(R.id.userId)).getText().toString();
 				String password = ((EditText) findViewById(R.id.login_password)).getText().toString();
 				Log.d("MainActivity", "save button clicked");
-				if(myPresenter.validate(user_name, password)){
-					//call_intent(something here)
-				}
+				myPresenter.validate(user_name, password);
+			    
 				//else do nothing they have to click resubmit info.
 				
 	}
 	
-	
-
 	/**
 	 * Button handler for the register button
 	 * 

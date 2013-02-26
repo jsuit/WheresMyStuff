@@ -17,5 +17,6 @@
     <string name="password">Password</string>
     <string name="Retype_Password">Retype Password</string>
     <string name="Country">Country</string>
+    <string name="user_taken">Error: User Name Already Taken</string>
 
 </resources>

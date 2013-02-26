@@ -3,15 +3,16 @@ package com.example.wheresmystuff.Model;
 
 public class RegularUser implements User {
 
-	private String email, password, name, zip, street, phoneNum;
+	private String email, password, zip, street, phoneNum;
 	private boolean acc_status, admin_status;
 	private ContactInfo contact_info;
+	private int login = 0;
 	
-	public RegularUser(String email, String name, String password, String phoneNum, String zip, String street) {
+	public RegularUser(String email, String name, String password, String phoneNum, String zip, String street, int login_attempt) {
 		
 		this.password = password;
 		contact_info = new ContactInfo(email, name, phoneNum, zip, street);
-		
+		login = login_attempt;
 	}
 	
 	public boolean getAdminStatus() {
@@ -62,8 +63,9 @@ public class RegularUser implements User {
 	}
 	
 	public void setAccStatus(boolean bool) {
-		
+		//if true,then unlocked
 		acc_status = bool;
+		if(bool) this.login = 0;
 		
 	}
 	
@@ -96,22 +98,39 @@ public class RegularUser implements User {
 		contact_info.setStreet(newStreet);
 	}
 	
-	@Override
-	public void add_to_list() {
-		// TODO Auto-generated method stub
+	
 
+	@Override
+	public ContactInfo getContactInfo() {
+		// TODO Auto-generated method stub
+		return contact_info;
 	}
 
 	@Override
-	public void remove_to_list() {
+	public String[] getContactInfoAsArray() {
 		// TODO Auto-generated method stub
-
+		return this.contact_info.getContactInfoAsArray();
 	}
 
 	@Override
-	public void save_user(User user) {
-		// TODO Auto-generated method stub
-
+	public String getPassword() {
+		return this.password;
 	}
 
+	@Override
+	public int getLoginAttempts() {
+		return this.login;
+		
+	}
+	@Override
+	public void increaseLoginAttempts(){
+		
+		if(login < 3) setLoginAttempts(login++);
+		else setLoginAttempts(3);
+	}
+	
+	private void setLoginAttempts(int i){
+		this.login = i;
+	}
+	
 }
