@@ -29,56 +29,71 @@
             <QuickContactBadge
                 android:id="@+id/quickContactBadge1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <AutoCompleteTextView
-                android:id="@+id/autoCompleteTextView1"
-                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dip"
-                android:layout_marginBottom="10dip"
-                android:ems="10"
-                android:text="Search..." >
+                android:layout_marginBottom="15dip"/>
 
-                <requestFocus />
-            </AutoCompleteTextView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:ems="10"
+                    android:text="AutoCompleteTextView" >
+
+                    <requestFocus />
+                </AutoCompleteTextView>
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/autoCompleteTextView1"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="14dp"
+                    android:layout_toRightOf="@+id/autoCompleteTextView1"
+                    android:text="Button" />
+                
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/button1"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
                 android:layout_marginBottom="10dip"
-                android:text="Add Lost Item"
+                android:layout_marginTop="20dip"
+                android:text="Advanced Search"
                 android:textColor="@color/White" />
 
             <Button
                 android:id="@+id/button2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
                 android:layout_marginBottom="10dip"
-                android:text="Add Found Item"
+                android:layout_marginTop="10dip"
+                android:text="Your Listings"
                 android:textColor="@color/White" />
-            
-            <Button 
+
+            <Button
                 android:id="@+id/button3"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
                 android:layout_marginBottom="10dip"
-                android:text="Button"
+                android:layout_marginTop="10dip"
+                android:text="Post An Item"
                 android:textColor="@color/White" />
 
             <Button
                 android:id="@+id/button4"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dip"
                 android:layout_marginBottom="10dip"
-                android:text="Button"
+                android:layout_marginTop="10dip"
+                android:text="Your Contacts"
                 android:textColor="@color/White" />
-
         </LinearLayout>
 
     </FrameLayout>
