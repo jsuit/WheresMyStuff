@@ -1,4 +1,4 @@
-package com.example.wheresmystuff;
+package com.example.wheresmystuff.Model.Item;
 
 public interface Item {
 

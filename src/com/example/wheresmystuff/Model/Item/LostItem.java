@@ -1,4 +1,4 @@
-package com.example.wheresmystuff;
+package com.example.wheresmystuff.Model.Item;
 
 import com.example.wheresmystuff.Model.User;
 

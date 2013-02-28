@@ -1,11 +1,11 @@
 package com.example.wheresmystuff.Presenter;
 
-import com.example.wheresmystuff.ValidatePassword;
 import com.example.wheresmystuff.Model.IModel;
 import com.example.wheresmystuff.Model.User;
 import com.example.wheresmystuff.View.ILoginView;
 import com.example.wheresmystuff.View.MainActivity;
 import com.example.wheresmystuff.View.mainUserScreen;
+import com.example.wheresmystuff.validation.ValidatePassword;
 
 public class Login_Presenter {
 

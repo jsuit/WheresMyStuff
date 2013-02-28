@@ -1,4 +1,4 @@
-package com.example.wheresmystuff;
+package com.example.wheresmystuff.validation;
 
 public class ValidatePhone {
 

@@ -10,7 +10,6 @@ import android.test.AssertionFailedError;
 import android.util.Log;
 
 import com.example.wheresmystuff.DB_Helper;
-import com.example.wheresmystuff.Validation;
 import com.example.wheresmystuff.Model.ContactInfo;
 import com.example.wheresmystuff.Model.IModel;
 import com.example.wheresmystuff.Model.RegularUser;
@@ -18,6 +17,7 @@ import com.example.wheresmystuff.Model.User;
 import com.example.wheresmystuff.View.ILoginView;
 import com.example.wheresmystuff.View.Register;
 import com.example.wheresmystuff.View.mainUserScreen;
+import com.example.wheresmystuff.validation.Validation;
 
 
 public class Register_Presenter {
