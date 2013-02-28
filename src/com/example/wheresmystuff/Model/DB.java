@@ -52,7 +52,7 @@ public class DB implements IModel{
 	public boolean findPerson(String uid, String password) {
 		String [] columns = new String [] {DB_Helper.KEY_NAME, DB_Helper.KEY_PASSWORD};
 		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns, DB_Helper.KEY_PASSWORD + " = ? AND " + DB_Helper.KEY_NAME + " = ?",
-		         new String[] { password, uid },
+		         new String[] {password, uid},
 		         null,
 		         null,
 		         null);
@@ -76,12 +76,12 @@ public class DB implements IModel{
 	@Override
 	public boolean find_uid(String uid){
 		String [] columns = new String [] {DB_Helper.KEY_NAME};
-		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns, DB_Helper.KEY_NAME + " = ? ",
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns, DB_Helper.KEY_NAME + " = ?",
 		         new String[] {uid },
 		         null,
 		         null,
 		         null);
-		boolean value=	c.moveToFirst();
+		boolean value=c.moveToFirst();
 		c.close();
 		//didn't find it
 		
@@ -90,10 +90,83 @@ public class DB implements IModel{
 			return false;	
 		}
 		//did find it
-		else return true;
+		else return true;	
+	}
+
+	@Override
+	public int getLoginAttempts(String u_name) {
+		// TODO Auto-generated method stub
+		String [] columns = new String [] {DB_Helper.KEY_NAME, DB_Helper.KEY_LOGIN_ATTEMPTS};
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns, DB_Helper.KEY_NAME + "=?",
+		         new String[] {u_name},
+		         null,
+		         null,
+		         null);
+		
+		if(!c.moveToFirst()) return -1;
+		
+		int c_index = c.getColumnIndex(DB_Helper.KEY_LOGIN_ATTEMPTS);
+		
+		int num = c.getInt(c_index);
+	
+		c.close();
+		return num;
+	}
+
+	@Override
+	public boolean find_password(String password) {
+		String [] columns = new String [] {DB_Helper.KEY_PASSWORD};
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns, DB_Helper.KEY_PASSWORD + " = ?",
+		         new String[] {password},
+		         null,
+		         null,
+		         null);
+		boolean value=	c.moveToFirst();
+		c.close();
+		return value;	
+	}
+
+	@Override
+	public void increase_login_attempts(int i, String u_name) {
+		// TODO Auto-generated method stub
+		String [] columns = new String [] {DB_Helper.KEY_NAME};
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns, DB_Helper.KEY_NAME + " = ? ",
+		         new String[] {u_name},
+		         null,
+		         null,
+		         null);
+		
+		if(!c.moveToFirst()) Log.d("increase login attempts", "failed to find user");
+		else{
+		ContentValues cv = new ContentValues();
+		cv.put(DB_Helper.KEY_LOGIN_ATTEMPTS, i);
+		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME+"=?", new String[] {u_name});
+		c.close();
+		Log.d("increase_login_attempts", "got user and increased the size");
+		}
+		return;
 		
 	}
 
+	@Override
+	public void setLocked(String u_name) {
+		// TODO Auto-generated method stub
+		String [] columns = new String [] {DB_Helper.KEY_NAME};
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns, DB_Helper.KEY_NAME + " = ? ",
+		         new String[] {u_name},
+		         null,
+		         null,
+		         null);
+		ContentValues cv = new ContentValues();
+		cv.put(DB_Helper.KEY_LOGIN_ATTEMPTS, 3);
+		database.update("table", cv, DB_Helper.KEY_NAME+"=?", new String[] {u_name});
+	}
+
+	
+
+	
+
+	
 	
 	
 	
