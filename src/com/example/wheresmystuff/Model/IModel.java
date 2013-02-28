@@ -33,8 +33,14 @@ public interface IModel {
 	 void open() throws SQLException;
 	 
 	 boolean find_uid(String uid);
+	 
+	 int getLoginAttempts(String u_name);
 	  
 	 void close();
+	boolean find_password(String password);
+	
+	void increase_login_attempts(int i, String u_name);
+	void setLocked(String u_name);
 	 
 	 
 

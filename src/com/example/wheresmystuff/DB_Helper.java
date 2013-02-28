@@ -24,6 +24,21 @@ public class DB_Helper extends SQLiteOpenHelper {
 		      + " TEXT NOT NULL," + KEY_PASSWORD + " TEXT NOT NULL," + KEY_LOGIN_ATTEMPTS + " INTEGER NOT NULL," + KEY_ZIP + " TEXT," +
 		      KEY_STREET + " TEXT," + KEY_EMAIL + " TEXT NOT NULL," + KEY_PHONE + " TEXT);";
 	
+	public static final String ITEM_NAME = "item_name";
+	public static final String ITEM_STATUS = "item_status";
+	public static final String ITEM_DESCRIPTION = "item_description";
+	public static final String ITEM_CATEGORY = "item_category";
+	public static final	String ITEM_ROW_ID = "row_id";
+	private static final String ITEM_TABLE = "table_of_items";
+	public static final String CREATE_ITEM_DB = "CREATE TABLE "
+		      + ITEM_TABLE + "(" + ITEM_ROW_ID + 
+		     " INTEGER PRIMARY KEY AUTOINCREMENT," + ITEM_NAME
+		      + " TEXT NOT NULL," + ITEM_STATUS + " TEXT NOT NULL," + ITEM_DESCRIPTION + " TEXT," + ITEM_CATEGORY + " TEXT NOT NULL," +
+		      KEY_NAME + " TEXT,);";
+	
+	
+
+	
 	public DB_Helper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		
@@ -34,7 +49,7 @@ public class DB_Helper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(DATABASE_CREATE);
-		
+		db.execSQL(CREATE_ITEM_DB);
 	}
 
 	
@@ -44,6 +59,7 @@ public class DB_Helper extends SQLiteOpenHelper {
 		        "Upgrading database from version " + oldVersion + " to "
 		            + newVersion + ", which will destroy all old data");
 		db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE_USERS);
+		db.execSQL("DROP TABLE IF EXISTS " + CREATE_ITEM_DB);
 	    onCreate(db);
 		
 	}
