@@ -55,8 +55,12 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="14dp"
                     android:layout_toRightOf="@+id/autoCompleteTextView1"
+                    android:onClick="ButtonClick"
                     android:text="Button" />
+
                 
+                   
+
             </RelativeLayout>
 
             <Button
@@ -66,17 +70,20 @@
                 android:layout_marginBottom="10dip"
                 android:layout_marginTop="20dip"
                 android:text="Advanced Search"
+                android:onClick="advanced_Search"
                 android:textColor="@color/White" />
 
             <Button
                 android:id="@+id/button2"
+                android:textColor="@color/White"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dip"
                 android:layout_marginTop="10dip"
                 android:text="Your Listings"
-                android:textColor="@color/White" />
-
+                android:onClick="yourListings" />
+                
+              
             <Button
                 android:id="@+id/button3"
                 android:layout_width="fill_parent"
@@ -84,8 +91,8 @@
                 android:layout_marginBottom="10dip"
                 android:layout_marginTop="10dip"
                 android:text="Post An Item"
+                android:onClick="postItem"
                 android:textColor="@color/White" />
-
             <Button
                 android:id="@+id/button4"
                 android:layout_width="fill_parent"
@@ -93,7 +100,10 @@
                 android:layout_marginBottom="10dip"
                 android:layout_marginTop="10dip"
                 android:text="Your Contacts"
+                android:onClick="yourContacts"
                 android:textColor="@color/White" />
+                
+
         </LinearLayout>
 
     </FrameLayout>
