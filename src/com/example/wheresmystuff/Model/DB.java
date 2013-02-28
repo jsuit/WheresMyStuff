@@ -144,6 +144,7 @@ public class DB implements IModel{
 		c.close();
 		Log.d("increase_login_attempts", "got user and increased the size");
 		}
+		c.close();
 		return;
 		
 	}
