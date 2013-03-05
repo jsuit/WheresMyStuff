@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.wheresmystuff.R;
 import com.example.wheresmystuff.Model.DB;
+import com.example.wheresmystuff.Model.Item.Item;
 import com.example.wheresmystuff.Presenter.Login_Presenter;
 
 public class MainActivity extends Activity implements ILoginView{
@@ -92,6 +93,8 @@ public class MainActivity extends Activity implements ILoginView{
 		startActivity(intent);
 		Log.d("MainActivity", "Called Intent:" + c.getName());
 	}
+
+	
 
 			
 }

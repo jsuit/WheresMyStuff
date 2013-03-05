@@ -1,18 +1,23 @@
 package com.example.wheresmystuff.Model.Item;
 
+import java.util.Date;
+
 import com.example.wheresmystuff.Model.User;
 
 public class LostItem implements Item {
 
 	private ItemInfo itemInfo;
-	private User user;
+	private String user;
 	
-	public LostItem(String itemName, String itemCategory, String itemStatus, String itemDescription, User user) {
+	
+	public LostItem(String itemName, String itemCategory, String itemStatus, String itemDescription, String user, Date date, boolean keepsake, boolean heirloom, boolean misc, String zip, String street) {
 		
-		itemInfo = new ItemInfo(itemName, itemCategory, itemStatus, itemDescription);
+		itemInfo = new ItemInfo(itemName, keepsake, heirloom, misc, itemStatus, itemDescription, itemCategory, date, zip, street);
 		this.user = user;
 		
 	}
+	
+	
 	
 	@Override
 	public void setItemName(String newItemName) {
@@ -64,5 +69,33 @@ public class LostItem implements Item {
 		return itemInfo.getItemDescription();
 		
 	}
+
+
+	@Override
+	public String getStreet() {
+		return itemInfo.getStreet();
+	}
+
+
+	@Override
+	public String getZip() {
+		// TODO Auto-generated method stub
+		
+		return itemInfo.getZip();
+	}
+
+
+	@Override
+	public boolean[] kindofItem() {
+		// TODO Auto-generated method stub
+		boolean [] bool = itemInfo.getItemInfo();
+		return bool;
+	}
+
+	public String getDateAsString(){
+		return itemInfo.getDate().toString();
+	}
+
+
 
 }

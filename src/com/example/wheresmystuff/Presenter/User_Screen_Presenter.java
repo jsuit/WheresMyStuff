@@ -1,8 +1,11 @@
 package com.example.wheresmystuff.Presenter;
 
+import java.util.ArrayList;
+
 import com.example.wheresmystuff.Model.IModel;
 import com.example.wheresmystuff.View.ILoginView;
 import com.example.wheresmystuff.View.IMyProfilePage;
+
 
 public class User_Screen_Presenter {
 
@@ -14,5 +17,5 @@ public class User_Screen_Presenter {
 		myView = v;
 	}
 	
-
+	
 }
