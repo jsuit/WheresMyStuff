@@ -18,4 +18,12 @@ public interface Item {
 	
 	public String getItemDescription();
 	
+	public String getStreet();
+	public String getZip();
+
+	public boolean[] kindofItem();
+
+	public String getDateAsString();
+
+	
 }

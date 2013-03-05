@@ -25,6 +25,8 @@
         <activity android:name="com.example.wheresmystuff.View.Register" android:label="Register"></activity>
         <activity android:name=".Security" android:label="Security"></activity>
         <activity android:name=".View.mainUserScreen"></activity>
+        <activity android:name=".View.DisplayItems"></activity>
+        <activity android:name=".View.Register_Item"></activity>
         
         
     </application>
