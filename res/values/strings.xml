@@ -18,5 +18,31 @@
     <string name="Retype_Password">Retype Password</string>
     <string name="Country">Country</string>
     <string name="user_taken">Error: User Name Already Taken</string>
-
+    <string name ="Item_Name">Item Name:</string>
+    <string name ="Item_Description">Item Description:</string>
+    <string name ="Lost">Lost</string> 
+    <string name ="Found">Found</string>
+    <string name ="Donations">Donations</string>
+    <string name ="Required">Required</string>   
+    <string name ="Item_Category">Item Category:</string> 
+    <string name ="Item_Status">Item Status:</string> 
+    <string name ="Item_Zip">Item Zip:</string>
+    <string name ="Item_Street">Item Street:</string>
+    <string name ="Open">Open:</string>
+    <string name ="Closed">Closed:</string>
+    <string name="Keepsakes">Keepsakes</string>
+    <string name="Heirlooms">Heirlooms</string>
+    <string name="Misc">Misc</string>
+    <string name="save_item">Save Item</string>
+    <string name="Item_type">Item Type:</string>
+    <string name="Item">Item</string>
+    
+    <string-array name="Category">
+        <item>Lost</item>
+        <item>Found</item>
+        <item>Donations</item>
+        <item>Needed</item>
+    </string-array>
+    <string name="Select_Category">Select Category:</string>
+    <string name="Main_Street">1234 Main Street</string>
 </resources>

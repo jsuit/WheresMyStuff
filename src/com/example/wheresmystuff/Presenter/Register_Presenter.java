@@ -1,16 +1,10 @@
 package com.example.wheresmystuff.Presenter;
 
-import java.util.Iterator;
 
-import android.app.AlertDialog;
-import android.app.DialogFragment;
-import android.content.ContentValues;
-import android.content.DialogInterface;
-import android.test.AssertionFailedError;
+
+
 import android.util.Log;
 
-import com.example.wheresmystuff.DB_Helper;
-import com.example.wheresmystuff.Model.ContactInfo;
 import com.example.wheresmystuff.Model.IModel;
 import com.example.wheresmystuff.Model.RegularUser;
 import com.example.wheresmystuff.Model.User;
@@ -65,6 +59,7 @@ public class Register_Presenter {
 						}else{
 							myView.call_intent(mainUserScreen.class);
 						}
+						myModel.setCurUser(name);
 						myModel.close();
 					}
 				

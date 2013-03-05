@@ -57,6 +57,7 @@ public class Login_Presenter {
 			myView.notify_of_error("Unknow user and/or invalid password");
 		}
 		//close the db
+		myModel.setCurUser(name);
 		myModel.close();
 		//if(!found_user) myView.notify_of_error("Unknow user and/or invalid password")	
 	}
