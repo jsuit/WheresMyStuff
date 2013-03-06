@@ -1,6 +1,8 @@
 package com.example.wheresmystuff.Model;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -32,6 +34,9 @@ public class DB implements IModel{
 	  public void close() {
 		    my_helper.close();
 	  }
+	  
+	  
+	  
 
 	@Override
 	public long addPerson(User p) {
@@ -253,6 +258,70 @@ public class DB implements IModel{
 		
 		
 	}
+
+	@Override
+	public Collection<String> getLockedAccounts() {
+		// TODO Auto-generated method stub
+		//must prevent non-admin from calling this
+	
+		String[] columns = {DB_Helper.KEY_NAME};
+		
+		Cursor c = database.query(DB_Helper.ITEM_TABLE, columns, DB_Helper.KEY_LOGIN_ATTEMPTS + "=?",
+		         new String[] {"1"},
+		         null,
+		         null,
+		         null);
+		if(!c.moveToFirst()){ 
+			c.close();
+			return null;
+		}
+		else{
+			Collection<String> uids = new ArrayList<String>();
+			while(c.moveToNext()){
+				uids.add(c.getString(c.getColumnIndex(DB_Helper.KEY_NAME)));
+			}
+			c.close();
+			return uids;
+		}
+	}
+
+	@Override
+	public void setAdmin(String uid) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeAdmin(String uid) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void unlockAccount(String uid) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isAdmin(String uid) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Collection<String> getLockedAccounts(String uid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean isAdmin() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 		
 }
 
