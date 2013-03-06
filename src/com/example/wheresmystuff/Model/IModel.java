@@ -38,18 +38,18 @@ public interface IModel {
 	 
 	 int getLoginAttempts(String u_name);
 	  
-	 void close();
-	boolean find_password(String password);
-	
+	 void close();	
 	void increase_login_attempts(int i, String u_name);
 	void setLocked(String u_name);
 	Item [] getItems(String current_user);
 	void setCurUser(String name);
 	String getCurUser();
 	Item[] getLostItems(String current_user);
-	long saveItem(String name, String description, String status,
-			boolean b, boolean c, boolean d, String date,
-			String curUser, String street, String zip, String type);
+	
+	boolean find_password(String password, String uid);
+	long saveItem(String name, String description, String status, int i, int j,
+			int k, String date, String curUser, String street, String zip,
+			String category);
 	 
 	 
 

@@ -36,10 +36,9 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 	    
 	    
 	    //set the widget values
-	    textView.setText(items[position].getItemName());
-          // Log.d("Model", "Set row for: " + people.get(position).getName());
-          // Change the icon for Windows and iPhone
-          String s = items[position].getItemCategory();
+	    textView.setText(items[position].getItemName() + " "+ items[position].getDateAsString());
+          Log.d("Adapter", "Set row for: " + position);
+          
 	    
 	    Log.d("Model", "Got row " + position);
 	    

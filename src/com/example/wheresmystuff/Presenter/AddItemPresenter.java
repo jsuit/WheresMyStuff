@@ -32,7 +32,7 @@ public class AddItemPresenter {
 
 	public void makeAnItem(String name, String category, String status,
 			String description, Date date, String zip, String street,
-			boolean keep, boolean heir, boolean m) {
+			int keep, int heir, int m) {
 		// TODO Auto-generated method stub
 
 		myModel.open();
@@ -50,10 +50,10 @@ public class AddItemPresenter {
 		String name = i.getItemName();
 		String description = i.getItemDescription();
 		String status = i.getItemStatus();
-		boolean[] array = i.kindofItem();
+		int[] array = i.kindofItem();
 
 		// ****Make validation classes******
-		if (array[0] == array[1] && array[0] == array[2] && array[0] == false) {
+		if (array[0] == array[1] && array[0] == array[2] && array[0] == 0) {
 			myView.notify_of_error(
 					"You must choose either a Heirloom, Keepsake, or Misc",
 					"Error");
@@ -73,7 +73,7 @@ public class AddItemPresenter {
 		String name = i.getItemName();
 		String description = i.getItemDescription();
 		String status = i.getItemStatus();
-		boolean[] array = i.kindofItem();
+		int[] array = i.kindofItem();
 		String date = i.getDateAsString().toString();
 		String category = i.getItemCategory();
 		String curUser = myModel.getCurUser();

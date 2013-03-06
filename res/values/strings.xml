@@ -45,4 +45,5 @@
     </string-array>
     <string name="Select_Category">Select Category:</string>
     <string name="Main_Street">1234 Main Street</string>
+    <string name="More_Info">More info</string>
 </resources>

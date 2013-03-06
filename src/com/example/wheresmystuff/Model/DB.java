@@ -1,6 +1,7 @@
 package com.example.wheresmystuff.Model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -39,8 +40,8 @@ public class DB implements IModel{
 		String [] c_info =  p.getContactInfoAsArray();
 		//ORDER MATTERS
 		String [] columns = {DB_Helper.KEY_EMAIL, DB_Helper.KEY_NAME, DB_Helper.KEY_PHONE, DB_Helper.KEY_ZIP, DB_Helper.KEY_STREET,
-							DB_Helper.KEY_LOGIN_ATTEMPTS, DB_Helper.KEY_PASSWORD};
-		assert(c_info.length == columns.length -2);
+							DB_Helper.KEY_LOGIN_ATTEMPTS, DB_Helper.KEY_PASSWORD,DB_Helper.KEY_ADMIN};
+		
 		//put c_info into values
 		for (int i = 0; i < c_info.length; i++) {
 			values.put(columns[i], c_info[i]);
@@ -48,10 +49,8 @@ public class DB implements IModel{
 		//put non_contact info into values
 		values.put(columns[5],p.getLoginAttempts());
 		values.put(columns[6], p.getPassword());
-		
+		values.put(columns[7], 0);
 		return database.insert(DB_Helper.DATABASE_TABLE_USERS, null, values);
-		
-		
 	}
 
 	@Override
@@ -120,10 +119,10 @@ public class DB implements IModel{
 	}
 
 	@Override
-	public boolean find_password(String password) {
-		String [] columns = new String [] {DB_Helper.KEY_PASSWORD};
-		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns, DB_Helper.KEY_PASSWORD + " = ?",
-		         new String[] {password},
+	public boolean find_password(String password, String uid) {
+		String [] columns = new String [] {DB_Helper.KEY_PASSWORD, DB_Helper.KEY_NAME};
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns, DB_Helper.KEY_PASSWORD + " = ? AND " + DB_Helper.KEY_NAME + "= ?",
+		         new String[] {password, uid},
 		         null,
 		         null,
 		         null);
@@ -136,7 +135,7 @@ public class DB implements IModel{
 	public void increase_login_attempts(int i, String u_name) {
 		// TODO Auto-generated method stub
 		String [] columns = new String [] {DB_Helper.KEY_NAME};
-		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns, DB_Helper.KEY_NAME + " = ? ",
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns, DB_Helper.KEY_NAME + "=?",
 		         new String[] {u_name},
 		         null,
 		         null,
@@ -159,26 +158,21 @@ public class DB implements IModel{
 	public void setLocked(String u_name) {
 		// TODO Auto-generated method stub
 		String [] columns = new String [] {DB_Helper.KEY_NAME};
-		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns, DB_Helper.KEY_NAME + " = ? ",
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns, DB_Helper.KEY_NAME + " = ?",
 		         new String[] {u_name},
 		         null,
 		         null,
 		         null);
 		ContentValues cv = new ContentValues();
 		cv.put(DB_Helper.KEY_LOGIN_ATTEMPTS, 3);
-		database.update("table", cv, DB_Helper.KEY_NAME+"=?", new String[] {u_name});
+		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME+"=?", new String[] {u_name});
 	}
-/*
+
 	@Override
 	public Item[] getLostItems(String current_user) {
-		String [] columns = new String [] {DB_Helper.ITEM_NAME,
-				DB_Helper.ITEM_STATUS,
-				DB_Helper.ITEM_DESCRIPTION,
-				DB_Helper.ITEM_CATEGORY,
-				DB_Helper.ITEM_ROW_ID,
-				DB_Helper.KEY_NAME};
-		Cursor c = database.query(DB_Helper.ITEM_TABLE, columns, DB_Helper.KEY_NAME + " = ? AND " + DB_Helper.ITEM_STATUS + " = ?",
-		         new String[] {current_user, "lost"},
+	
+		Cursor c = database.query(DB_Helper.ITEM_TABLE, null, DB_Helper.KEY_NAME + "=? AND " + DB_Helper.ITEM_CATEGORY+"=?",
+		         new String[] {current_user, "Lost"},
 		         null,
 		         null,
 		         null);
@@ -187,23 +181,31 @@ public class DB implements IModel{
 			c.close();
 			return null;	
 		}
+		
 		List<Item> items = new ArrayList<Item>();
+		int i = c.getCount();
 		while(!c.isAfterLast()){
-			String itemName = c.getColumnName(c.getColumnIndex(DB_Helper.ITEM_NAME));
-			String itemCategory = c.getColumnName(c.getColumnIndex(DB_Helper.ITEM_CATEGORY));
-			String itemStatus = c.getColumnName(c.getColumnIndex(DB_Helper.ITEM_STATUS));
-			String itemDescription = c.getColumnName(c.getColumnIndex(DB_Helper.ITEM_DESCRIPTION));
-			
-			Item item = new LostItem(itemName, itemCategory, itemStatus, itemDescription, current_user,null, false, false, false, itemDescription, itemDescription);
-			
-			items.add(item);	
+			String itemName = c.getString(c.getColumnIndex(DB_Helper.ITEM_NAME));
+			String itemCategory = c.getString(c.getColumnIndex(DB_Helper.ITEM_CATEGORY));
+			String itemStatus = c.getString(c.getColumnIndex(DB_Helper.ITEM_STATUS));
+			String itemDescription = c.getString(c.getColumnIndex(DB_Helper.ITEM_DESCRIPTION));
+			Date date = new Date(c.getString(c.getColumnIndex(DB_Helper.ITEM_DATE)));
+			int keepsake = c.getInt(c.getColumnIndex(DB_Helper.ITEM_KEEPSAKE));
+			int heirloom = c.getInt(c.getColumnIndex(DB_Helper.ITEM_HEIRLOOM));
+			int misc = c.getInt(c.getColumnIndex(DB_Helper.ITEM_MISC));
+			String zip = c.getString(c.getColumnIndex(DB_Helper.ITEM_ZIP));
+			String street = c.getString(c.getColumnIndex(DB_Helper.ITEM_STREET));
+			Item item = new LostItem(itemName, itemCategory, itemStatus, itemDescription, current_user, date, keepsake, heirloom,
+					misc, zip, street);
+			items.add(item);
+			c.moveToNext();
 		}
+				int length = items.size();
 				Item [] a_item = new Item[items.size()];
 				a_item = items.toArray(a_item);
 				c.close();
 		return a_item;
 	}
-*/
 	@Override
 	public void setCurUser(String name){
 		// TODO Auto-generated method stub
@@ -223,19 +225,15 @@ public class DB implements IModel{
 		return null;
 	}
 
-	@Override
-	public Item[] getLostItems(String current_user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 	@Override
 	public long saveItem(String name, String description, String status,
-			boolean keep, boolean heir, boolean misc, String date,
+			int keep, int heir, int misc, String date,
 			String curUser, String street, String zip, String type) {
 		
 		String [] col = {DB_Helper.ITEM_NAME, DB_Helper.ITEM_STATUS, DB_Helper.ITEM_DESCRIPTION, DB_Helper.ITEM_CATEGORY, DB_Helper.ITEM_STREET,
-				DB_Helper.KEY_NAME, DB_Helper.ITEM_ZIP, DB_Helper.ITEM_TYPE, DB_Helper.ITEM_DATE, DB_Helper.ITEM_KEEPSAKE, DB_Helper.ITEM_HEIRLOOM, DB_Helper.ITEM_MISC
+				DB_Helper.KEY_NAME, DB_Helper.ITEM_ZIP, DB_Helper.ITEM_DATE, DB_Helper.ITEM_KEEPSAKE, DB_Helper.ITEM_HEIRLOOM, DB_Helper.ITEM_MISC
 		};
 		
 		ContentValues cv = new ContentValues();
@@ -246,11 +244,10 @@ public class DB implements IModel{
 		cv.put(col[4], street);
 		cv.put(col[5], curUser);
 		cv.put(col[6], zip);
-		cv.put(col[7], type);
-		cv.put(col[8], date);
-		cv.put(col[9], keep);
-		cv.put(col[10], heir);
-		cv.put(col[11], misc);
+		cv.put(col[7], date);
+		cv.put(col[8], keep);
+		cv.put(col[9], heir);
+		cv.put(col[10], misc);
 	
 		return database.insert(DB_Helper.ITEM_TABLE, null, cv);
 		

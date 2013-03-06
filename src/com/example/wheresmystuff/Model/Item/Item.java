@@ -21,7 +21,7 @@ public interface Item {
 	public String getStreet();
 	public String getZip();
 
-	public boolean[] kindofItem();
+	public int[] kindofItem();
 
 	public String getDateAsString();
 

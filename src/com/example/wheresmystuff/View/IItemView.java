@@ -16,5 +16,6 @@ public interface IItemView {
 	void makeToast(String string);
 	void notify_of_error(String error_message, String title);
 	void confirm(String string, String string2);
+	void setItem(Item [] i);
 
 }
