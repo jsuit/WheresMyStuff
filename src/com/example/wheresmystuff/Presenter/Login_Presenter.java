@@ -28,35 +28,29 @@ public class Login_Presenter {
 		if(myModel.find_uid(name) ){
 			//found user; now try to find password
 			int login_attempts = myModel.getLoginAttempts(name);
-			if(!myModel.find_password(password)){
+			if(login_attempts >= 3){
+				myView.notify_of_error("Account Locked");
+				myModel.setLocked(name);
+				myView.call_intent(MainActivity.class);
+			}else{
+				if(!myModel.find_password(password,name)){
 				//found user but not password
 				//get the login_attempts
 				//error checking
-				if(login_attempts == -1){
-					 myView.notify_of_error("Can't find you!");
+					myModel.increase_login_attempts(++login_attempts, name);
+					myView.notify_of_error("Unknow user and/or invalid password");
 				}
 				else{
-					//if login attempts are 3 or >
-					if(login_attempts >= 3){
-						myView.notify_of_error("Account Locked");
-						myModel.setLocked(name);
-						myView.call_intent(MainActivity.class);	
-					}
-					else{
-						myModel.increase_login_attempts(++login_attempts, name);
-						myView.notify_of_error("Unknow user and/or invalid password");
-					}
-					
+					myView.call_intent(mainUserScreen.class);
+					myModel.setCurUser(name);
 				}
-			}
-			else{//found user name and password
-				myView.call_intent(mainUserScreen.class);
+				
 			}
 		}else{
-			//found nothing
 			myView.notify_of_error("Unknow user and/or invalid password");
 		}
 		//close the db
+		
 		myModel.close();
 		//if(!found_user) myView.notify_of_error("Unknow user and/or invalid password")	
 	}

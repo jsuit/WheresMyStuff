@@ -8,6 +8,7 @@ import android.util.Log;
 public class DB_Helper extends SQLiteOpenHelper {
 	
 	public static final String KEY_ROW_ID = "id";
+	public static final String KEY_ADMIN = "admin_status";
 	public static final String KEY_NAME = "id_name";
 	public static final String KEY_ZIP = "zip";
 	public static final String KEY_STREET = "street";
@@ -22,22 +23,28 @@ public class DB_Helper extends SQLiteOpenHelper {
 		      + DATABASE_TABLE_USERS + "(" + KEY_ROW_ID + 
 		     " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_NAME
 		      + " TEXT NOT NULL," + KEY_PASSWORD + " TEXT NOT NULL," + KEY_LOGIN_ATTEMPTS + " INTEGER NOT NULL," + KEY_ZIP + " TEXT," +
-		      KEY_STREET + " TEXT," + KEY_EMAIL + " TEXT NOT NULL," + KEY_PHONE + " TEXT);";
+		      KEY_STREET + " TEXT," + KEY_EMAIL + " TEXT NOT NULL," + KEY_PHONE + " TEXT," + KEY_ADMIN + " INTEGER NOT NULL);" ;
 	
 	public static final String ITEM_NAME = "item_name";
 	public static final String ITEM_STATUS = "item_status";
 	public static final String ITEM_DESCRIPTION = "item_description";
-	public static final String ITEM_CATEGORY = "item_category";
 	public static final	String ITEM_ROW_ID = "row_id";
-	private static final String ITEM_TABLE = "table_of_items";
+	public static final String ITEM_TABLE = "table_of_items";
+	public static final String ITEM_ZIP = "item_zip";
+	public static final String ITEM_STREET = "item_street";
+	public static final String ITEM_CATEGORY = "item_category";
+	public static final String ITEM_DATE = "item_date";
+	public static final String ITEM_KEEPSAKE = "item_keepsake";
+	public static final String ITEM_HEIRLOOM = "item_heirloom";
+	public static final String ITEM_MISC = "item_misc";
 	public static final String CREATE_ITEM_DB = "CREATE TABLE "
 		      + ITEM_TABLE + "(" + ITEM_ROW_ID + 
 		     " INTEGER PRIMARY KEY AUTOINCREMENT," + ITEM_NAME
 		      + " TEXT NOT NULL," + ITEM_STATUS + " TEXT NOT NULL," + ITEM_DESCRIPTION + " TEXT," + ITEM_CATEGORY + " TEXT NOT NULL," +
-		      KEY_NAME + " TEXT,);";
+		      KEY_NAME + " TEXT NOT NULL," + ITEM_ZIP + " TEXT NOT NULL," + ITEM_STREET + " TEXT NOT NULL,"+ ITEM_DATE + " TEXT NOT NULL," 
+		      + ITEM_KEEPSAKE + " INTEGER NOT NULL," + ITEM_HEIRLOOM + " INTEGER NOT NULL," + ITEM_MISC + " INTEGER NOT NULL);";
 	
 	
-
 	
 	public DB_Helper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -48,8 +55,11 @@ public class DB_Helper extends SQLiteOpenHelper {
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
+		
 		db.execSQL(DATABASE_CREATE);
 		db.execSQL(CREATE_ITEM_DB);
+		
+		
 	}
 
 	
