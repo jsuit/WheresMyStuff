@@ -10,7 +10,8 @@ public class LostItem implements Item {
 	private String user;
 	
 	
-	public LostItem(String itemName, String itemCategory, String itemStatus, String itemDescription, String user, Date date, boolean keepsake, boolean heirloom, boolean misc, String zip, String street) {
+	public LostItem(String itemName, String itemCategory, String itemStatus, String itemDescription, String user, Date date,
+			int keepsake, int heirloom, int misc, String zip, String street) {
 		
 		itemInfo = new ItemInfo(itemName, keepsake, heirloom, misc, itemStatus, itemDescription, itemCategory, date, zip, street);
 		this.user = user;
@@ -18,7 +19,8 @@ public class LostItem implements Item {
 	}
 	
 	
-	
+
+
 	@Override
 	public void setItemName(String newItemName) {
 		// TODO Auto-generated method stub
@@ -86,14 +88,18 @@ public class LostItem implements Item {
 
 
 	@Override
-	public boolean[] kindofItem() {
+	public int [] kindofItem() {
 		// TODO Auto-generated method stub
-		boolean [] bool = itemInfo.getItemInfo();
+		int [] bool = itemInfo.getItemInfo();
 		return bool;
 	}
 
 	public String getDateAsString(){
-		return itemInfo.getDate().toString();
+		Date date = itemInfo.getDate();
+		int month = date.getMonth();
+		int day = date.getDay();
+		int year = date.getYear();
+		return month + "/" + day +"/" + year;
 	}
 
 

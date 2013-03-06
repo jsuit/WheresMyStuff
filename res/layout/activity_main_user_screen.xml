@@ -55,7 +55,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginLeft="14dp"
                     android:layout_toRightOf="@+id/autoCompleteTextView1"
-                    android:onClick="ButtonClick"
+                    android:onClick ="ButtonClick"
                     android:text="Button" />
 
                 
