@@ -20,12 +20,12 @@ public class ListingPresenter {
 	 * @param m the model
 	 * @param view the view
 	 */
-	public ListingPresenter(IModel m, IItemView view) {
+	public ListingPresenter(IModel m, IItemView view, String key) {
 		myModel = m;
 		myView = view;
 		myModel.open();
 		current_user = myModel.getCurUser();
-		myView.setItem(myModel.getLostItems(myModel.getCurUser()));
+		myView.setItem(myModel.getItems(myModel.getCurUser(), key));
 		myModel.close();
 	
 	}

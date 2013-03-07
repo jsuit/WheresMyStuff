@@ -28,6 +28,7 @@ public class DisplayItems extends TabActivity implements IItemView {
 	final private static String LOST = "Lost";
 	final private static String FOUND = "Found";
 	final private static String DONATIONS = "Donations";
+	final private static String NEEDED = "Needed";
 	
 	public void onCreate(Bundle savedInstanceState) {
 		
@@ -36,7 +37,7 @@ public class DisplayItems extends TabActivity implements IItemView {
 	 
 	        TabHost tabHost = getTabHost();
 	 
-	        // Inbox Tab
+	       
 	        TabSpec inboxSpec = tabHost.newTabSpec(LOST);
 	        // Tab Icon
 	        inboxSpec.setIndicator(LOST, getResources().getDrawable(R.drawable.crosshairs));
@@ -44,22 +45,28 @@ public class DisplayItems extends TabActivity implements IItemView {
 	        // Tab Content
 	        inboxSpec.setContent(lostItem);
 	        
-	        // Outbox Tab
+	     
 	        TabSpec outboxSpec = tabHost.newTabSpec(FOUND);
 	        outboxSpec.setIndicator(FOUND, getResources().getDrawable(R.drawable.crosshairs));
 	        Intent outboxIntent = new Intent(this, FoundItemsTab.class);
 	        outboxSpec.setContent(outboxIntent);
 	 
-	        // Profile Tab
+	    
 	        TabSpec profileSpec = tabHost.newTabSpec(DONATIONS);
 	        profileSpec.setIndicator(DONATIONS, getResources().getDrawable(R.drawable.crosshairs));
 	        Intent profileIntent = new Intent(this, Donations.class);
 	        profileSpec.setContent(profileIntent);
+	        
+	        TabSpec needed = tabHost.newTabSpec(NEEDED);
+	        needed.setIndicator(NEEDED, getResources().getDrawable(R.drawable.crosshairs));
+	        Intent neededIntent = new Intent(this, Needed.class);
+	        needed.setContent(neededIntent);
 	 
 	        // Adding all TabSpec to TabHost
 	        tabHost.addTab(inboxSpec); // Adding Inbox tab
 	        tabHost.addTab(outboxSpec); // Adding Outbox tab
 	        tabHost.addTab(profileSpec); // Adding Profile tab
+	       tabHost.addTab(needed);
 	
 	
 	}
