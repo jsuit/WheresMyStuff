@@ -1,6 +1,12 @@
 package com.example.wheresmystuff.Model.Item;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
+
 
 import com.example.wheresmystuff.Model.User;
 
@@ -96,10 +102,10 @@ public class LostItem implements Item {
 
 	public String getDateAsString(){
 		Date date = itemInfo.getDate();
-		int month = date.getMonth();
-		int day = date.getDay();
-		int year = date.getYear();
-		return month + "/" + day +"/" + year;
+		Calendar myCal = new GregorianCalendar();
+		myCal.setTime(date);
+		SimpleDateFormat date_format = new SimpleDateFormat("MMM/dd/yyyy");
+		return date_format.format(myCal.getTime());
 	}
 
 

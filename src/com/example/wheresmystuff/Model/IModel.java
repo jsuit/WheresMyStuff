@@ -1,5 +1,7 @@
 package com.example.wheresmystuff.Model;
 
+import java.util.Collection;
+
 import com.example.wheresmystuff.Model.Item.Item;
 
 import android.database.SQLException;
@@ -44,12 +46,17 @@ public interface IModel {
 	Item [] getItems(String current_user);
 	void setCurUser(String name);
 	String getCurUser();
-	Item[] getLostItems(String current_user);
-	
+
+	boolean isAdmin(String uid);
 	boolean find_password(String password, String uid);
 	long saveItem(String name, String description, String status, int i, int j,
 			int k, String date, String curUser, String street, String zip,
 			String category);
+	Collection<String> getLockedAccounts();
+	void unlockAccount(String uid);
+	void removeAdmin(String uid);
+	void setAdmin(String uid);
+	Item[] getItems(String current_user, String key);
 	 
 	 
 
