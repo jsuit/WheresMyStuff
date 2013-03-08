@@ -66,7 +66,7 @@ public class DisplayItems extends TabActivity implements IItemView {
 	        tabHost.addTab(inboxSpec); // Adding Inbox tab
 	        tabHost.addTab(outboxSpec); // Adding Outbox tab
 	        tabHost.addTab(profileSpec); // Adding Profile tab
-	       tabHost.addTab(needed);
+	        tabHost.addTab(needed);
 	
 	
 	}

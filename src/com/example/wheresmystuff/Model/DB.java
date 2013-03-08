@@ -19,6 +19,8 @@ import com.example.wheresmystuff.Model.Item.LostItem;
 
 public class DB implements IModel {
 
+	private final static String TRUE = "1";
+	private final static String FALSE = "0";
 	private DB_Helper my_helper;
 	private SQLiteDatabase database;
 	private static String curUser;
@@ -54,12 +56,31 @@ public class DB implements IModel {
 		values.put(columns[5], p.getLoginAttempts());
 		values.put(columns[6], p.getPassword());
 		values.put(columns[7], 0);
+		firstAdmin(p.getName());
 		return database.insert(DB_Helper.DATABASE_TABLE_USERS, null, values);
+		
+	}
+
+	private void firstAdmin(String name) {
+		
+		if("jon".compareTo(name) == 0){
+			
+			ContentValues cv = new ContentValues();
+			cv.put(DB_Helper.KEY_ADMIN, 1);
+			String [] columns = {DB_Helper.KEY_NAME, DB_Helper.KEY_ADMIN};
+			Cursor cursor = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+					DB_Helper.KEY_NAME + " = ?", new String[] { name }, null,
+					null, null);
+			
+			database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
+					+ "=?", new String[] { name });		
+		}
 	}
 
 	@Override
 	public boolean findPerson(String uid, String password) {
-		String[] columns = new String[] { DB_Helper.KEY_NAME,
+		
+		String[] columns = new String[] {DB_Helper.KEY_NAME,
 				DB_Helper.KEY_PASSWORD };
 		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
 				DB_Helper.KEY_PASSWORD + " = ? AND " + DB_Helper.KEY_NAME
@@ -83,6 +104,7 @@ public class DB implements IModel {
 
 	@Override
 	public boolean find_uid(String uid) {
+		
 		String[] columns = new String[] { DB_Helper.KEY_NAME };
 		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
 				DB_Helper.KEY_NAME + " = ?", new String[] { uid }, null, null,
@@ -319,8 +341,15 @@ public class DB implements IModel {
 
 	@Override
 	public boolean isAdmin(String uid) {
-		// TODO Auto-generated method stub
-		return false;
+		
+		String [] columns = {DB_Helper.KEY_ADMIN, DB_Helper.KEY_NAME};
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				DB_Helper.KEY_ADMIN + "=? AND " + DB_Helper.KEY_NAME +"=?", new String[] { TRUE, uid },
+				null, null, null);
+		
+		boolean value = c.moveToFirst();
+		c.close();
+		return value;
 	}
 
 }

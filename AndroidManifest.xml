@@ -33,6 +33,7 @@
         <activity android:name=".View.FoundItemsTab"></activity>
         <activity android:name=".View.Donations"></activity>
         <activity android:name=".View.Needed"></activity>
+        <activity android:name=".View.AddRemoveAdmin"></activity>
         
         
     </application>
