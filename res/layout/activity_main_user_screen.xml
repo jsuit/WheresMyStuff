@@ -21,91 +21,129 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true" >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="409dp"
-            android:orientation="vertical" >
+    </FrameLayout>
 
-            <QuickContactBadge
-                android:id="@+id/quickContactBadge1"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <QuickContactBadge
+            android:id="@+id/quickContactBadge1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dip" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTextView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dip"/>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" >
-
-                <AutoCompleteTextView
-                    android:id="@+id/autoCompleteTextView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:ems="10"
-                    android:text="AutoCompleteTextView" >
-
-                    <requestFocus />
-                </AutoCompleteTextView>
-
-                <Button
-                    android:id="@+id/button5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/autoCompleteTextView1"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginLeft="14dp"
-                    android:layout_toRightOf="@+id/autoCompleteTextView1"
-                    android:onClick ="ButtonClick"
-                    android:text="Button" />
-
-                
-                   
-
-            </RelativeLayout>
-
-            <Button
-                android:id="@+id/button1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dip"
-                android:layout_marginTop="20dip"
-                android:text="Advanced Search"
-                android:onClick="advanced_Search"
-                android:textColor="@color/White" />
-
-            <Button
-                android:id="@+id/button2"
+                android:layout_alignParentLeft="true"
                 android:textColor="@color/White"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dip"
-                android:layout_marginTop="10dip"
-                android:text="Your Listings"
-                android:onClick="yourListings" />
-                
-              
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dip"
-                android:layout_marginTop="10dip"
-                android:text="Post An Item"
-                android:onClick="postItem"
-                android:textColor="@color/White" />
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dip"
-                android:layout_marginTop="10dip"
-                android:text="Your Contacts"
-                android:onClick="yourContacts"
-                android:textColor="@color/White" />
-                
+                android:ems="10" >
 
-        </LinearLayout>
+                <requestFocus />
+            </AutoCompleteTextView>
 
-    </FrameLayout>
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/autoCompleteTextView1"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="7dp"
+                android:layout_toRightOf="@+id/autoCompleteTextView1"
+                android:onClick="ButtonClick"
+                android:text="Button" />
+
+          
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/adv_search"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:onClick="advanced_Search"
+            android:text="Advanced Search"
+            style="?android:attr/buttonStyleSmall"
+            android:textColor="@color/White" />
+
+        <Button
+            android:id="@+id/your_listingButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:onClick="yourListings"
+            android:text="Your Listings"
+            style="?android:attr/buttonStyleSmall"
+            android:textColor="@color/White" />
+
+        <Button
+            android:id="@+id/postItemButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:onClick="postItem"
+            android:text="Post An Item"
+            style="?android:attr/buttonStyleSmall"
+            android:textColor="@color/White" />
+
+        <Button
+            android:id="@+id/yourContactsButton"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:onClick="yourContacts"
+            android:text="Your Contacts"
+            style="?android:attr/buttonStyleSmall"
+            android:textColor="@color/White" />
+
+        <Button
+            android:id="@+id/addRemove"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:onClick="addOrRemoveAdmin"
+            android:text="Add/Remove Admin"
+            android:textColor="@color/White"
+            style="?android:attr/buttonStyleSmall"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/lock_unlock"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:onClick="lockOrUnlock"
+            android:text="Lock/Unlock Account"
+            style="?android:attr/buttonStyleSmall"
+            android:textColor="@color/White"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/remove_user_button"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dip"
+            android:textColor="@color/White"
+            android:visibility="gone"
+            android:text="@string/remove_user" />
+
+        <ImageView
+            android:id="@+id/wheresmystuffimage"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/wheresmystuffimage" />
+
+    </LinearLayout>
 
 </FrameLayout>

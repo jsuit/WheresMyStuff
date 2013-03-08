@@ -5,6 +5,7 @@ package com.example.wheresmystuff.Presenter;
 
 import android.util.Log;
 
+import com.example.wheresmystuff.Model.Admin;
 import com.example.wheresmystuff.Model.IModel;
 import com.example.wheresmystuff.Model.RegularUser;
 import com.example.wheresmystuff.Model.User;
@@ -47,10 +48,21 @@ public class Register_Presenter {
 					}else{
 						//create new_user. save the user. go to welcome page
 						String [] strings = address.split("//s");
+						boolean switchKey = false;
+						if(strings.length == 1)
+							switchKey = true;
 						User user;
-						if(strings.length == 1) user = new RegularUser(email, name ,password, phone_num, strings[0], strings[0], 0);
-						else
-						user = new RegularUser(email, name ,password, phone_num, strings[0], strings[1], 0);
+						if(myModel.isAdmin(name)){
+							if(switchKey){
+								user = new Admin(email, name ,password, phone_num, strings[0], strings[1], 0);
+							}else 
+								user = new RegularUser(email, name ,password, phone_num, strings[0], strings[0], 0);
+						}else{
+							if(!switchKey)
+								user = new RegularUser(email, name ,password, phone_num, strings[0], strings[0], 0);
+								else
+								user = new RegularUser(email, name ,password, phone_num, strings[0], strings[1], 0);
+							}
 						long id = myModel.addPerson(user);
 						if(id == -1){
 							myView.notify_of_error("Failed to insert user");

@@ -9,6 +9,8 @@ public class Admin extends RegularUser {
 	
 	}
 	
-	
+	public String getName(){
+		return super.getName();
+	}
 
 }

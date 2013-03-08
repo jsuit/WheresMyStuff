@@ -24,8 +24,10 @@ public class Login_Presenter {
 		//search the model. From that determine if legit or not 
 		
 		myModel.open();
+		
 		//try to find user
 		if(myModel.find_uid(name) ){
+			
 			//found user; now try to find password
 			int login_attempts = myModel.getLoginAttempts(name);
 			if(login_attempts >= 3){

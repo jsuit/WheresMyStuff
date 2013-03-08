@@ -11,8 +11,6 @@ import android.os.Bundle;
 import android.util.Log;
 
 
-	
-
 	public class LostItemTab extends ListActivity implements IItemView {
 		private ListingPresenter my_presenter;
 		private Item [] i;

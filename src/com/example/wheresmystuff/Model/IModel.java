@@ -40,7 +40,7 @@ public interface IModel {
 	 
 	 int getLoginAttempts(String u_name);
 	  
-	 void close();	
+	void close();	
 	void increase_login_attempts(int i, String u_name);
 	void setLocked(String u_name);
 	Item [] getItems(String current_user);
