@@ -1,13 +1,17 @@
 package com.example.wheresmystuff.Model.Item;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class ItemInfo {
 
 	private String itemName, itemCategory, itemStatus, itemDescription, zip, street;
 	private Date date;
-	private boolean keepsake, misc, heirloom;
-	public ItemInfo(String itemName, boolean keepsake, boolean heirloom, boolean misc, String itemStatus, String itemDescription, String item_category, Date date, String zip, String street) {
+	private int keepsake, misc, heirloom;
+	public ItemInfo(String itemName, int keepsake, int heirloom, int misc, String itemStatus, String itemDescription, String item_category, Date date, String zip, String street) {
 		
 		this.itemName = itemName;
 		this.itemCategory = item_category;
@@ -77,16 +81,17 @@ public class ItemInfo {
 		return this.street;
 	}
 	
-	public boolean[] getItemInfo(){
-		boolean [] bool = new boolean[3];
-		bool[0] = this.keepsake;
-		bool[1] = this.heirloom;
-		bool[2] = this.misc;
-		return bool;
+	public int [] getItemInfo(){
+		int [] integer = new int[3];
+		integer[0] = this.keepsake;
+		integer[1] = this.heirloom;
+		integer[2] = this.misc;
+		return integer;
 	}
 	
 	public Date getDate(){
 		return this.date;
+		
 	}
 	
 	

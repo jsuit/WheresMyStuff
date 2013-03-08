@@ -15,7 +15,21 @@ public class User_Screen_Presenter {
 	public User_Screen_Presenter(IMyProfilePage v, IModel m){
 		myModel = m;
 		myView = v;
+		
 	}
+	
+	public void checkAdmin(){
+		
+		myModel.open();
+		String uid = myModel.getCurUser();
+		if(myModel.isAdmin(uid)){
+			myView.makeAdminButtonsVisisble();
+		}else myView.makeAdminButtonsInvisisble();
+		myModel.close();
+	}
+	
+	
+	
 	
 	
 }

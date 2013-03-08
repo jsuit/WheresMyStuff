@@ -38,10 +38,11 @@ public class Register_Item extends Activity implements IItemView, OnItemSelected
 	private EditText item_street;
 	private Spinner drop_down_category;
 	private String category;
+	private AddItemPresenter my_presenter;
 	
-	private AddItemPresenter my_presenter = new AddItemPresenter(new DB(this), this );
 	public void onCreate(Bundle savedInstance){
 		super.onCreate(savedInstance);
+		my_presenter = new AddItemPresenter(new DB(this), this );
 		setContentView(R.layout.register_item);	
 		item_name = (EditText) findViewById(R.id.item_name);
 		item_description = (EditText) findViewById(R.id.item_description);
@@ -124,9 +125,12 @@ public class Register_Item extends Activity implements IItemView, OnItemSelected
 			String description = item_description.getText().toString();
 			String zip = item_zip.getText().toString();
 			String street = item_street.getText().toString();
-			boolean keep = keepsake.isChecked();
-			boolean heir = heirlooms.isChecked();
-			boolean m = misc.isChecked();
+			int keep = 0;
+			if(keepsake.isChecked()) keep = 1;
+			int heir = 0;
+			if(heirlooms.isChecked()) heir = 1;
+			int m = 0;
+			if(misc.isChecked()) m = 1;
 			Date date = new Date();
 			Log.d("saveLostItem", "Got the goods; now to save the item");
 			//saves also
@@ -163,6 +167,14 @@ public class Register_Item extends Activity implements IItemView, OnItemSelected
 		t.show();	
 		
 	}
+
+	@Override
+	public void setItem(Item[] i) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
 
 	
 	

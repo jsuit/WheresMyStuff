@@ -27,6 +27,13 @@
         <activity android:name=".View.mainUserScreen"></activity>
         <activity android:name=".View.DisplayItems"></activity>
         <activity android:name=".View.Register_Item"></activity>
+        <activity android:name=".View.LostItemTab">
+            <intent-filter></intent-filter>
+        </activity>
+        <activity android:name=".View.FoundItemsTab"></activity>
+        <activity android:name=".View.Donations"></activity>
+        <activity android:name=".View.Needed"></activity>
+        <activity android:name=".View.AddRemoveAdmin"></activity>
         
         
     </application>

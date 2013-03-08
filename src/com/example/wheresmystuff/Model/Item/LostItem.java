@@ -1,6 +1,12 @@
 package com.example.wheresmystuff.Model.Item;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+
+
 
 import com.example.wheresmystuff.Model.User;
 
@@ -10,7 +16,8 @@ public class LostItem implements Item {
 	private String user;
 	
 	
-	public LostItem(String itemName, String itemCategory, String itemStatus, String itemDescription, String user, Date date, boolean keepsake, boolean heirloom, boolean misc, String zip, String street) {
+	public LostItem(String itemName, String itemCategory, String itemStatus, String itemDescription, String user, Date date,
+			int keepsake, int heirloom, int misc, String zip, String street) {
 		
 		itemInfo = new ItemInfo(itemName, keepsake, heirloom, misc, itemStatus, itemDescription, itemCategory, date, zip, street);
 		this.user = user;
@@ -18,7 +25,8 @@ public class LostItem implements Item {
 	}
 	
 	
-	
+
+
 	@Override
 	public void setItemName(String newItemName) {
 		// TODO Auto-generated method stub
@@ -86,14 +94,18 @@ public class LostItem implements Item {
 
 
 	@Override
-	public boolean[] kindofItem() {
+	public int [] kindofItem() {
 		// TODO Auto-generated method stub
-		boolean [] bool = itemInfo.getItemInfo();
+		int [] bool = itemInfo.getItemInfo();
 		return bool;
 	}
 
 	public String getDateAsString(){
-		return itemInfo.getDate().toString();
+		Date date = itemInfo.getDate();
+		Calendar myCal = new GregorianCalendar();
+		myCal.setTime(date);
+		SimpleDateFormat date_format = new SimpleDateFormat("MMM/dd/yyyy");
+		return date_format.format(myCal.getTime());
 	}
 
 
