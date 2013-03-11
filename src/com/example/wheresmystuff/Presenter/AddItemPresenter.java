@@ -20,7 +20,7 @@ public class AddItemPresenter {
 	 * Make a new presenter
 	 * 
 	 * @param m
-	 *            the model
+	 *            the model associated with this presenter
 	 * @param view
 	 *            the view
 	 */
@@ -29,7 +29,9 @@ public class AddItemPresenter {
 		myView = view;
 		i = null;
 	}
-
+	
+	/** Takes in all the data to make an item and makes an item */
+	
 	public void makeAnItem(String name, String category, String status,
 			String description, Date date, String zip, String street,
 			int keep, int heir, int m) {
@@ -43,7 +45,8 @@ public class AddItemPresenter {
 		confirmTheSave(i);
 
 	}
-
+	/** method that takes in an item and uses the view to confirm whether this is item we want to save */
+	
 	public void confirmTheSave(Item i) {
 		// TODO Auto-generated method stub
 		myModel.open();
@@ -67,7 +70,7 @@ public class AddItemPresenter {
 		}
 		myModel.close();
 	}
-
+	/**  Takes in no parameters, but saves the item. Is called after an ok click. Must be called after makeAnItem and confirmTheSave  */
 	public void save() {
 		
 		String name = i.getItemName();
@@ -76,10 +79,10 @@ public class AddItemPresenter {
 		int[] array = i.kindofItem();
 		String date = i.getDateAsString().toString();
 		String category = i.getItemCategory();
+		myModel.open();
 		String curUser = myModel.getCurUser();
 		String zip = i.getZip();
 		String street = i.getStreet();
-		myModel.open();
 		long row = myModel.saveItem(name, description, status, array[0],
 				array[1], array[2], date, curUser, street, zip, category);
 		if (row == -1) {
