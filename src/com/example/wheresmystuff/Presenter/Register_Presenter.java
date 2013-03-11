@@ -49,18 +49,19 @@ public class Register_Presenter {
 						//create new_user. save the user. go to welcome page
 						String [] strings = address.split("//s");
 						boolean switchKey = false;
+						//if switchkey is true, then 
 						if(strings.length == 1)
 							switchKey = true;
 						User user;
 						if(myModel.isAdmin(name)){
 							if(switchKey){
-								user = new Admin(email, name ,password, phone_num, strings[0], strings[1], 0);
+								user = new Admin(email, name ,password, phone_num, strings[0], strings[0], 0);
 							}else 
-								user = new RegularUser(email, name ,password, phone_num, strings[0], strings[0], 0);
+								user = new Admin(email, name ,password, phone_num, strings[0], strings[1], 0);
 						}else{
-							if(!switchKey)
+							if(switchKey)
 								user = new RegularUser(email, name ,password, phone_num, strings[0], strings[0], 0);
-								else
+							else
 								user = new RegularUser(email, name ,password, phone_num, strings[0], strings[1], 0);
 							}
 						long id = myModel.addPerson(user);

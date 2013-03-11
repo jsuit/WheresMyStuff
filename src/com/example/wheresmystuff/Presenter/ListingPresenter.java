@@ -16,7 +16,8 @@ public class ListingPresenter {
 	
 
 	/**
-	 * Make a new presenter
+	 * Make a new presenter. Gets the the items. And sets the view to have the items. The key tells it what kind of items to get (lost, 
+	 * found, donations, needed).
 	 * @param m the model
 	 * @param view the view
 	 */
