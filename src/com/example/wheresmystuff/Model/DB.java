@@ -324,19 +324,61 @@ public class DB implements IModel {
 	@Override
 	public void setAdmin(String uid) {
 		// TODO Auto-generated method stub
+		String[] columns = new String[] { DB_Helper.KEY_NAME };
 
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				DB_Helper.KEY_NAME + "=?", new String[] { uid }, null,
+				null, null);
+		ContentValues cv = new ContentValues();
+		cv.put(DB_Helper.KEY_ADMIN, TRUE);
+		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
+				+ "=?", new String[] { uid });
 	}
 
 	@Override
 	public void removeAdmin(String uid) {
 		// TODO Auto-generated method stub
+		
+		String[] columns = new String[] { DB_Helper.KEY_NAME };
+
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				DB_Helper.KEY_NAME + "=?", new String[] { uid }, null,
+				null, null);
+		ContentValues cv = new ContentValues();
+		cv.put(DB_Helper.KEY_ADMIN, FALSE);
+		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
+				+ "=?", new String[] { uid });
+		c.close();
 
 	}
 
 	@Override
 	public void unlockAccount(String uid) {
 		// TODO Auto-generated method stub
+		String[] columns = new String[] { DB_Helper.KEY_NAME };
 
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				DB_Helper.KEY_NAME + " = ?", new String[] { uid }, null,
+				null, null);
+		ContentValues cv = new ContentValues();
+		cv.put(DB_Helper.KEY_LOGIN_ATTEMPTS,0);
+		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
+				+ "=?", new String[] { uid });
+		c.close();
+	}
+	@Override
+	public void lockAccount(String uid) {
+		// TODO Auto-generated method stub
+		String[] columns = new String[] { DB_Helper.KEY_NAME };
+
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				DB_Helper.KEY_NAME + "=?", new String[] { uid }, null,
+				null, null);
+		ContentValues cv = new ContentValues();
+		cv.put(DB_Helper.KEY_LOGIN_ATTEMPTS,3);
+		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
+				+ "=?", new String[] { uid });
+		c.close();
 	}
 
 	@Override
@@ -351,5 +393,12 @@ public class DB implements IModel {
 		c.close();
 		return value;
 	}
-
+	 @Override
+	public void removeUser(String uid){
+		int user_deleted = database.delete(DB_Helper.DATABASE_TABLE_USERS, DB_Helper.KEY_NAME + "=" + uid, null);
+		int rows_deleted = database.delete(DB_Helper.ITEM_TABLE, DB_Helper.KEY_NAME + "=" + uid, null);
+		
+	}
+	
+	
 }

@@ -57,6 +57,8 @@ public interface IModel {
 	void removeAdmin(String uid);
 	void setAdmin(String uid);
 	Item[] getItems(String current_user, String key);
+	void lockAccount(String uid);
+	void removeUser(String uid);
 	 
 	 
 

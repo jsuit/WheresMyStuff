@@ -30,7 +30,7 @@ public class AddItemPresenter {
 		i = null;
 	}
 	
-	/** Takes in all the data to make an item and makes an item */
+	/** Takes in all the data to make an item and makes an item and confirms the save*/
 	
 	public void makeAnItem(String name, String category, String status,
 			String description, Date date, String zip, String street,
@@ -45,7 +45,8 @@ public class AddItemPresenter {
 		confirmTheSave(i);
 
 	}
-	/** method that takes in an item and uses the view to confirm whether this is item we want to save */
+	/** method that takes in an item and uses the view to confirm whether this is item we want to save. If we want to save it, then we save it
+	 * else we don't. */
 	
 	public void confirmTheSave(Item i) {
 		// TODO Auto-generated method stub
