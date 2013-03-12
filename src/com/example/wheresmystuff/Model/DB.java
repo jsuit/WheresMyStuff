@@ -58,20 +58,20 @@ public class DB implements IModel {
 		values.put(columns[7], 0);
 		firstAdmin(p.getName());
 		return database.insert(DB_Helper.DATABASE_TABLE_USERS, null, values);
-		
+
 	}
 
 	private void firstAdmin(String name) {
-		
+
 		if("jon".compareTo(name) == 0){
-			
+
 			ContentValues cv = new ContentValues();
 			cv.put(DB_Helper.KEY_ADMIN, 1);
 			String [] columns = {DB_Helper.KEY_NAME, DB_Helper.KEY_ADMIN};
 			Cursor cursor = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
 					DB_Helper.KEY_NAME + " = ?", new String[] { name }, null,
 					null, null);
-			
+
 			database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
 					+ "=?", new String[] { name });		
 		}
@@ -79,7 +79,7 @@ public class DB implements IModel {
 
 	@Override
 	public boolean findPerson(String uid, String password) {
-		
+
 		String[] columns = new String[] {DB_Helper.KEY_NAME,
 				DB_Helper.KEY_PASSWORD };
 		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
@@ -104,7 +104,7 @@ public class DB implements IModel {
 
 	@Override
 	public boolean find_uid(String uid) {
-		
+
 		String[] columns = new String[] { DB_Helper.KEY_NAME };
 		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
 				DB_Helper.KEY_NAME + " = ?", new String[] { uid }, null, null,
@@ -217,7 +217,7 @@ public class DB implements IModel {
 				c.close();
 				return null;
 			}
-			
+
 		}
 		List<Item> items = new ArrayList<Item>();
 		int i = c.getCount();
@@ -324,32 +324,81 @@ public class DB implements IModel {
 	@Override
 	public void setAdmin(String uid) {
 		// TODO Auto-generated method stub
+		String[] columns = new String[] { DB_Helper.KEY_NAME };
 
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				DB_Helper.KEY_NAME + "=?", new String[] { uid }, null,
+				null, null);
+		ContentValues cv = new ContentValues();
+		cv.put(DB_Helper.KEY_ADMIN, TRUE);
+		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
+				+ "=?", new String[] { uid });
 	}
 
 	@Override
 	public void removeAdmin(String uid) {
 		// TODO Auto-generated method stub
 
+		String[] columns = new String[] { DB_Helper.KEY_NAME };
+
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				DB_Helper.KEY_NAME + "=?", new String[] { uid }, null,
+				null, null);
+		ContentValues cv = new ContentValues();
+		cv.put(DB_Helper.KEY_ADMIN, FALSE);
+		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
+				+ "=?", new String[] { uid });
+		c.close();
+
 	}
 
 	@Override
 	public void unlockAccount(String uid) {
 		// TODO Auto-generated method stub
+		String[] columns = new String[] { DB_Helper.KEY_NAME };
 
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				DB_Helper.KEY_NAME + " = ?", new String[] { uid }, null,
+				null, null);
+		ContentValues cv = new ContentValues();
+		cv.put(DB_Helper.KEY_LOGIN_ATTEMPTS,0);
+		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
+				+ "=?", new String[] { uid });
+		c.close();
+	}
+	@Override
+	public void lockAccount(String uid) {
+		// TODO Auto-generated method stub
+		String[] columns = new String[] { DB_Helper.KEY_NAME };
+
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				DB_Helper.KEY_NAME + "=?", new String[] { uid }, null,
+				null, null);
+		ContentValues cv = new ContentValues();
+		cv.put(DB_Helper.KEY_LOGIN_ATTEMPTS,3);
+		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
+				+ "=?", new String[] { uid });
+		c.close();
 	}
 
 	@Override
 	public boolean isAdmin(String uid) {
-		
+
 		String [] columns = {DB_Helper.KEY_ADMIN, DB_Helper.KEY_NAME};
 		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
 				DB_Helper.KEY_ADMIN + "=? AND " + DB_Helper.KEY_NAME +"=?", new String[] { TRUE, uid },
 				null, null, null);
-		
+
 		boolean value = c.moveToFirst();
 		c.close();
 		return value;
 	}
+	 @Override
+	public void removeUser(String uid){
+		int user_deleted = database.delete(DB_Helper.DATABASE_TABLE_USERS, DB_Helper.KEY_NAME + "=" + uid, null);
+		int rows_deleted = database.delete(DB_Helper.ITEM_TABLE, DB_Helper.KEY_NAME + "=" + uid, null);
+
+	}
+
 
 }
