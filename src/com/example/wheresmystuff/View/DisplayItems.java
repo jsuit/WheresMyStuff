@@ -22,6 +22,7 @@ import android.widget.ListView;
 import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 
+@SuppressWarnings("deprecation")
 public class DisplayItems extends TabActivity implements IItemView {
 	private Item[] items;
 	private ListingPresenter myPresenter;
