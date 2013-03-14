@@ -52,6 +52,10 @@
             android:name="com.example.wheresmystuff.View.AddRemoveAdmin"
             android:label="@string/title_activity_add_remove_admin" >
         </activity>
+        <activity
+            android:name="com.example.wheresmystuff.View.LockOrUnlock"
+            android:label="@string/title_activity_lock_or_unlock" >
+        </activity>
     </application>
 
 </manifest>

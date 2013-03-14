@@ -63,8 +63,8 @@ public class DB implements IModel {
 
 	private void firstAdmin(String name) {
 		
-		if("jon".compareTo(name) == 0){
-			
+		if("admin".compareTo(name) == 0){
+			Log.d("Creating admin", "admin username: admin");
 			ContentValues cv = new ContentValues();
 			cv.put(DB_Helper.KEY_ADMIN, 1);
 			String [] columns = {DB_Helper.KEY_NAME, DB_Helper.KEY_ADMIN};
@@ -334,9 +334,18 @@ public class DB implements IModel {
 	}
 
 	@Override
-	public void unlockAccount(String uid) {
+	public void unlockAccount(String u_name) {
 		// TODO Auto-generated method stub
 
+		String[] columns = new String[] { DB_Helper.KEY_NAME };
+
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				DB_Helper.KEY_NAME + " = ?", new String[] { u_name }, null,
+				null, null);
+		ContentValues cv = new ContentValues();
+		cv.put(DB_Helper.KEY_LOGIN_ATTEMPTS, 0);
+		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
+				+ "=?", new String[] { u_name });
 	}
 
 	@Override

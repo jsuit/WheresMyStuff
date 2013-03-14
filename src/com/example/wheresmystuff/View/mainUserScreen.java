@@ -71,4 +71,11 @@ public class mainUserScreen extends Activity implements IMyProfilePage{
 		
 		
 	}
+	
+	public void LockOrUnlock() {
+		
+		Intent i = new Intent(this, LockOrUnlock.class);
+		startActivity(i);
+		Log.d("Lock/Unlock screen", "Lock/Unlock button clicked directing to activity");
+	}
 }
