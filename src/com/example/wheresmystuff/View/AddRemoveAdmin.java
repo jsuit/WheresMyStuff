@@ -82,7 +82,7 @@ public class AddRemoveAdmin extends Activity implements ILoginView {
         textView.setTypeface(typeface);
         textView.setGravity(Gravity.CENTER);
         textView.setText(error_message);
-        Toast t = Toast.makeText(this,null, Toast.LENGTH_LONG);
+        Toast t = Toast.makeText(this,null, Toast.LENGTH_SHORT);
 		t.setGravity(Gravity.RELATIVE_LAYOUT_DIRECTION|Gravity.CENTER_HORIZONTAL, 0, 0);
 		t.setView(textView);
 		t.show();
