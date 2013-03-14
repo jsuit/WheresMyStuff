@@ -53,6 +53,7 @@ public class AddAdminPresenter {
 				}
 				myModel.setCurUser(name);
 				myModel.close();
+				myView.finish();
 			}
 			
 		}
