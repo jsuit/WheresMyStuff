@@ -49,7 +49,7 @@ public class Register_Presenter {
 						//create new_user. save the user. go to welcome page
 						String [] strings = address.split("//s");
 						boolean switchKey = false;
-						//if switchkey is true, then 
+						//if switchkey is true, 
 						if(strings.length == 1)
 							switchKey = true;
 						User user;
