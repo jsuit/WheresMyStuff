@@ -22,20 +22,36 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.wheresmystuff.View.Register" android:label="Register"></activity>
-        <activity android:name=".Security" android:label="Security"></activity>
-        <activity android:name=".View.mainUserScreen"></activity>
-        <activity android:name=".View.DisplayItems"></activity>
-        <activity android:name=".View.Register_Item"></activity>
-        <activity android:name=".View.LostItemTab">
-            <intent-filter></intent-filter>
+        <activity
+            android:name="com.example.wheresmystuff.View.Register"
+            android:label="Register" >
         </activity>
-        <activity android:name=".View.FoundItemsTab"></activity>
-        <activity android:name=".View.Donations"></activity>
-        <activity android:name=".View.Needed"></activity>
-        <activity android:name=".View.AddRemoveAdmin"></activity>
-        
-        
+        <activity
+            android:name="com.example.wheresmystuff.Security"
+            android:label="Security" >
+        </activity>
+        <activity android:name="com.example.wheresmystuff.View.mainUserScreen" >
+        </activity>
+        <activity android:name="com.example.wheresmystuff.View.DisplayItems" >
+        </activity>
+        <activity android:name="com.example.wheresmystuff.View.Register_Item" >
+        </activity>
+        <activity android:name="com.example.wheresmystuff.View.LostItemTab" >
+            <intent-filter>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.wheresmystuff.View.FoundItemsTab" >
+        </activity>
+        <activity android:name="com.example.wheresmystuff.View.Donations" >
+        </activity>
+        <activity android:name="com.example.wheresmystuff.View.Needed" >
+        </activity>
+        <activity android:name="com.example.wheresmystuff.View.AddRemoveAdmin" >
+        </activity>
+        <activity
+            android:name="com.example.wheresmystuff.View.AddRemoveAdmin"
+            android:label="@string/title_activity_add_remove_admin" >
+        </activity>
     </application>
 
 </manifest>
