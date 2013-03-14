@@ -20,7 +20,7 @@ public class UnlockUser {
 		myModel.open();
 		
 		if (myModel.find_uid(username)) {
-			myModel.setLocked(username);
+			myModel.unlockAccount(username);
 			myView.notify_of_error("Unlocked " + username);
 
 		}else{
