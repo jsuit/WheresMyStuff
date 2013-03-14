@@ -49,5 +49,6 @@
     <string name="More_Info">More info</string>
     <string name="remove_user">Remove User</string>
     <string name="title_activity_add_remove_admin">AddRemoveAdmin</string>
+    <string name="set_admin_status">Change Existing User to Admin</string>
 
 </resources>

@@ -132,5 +132,9 @@ public class RegularUser implements User {
 	private void setLoginAttempts(int i){
 		this.login = i;
 	}
+
+	public boolean isAdmin(){
+		return false;
+	}
 	
 }

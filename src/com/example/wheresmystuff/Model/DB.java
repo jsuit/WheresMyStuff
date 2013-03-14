@@ -55,7 +55,8 @@ public class DB implements IModel {
 		// put non_contact info into values
 		values.put(columns[5], p.getLoginAttempts());
 		values.put(columns[6], p.getPassword());
-		values.put(columns[7], 0);
+		if (p.isAdmin()) values.put(columns[7], 1);
+		else values.put(columns[7], 0);
 		firstAdmin(p.getName());
 		return database.insert(DB_Helper.DATABASE_TABLE_USERS, null, values);
 
@@ -63,7 +64,7 @@ public class DB implements IModel {
 
 	private void firstAdmin(String name) {
 
-		if("jon".compareTo(name) == 0){
+		if("admin".compareTo(name) == 0){
 
 			ContentValues cv = new ContentValues();
 			cv.put(DB_Helper.KEY_ADMIN, 1);
@@ -398,6 +399,19 @@ public class DB implements IModel {
 		int user_deleted = database.delete(DB_Helper.DATABASE_TABLE_USERS, DB_Helper.KEY_NAME + "=" + uid, null);
 		int rows_deleted = database.delete(DB_Helper.ITEM_TABLE, DB_Helper.KEY_NAME + "=" + uid, null);
 
+	}
+
+	@Override
+	public boolean find_email(String email,String uid) {
+		// TODO Auto-generated method stub
+		String [] columns = {DB_Helper.KEY_EMAIL, DB_Helper.KEY_NAME};
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				DB_Helper.KEY_EMAIL + "=? AND " + DB_Helper.KEY_NAME +"=?", new String[] { email, uid },
+				null, null, null);
+		
+		boolean value = c.moveToNext();
+		c.close();
+		return value;
 	}
 
 

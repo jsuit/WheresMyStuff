@@ -46,12 +46,12 @@
         </activity>
         <activity android:name="com.example.wheresmystuff.View.Needed" >
         </activity>
-        <activity android:name="com.example.wheresmystuff.View.AddRemoveAdmin" >
-        </activity>
         <activity
-            android:name="com.example.wheresmystuff.AddRemoveAdmin"
+            android:name="com.example.wheresmystuff.View.AddRemoveAdmin"
             android:label="@string/title_activity_add_remove_admin" >
         </activity>
+        <activity android:name=".View.LockOrUnlock"></activity>
+        
     </application>
 
 </manifest>

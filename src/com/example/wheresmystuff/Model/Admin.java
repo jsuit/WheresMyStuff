@@ -13,4 +13,8 @@ public class Admin extends RegularUser {
 		return super.getName();
 	}
 
+	public boolean isAdmin(){
+		return true;
+		
+	}
 }
