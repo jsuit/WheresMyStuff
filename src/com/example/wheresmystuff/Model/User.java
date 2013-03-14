@@ -16,5 +16,9 @@ public interface User {
 	public String[] getContactInfoAsArray();
 	
 	public void increaseLoginAttempts();
+
+	public String  getName();
+	
+	public boolean isAdmin();
 	
 }

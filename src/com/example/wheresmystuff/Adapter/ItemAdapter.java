@@ -4,6 +4,8 @@ import com.example.wheresmystuff.R;
 import com.example.wheresmystuff.Model.Item.Item;
 
 import android.content.Context;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,14 +34,30 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 	    View rowView = inflater.inflate(R.layout.item_row, parent, false);
 	
 	    //Grab the two widgets in teh view
-	    TextView textView = (TextView) rowView.findViewById(R.id.label);
-	    
-	    
+	    TextView textView = (TextView) rowView.findViewById(R.id.item_name_row);
+	    TextView item_desrc = (TextView) rowView.findViewById(R.id.item_description_row);
+	    TextView item_date = (TextView) rowView.findViewById(R.id.item_date_row);
+	    TextView item_status = (TextView) rowView.findViewById(R.id.item_status_row);
 	    //set the widget values
-	    textView.setText(items[position].getItemName());
-          // Log.d("Model", "Set row for: " + people.get(position).getName());
-          // Change the icon for Windows and iPhone
-          String s = items[position].getItemCategory();
+	    String label1, label2, label3, label4;
+	    label1 = "ITEM";
+	    label2 = "DESCRIPTION";
+	    label3 = "DATE ENTERED";
+	    label4 = "STATUS";
+	    SpannableString content = new SpannableString("ITEM:  " +items[position].getItemName());
+	    content.setSpan(new UnderlineSpan(), 0, label1.length(), 0);
+	    textView.setText(content);
+	    SpannableString descr = new SpannableString("DESCRIPTION:  "+items[position].getItemDescription());
+	    descr.setSpan(new UnderlineSpan(), 0, label2.length(), 0);
+	    item_desrc.setText(descr);
+	    SpannableString date = new SpannableString("DATE ENTERED:  " +items[position].getDateAsString());
+	    date.setSpan(new UnderlineSpan(), 0, label3.length(), 0);
+	    item_date.setText(date);
+	    SpannableString status = new SpannableString("STATUS:  " +items[position].getItemStatus());
+	    status.setSpan(new UnderlineSpan(), 0, label4.length(), 0);
+	    item_status.setText(status);
+          Log.d("Adapter", "Set row for: " + position);
+          
 	    
 	    Log.d("Model", "Got row " + position);
 	    

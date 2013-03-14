@@ -20,7 +20,7 @@ public class AddItemPresenter {
 	 * Make a new presenter
 	 * 
 	 * @param m
-	 *            the model
+	 *            the model associated with this presenter
 	 * @param view
 	 *            the view
 	 */
@@ -29,10 +29,16 @@ public class AddItemPresenter {
 		myView = view;
 		i = null;
 	}
+	
 
+	/** Takes in all the data to make an item and makes an item */
+
+	/** Takes in all the data to make an item and makes an item and confirms the save*/
+
+	
 	public void makeAnItem(String name, String category, String status,
 			String description, Date date, String zip, String street,
-			boolean keep, boolean heir, boolean m) {
+			int keep, int heir, int m) {
 		// TODO Auto-generated method stub
 
 		myModel.open();
@@ -44,16 +50,22 @@ public class AddItemPresenter {
 
 	}
 
+	/** method that takes in an item and uses the view to confirm whether this is item we want to save */
+
+	/** method that takes in an item and uses the view to confirm whether this is item we want to save. If we want to save it, then we save it
+	 * else we don't. */
+
+	
 	public void confirmTheSave(Item i) {
 		// TODO Auto-generated method stub
 		myModel.open();
 		String name = i.getItemName();
 		String description = i.getItemDescription();
 		String status = i.getItemStatus();
-		boolean[] array = i.kindofItem();
+		int[] array = i.kindofItem();
 
 		// ****Make validation classes******
-		if (array[0] == array[1] && array[0] == array[2] && array[0] == false) {
+		if (array[0] == array[1] && array[0] == array[2] && array[0] == 0) {
 			myView.notify_of_error(
 					"You must choose either a Heirloom, Keepsake, or Misc",
 					"Error");
@@ -67,19 +79,19 @@ public class AddItemPresenter {
 		}
 		myModel.close();
 	}
-
+	/**  Takes in no parameters, but saves the item. Is called after an ok click. Must be called after makeAnItem and confirmTheSave  */
 	public void save() {
 		
 		String name = i.getItemName();
 		String description = i.getItemDescription();
 		String status = i.getItemStatus();
-		boolean[] array = i.kindofItem();
+		int[] array = i.kindofItem();
 		String date = i.getDateAsString().toString();
 		String category = i.getItemCategory();
+		myModel.open();
 		String curUser = myModel.getCurUser();
 		String zip = i.getZip();
 		String street = i.getStreet();
-		myModel.open();
 		long row = myModel.saveItem(name, description, status, array[0],
 				array[1], array[2], date, curUser, street, zip, category);
 		if (row == -1) {
