@@ -22,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text="User Name" >
+            android:hint="User Name" >
 
             <requestFocus />
         </AutoCompleteTextView>
@@ -32,7 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text="e-mail address"
+            android:hint="e-mail address"
             android:inputType="textEmailAddress" />
 
         <AutoCompleteTextView
@@ -40,21 +40,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text="Password" />
+            android:hint="Password" 
+            android:inputType="textPassword"/>
         
         <AutoCompleteTextView
             android:id="@+id/retype_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:text="Retype Password" />
+            android:hint="Retype Password" 
+            android:inputType="textPassword"/>
 
         <Button
             android:id="@+id/button1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="AddAdmin"
-            android:text="Create Admin" />
+            android:text ="Create Admin" />
 
     </LinearLayout>
 
@@ -66,6 +68,17 @@
         android:layout_alignRight="@+id/linearLayout1"
         android:layout_below="@+id/linearLayout1"
         android:layout_marginTop="97dp"
+        android:onClick="RemoveAdmin"
         android:text="Remove Admin" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:onClick="setAdminStatus"
+        android:text="@string/set_admin_status" />
 
 </RelativeLayout>

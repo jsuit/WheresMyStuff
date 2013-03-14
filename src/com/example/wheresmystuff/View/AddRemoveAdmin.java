@@ -39,7 +39,7 @@ public class AddRemoveAdmin extends Activity implements ILoginView {
 		getMenuInflater().inflate(R.menu.add_remove_admin, menu);
 		return true;
 	}
-	
+	//button handler
 	public void AddAdmin(View createAdminButton) {
 		
 		String user_name = ((EditText) findViewById(R.id.adminID)).getText().toString();
@@ -50,7 +50,27 @@ public class AddRemoveAdmin extends Activity implements ILoginView {
 		Log.d("AddRemoveAdmin", "Create admin button clicked");
 		
 	}
+	//button handler
+	public void RemoveAdmin(View v){
+		
+		String user_name = ((EditText) findViewById(R.id.adminID)).getText().toString();
+		String email_add = ((EditText) findViewById(R.id.email_address)).getText().toString();
+		String password = ((EditText) findViewById(R.id.password)).getText().toString();
+		String retype_password = ((EditText) findViewById(R.id.retype_password)).getText().toString();
+		my_presenter.validate(user_name, email_add, password, retype_password, "");
+		
+	}
 
+	//button handler
+	public void setAdminStatus(View v){
+		String user_name = ((EditText) findViewById(R.id.adminID)).getText().toString();
+		String email_add = ((EditText) findViewById(R.id.email_address)).getText().toString();
+		String password = ((EditText) findViewById(R.id.password)).getText().toString();
+		String retype_password = ((EditText) findViewById(R.id.retype_password)).getText().toString();
+		my_presenter.validate(user_name, email_add, password, retype_password, "s");
+		
+	}
+	
 	@Override
 	public void notify_of_error(String error_message) {
 		// TODO Auto-generated method stub

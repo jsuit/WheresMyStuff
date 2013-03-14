@@ -19,4 +19,6 @@ public interface User {
 
 	public String  getName();
 	
+	public boolean isAdmin();
+	
 }

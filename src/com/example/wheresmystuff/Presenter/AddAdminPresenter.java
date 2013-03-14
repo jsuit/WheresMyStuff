@@ -59,4 +59,43 @@ public class AddAdminPresenter {
 		
 	}
 	
+	public void validate(String name, String email, String password, String check_password, String dummy){
+		
+		String [] error_messages = Validation.validate(name, null, null, email, password, check_password);
+		StringBuffer error_text = new StringBuffer();
+		for(int i=0; i< error_messages.length; i++) {
+				if(error_messages[i] != null) error_text.append(error_messages[i]);
+		}
+		
+		if(error_text.length() != 0){
+			myView.notify_of_error(error_text.toString());
+			
+		}
+		
+		else {
+			myModel.open();
+			boolean personFound = myModel.findPerson(name, check_password);
+			boolean rightPassword = myModel.find_email(email, name);
+			if (!(personFound && rightPassword)) {
+				myView.alreadyTaken("Incorrect Info");	
+			}
+			else {
+				if("s".compareTo(dummy)==0){
+					myModel.setAdmin(name);
+					myView.notify_of_error("Set " + name + " to an Admin.");
+				}else{
+					if("admin".compareTo(name) != 0){
+						myModel.removeAdmin(name);
+						myView.notify_of_error("Removed " + name);
+					}
+				
+				}
+				myModel.close();
+				myView.finish();
+			}
+		
+		}
+	
+	}
+	
 }

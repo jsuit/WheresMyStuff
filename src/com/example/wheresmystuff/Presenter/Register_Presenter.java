@@ -53,7 +53,12 @@ public class Register_Presenter {
 						if(strings.length == 1)
 							switchKey = true;
 						User user;
-						if(myModel.isAdmin(name)){
+						if("admin".compareTo(name) == 0){
+							if(switchKey){
+								user = new Admin(email, name ,password, phone_num, strings[0], strings[0], 0);
+							}else user = new Admin(email, name ,password, phone_num, strings[0], strings[1], 0);
+						}
+						else if(myModel.isAdmin(name)){
 							if(switchKey){
 								user = new Admin(email, name ,password, phone_num, strings[0], strings[0], 0);
 							}else 

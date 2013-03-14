@@ -39,8 +39,11 @@ public class Login_Presenter {
 				//found user but not password
 				//get the login_attempts
 				//error checking
-					myModel.increase_login_attempts(++login_attempts, name);
-					myView.notify_of_error("Unknow user and/or invalid password");
+					if(!("admin".compareTo(name) == 0)){
+						myModel.increase_login_attempts(++login_attempts, name);
+						myView.notify_of_error("Unknow user and/or invalid password");
+					}
+					
 				}
 				else{
 					myView.call_intent(mainUserScreen.class);

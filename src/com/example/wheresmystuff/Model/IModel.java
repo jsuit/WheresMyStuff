@@ -61,8 +61,9 @@ public interface IModel {
 	void lockAccount(String uid);
 	void removeUser(String uid);
 
+	boolean find_email(String email, String uid);
 	 
-	 
+	
 
 	
 }
