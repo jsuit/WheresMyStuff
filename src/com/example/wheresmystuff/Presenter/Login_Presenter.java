@@ -43,7 +43,7 @@ public class Login_Presenter {
 						myModel.increase_login_attempts(++login_attempts, name);
 						myView.notify_of_error("Unknow user and/or invalid password");
 					}
-					
+					myView.notify_of_error("Unknow user and/or invalid password");
 				}
 				else{
 					myView.call_intent(mainUserScreen.class);
