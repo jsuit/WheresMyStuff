@@ -134,6 +134,7 @@
             android:layout_marginTop="5dip"
             android:textColor="@color/White"
             android:visibility="gone"
+            android:onClick="removeUser"
             android:text="@string/remove_user" />
 
         <ImageView

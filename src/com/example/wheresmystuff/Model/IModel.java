@@ -59,10 +59,10 @@ public interface IModel {
 	Item[] getItems(String current_user, String key);
 
 	void lockAccount(String uid);
-	void removeUser(String uid);
+	int removeUser(String uid);
 
 	boolean find_email(String email, String uid);
-	 
+	
 	
 
 	

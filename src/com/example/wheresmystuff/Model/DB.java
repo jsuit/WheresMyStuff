@@ -395,9 +395,12 @@ public class DB implements IModel {
 		return value;
 	}
 	 @Override
-	public void removeUser(String uid){
+	public int removeUser(String uid){
 		int user_deleted = database.delete(DB_Helper.DATABASE_TABLE_USERS, DB_Helper.KEY_NAME + "=" + uid, null);
 		int rows_deleted = database.delete(DB_Helper.ITEM_TABLE, DB_Helper.KEY_NAME + "=" + uid, null);
+		
+		if(user_deleted == -1 || rows_deleted == -1)return -1;
+		else return user_deleted + rows_deleted;
 
 	}
 
