@@ -84,6 +84,7 @@ public class mainUserScreen extends Activity implements IMyProfilePage{
 		Log.d("Lock/Unlock screen", "Lock/Unlock button clicked directing to activity");
 	}
 	
+	//button handler to remove user
 	public void removeUser(View v){
 		Intent i = new Intent(this, LockOrUnlock.class);
 	}
