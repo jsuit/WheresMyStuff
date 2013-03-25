@@ -1,6 +1,9 @@
 package com.example.wheresmystuff.View;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 import com.example.wheresmystuff.R;
 import com.example.wheresmystuff.Model.DB;
@@ -174,8 +177,11 @@ public class Register_Item extends Activity implements IItemView, OnItemSelected
 		
 	}
 
-	
+	@Override
+	public void setItem(List<String> accounts) {
+		// TODO Auto-generated method stub
+		
+	}
 
-	
-	
 }
+

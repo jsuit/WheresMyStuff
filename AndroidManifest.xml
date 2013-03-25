@@ -51,6 +51,7 @@
             android:label="@string/title_activity_add_remove_admin" >
         </activity>
         <activity android:name=".View.LockOrUnlock"></activity>
+        <activity android:name=".View.RemoveUser"></activity>
         
     </application>
 

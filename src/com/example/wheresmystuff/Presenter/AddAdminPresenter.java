@@ -48,10 +48,7 @@ public class AddAdminPresenter {
 					myView.notify_of_error("Failed to insert user");
 					Log.d("Register_Presenter", "Failed to insert user " + name);
 					user = null;
-				}else{
-					myView.call_intent(mainUserScreen.class);
 				}
-				myModel.setCurUser(name);
 				myModel.close();
 				myView.finish();
 			}

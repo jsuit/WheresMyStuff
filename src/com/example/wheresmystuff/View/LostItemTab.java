@@ -1,5 +1,9 @@
 package com.example.wheresmystuff.View;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import com.example.wheresmystuff.R;
 import com.example.wheresmystuff.Adapter.ItemAdapter;
 import com.example.wheresmystuff.Model.DB;
@@ -61,4 +65,18 @@ import android.util.Log;
 			// TODO Auto-generated method stub
 			this.i = i;
 		}
-	}
+
+
+
+		@Override
+		public void setItem(List<String> accounts) {
+			// TODO Auto-generated method stub
+			
+		}
+
+
+
+
+
+}
+

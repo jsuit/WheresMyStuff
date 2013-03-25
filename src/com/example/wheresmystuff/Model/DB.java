@@ -57,25 +57,18 @@ public class DB implements IModel {
 		values.put(columns[6], p.getPassword());
 		if (p.isAdmin()) values.put(columns[7], 1);
 		else values.put(columns[7], 0);
-		firstAdmin(p.getName());
-		return database.insert(DB_Helper.DATABASE_TABLE_USERS, null, values);
-
+		values = firstAdmin(p.getName(), values);
+		long id = database.insert(DB_Helper.DATABASE_TABLE_USERS, null, values);
+		return id;
 	}
 
-	private void firstAdmin(String name) {
+	private ContentValues firstAdmin(String name, ContentValues values) {
 
 		if("admin".compareTo(name) == 0){
 
-			ContentValues cv = new ContentValues();
-			cv.put(DB_Helper.KEY_ADMIN, 1);
-			String [] columns = {DB_Helper.KEY_NAME, DB_Helper.KEY_ADMIN};
-			Cursor cursor = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
-					DB_Helper.KEY_NAME + " = ?", new String[] { name }, null,
-					null, null);
-
-			database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
-					+ "=?", new String[] { name });		
-		}
+			values.put(DB_Helper.KEY_ADMIN, 1);
+			return values;
+		}else return values;
 	}
 
 	@Override
@@ -198,6 +191,7 @@ public class DB implements IModel {
 		assert (key != null);
 		Cursor c = null;
 		String upper = key.toUpperCase();
+		
 		if ("L".compareTo(upper) == 0) {
 			c = database.query(DB_Helper.ITEM_TABLE, null,
 					DB_Helper.KEY_NAME + "=? AND " + DB_Helper.ITEM_CATEGORY
@@ -307,7 +301,7 @@ public class DB implements IModel {
 		String[] columns = { DB_Helper.KEY_NAME };
 
 		Cursor c = database.query(DB_Helper.ITEM_TABLE, columns,
-				DB_Helper.KEY_LOGIN_ATTEMPTS + "=?", new String[] { "1" },
+				DB_Helper.KEY_LOGIN_ATTEMPTS + "=?", new String[] { "3" },
 				null, null, null);
 		if (!c.moveToFirst()) {
 			c.close();
@@ -396,10 +390,12 @@ public class DB implements IModel {
 	}
 	 @Override
 	public int removeUser(String uid){
-		int user_deleted = database.delete(DB_Helper.DATABASE_TABLE_USERS, DB_Helper.KEY_NAME + "=" + uid, null);
-		int rows_deleted = database.delete(DB_Helper.ITEM_TABLE, DB_Helper.KEY_NAME + "=" + uid, null);
-		
-		if(user_deleted == -1 || rows_deleted == -1)return -1;
+		open();
+		String [] where = {uid};
+		int user_deleted = database.delete(DB_Helper.DATABASE_TABLE_USERS, DB_Helper.KEY_NAME + "=?", where);
+		int rows_deleted = database.delete(DB_Helper.ITEM_TABLE, DB_Helper.KEY_NAME + "=?", where);
+		close();
+		if(user_deleted == 0)return 0;
 		else return user_deleted + rows_deleted;
 
 	}
@@ -415,6 +411,28 @@ public class DB implements IModel {
 		boolean value = c.moveToNext();
 		c.close();
 		return value;
+	}
+
+	@Override
+	public List<String> getAccounts() {
+		String [] columns = {DB_Helper.KEY_NAME};
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				null, null, null, null, null);
+		
+		boolean value = c.moveToFirst();
+		if(value){
+			List<String> users = new ArrayList<String>();
+			while(!c.isAfterLast()){		
+					users.add(c.getString(c.getColumnIndex(DB_Helper.KEY_NAME)));
+					c.moveToNext();
+				}
+				c.close();
+				return users;
+			}
+		else {
+			c.close();
+			return null;
+		}
 	}
 
 
