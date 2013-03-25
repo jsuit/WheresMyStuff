@@ -179,7 +179,7 @@ public final class R {
         public static final int Name=0x7f0a0027;
         public static final int Save=0x7f0a002c;
         public static final int Street=0x7f0a0025;
-        public static final int action_settings=0x7f0a0033;
+        public static final int action_settings=0x7f0a0034;
         public static final int addRemove=0x7f0a0019;
         public static final int adminID=0x7f0a0001;
         public static final int adv_search=0x7f0a0015;
@@ -221,6 +221,7 @@ public final class R {
         public static final int unlock_button=0x7f0a000b;
         public static final int unlock_username=0x7f0a0009;
         public static final int userId=0x7f0a000e;
+        public static final int user_row=0x7f0a0033;
         public static final int wheresmystuffimage=0x7f0a001c;
         public static final int yourContactsButton=0x7f0a0018;
         public static final int your_listingButton=0x7f0a0016;
@@ -235,13 +236,15 @@ public final class R {
         public static final int display_found_items=0x7f030005;
         public static final int display_lost_items=0x7f030006;
         public static final int displayitems=0x7f030007;
-        public static final int donation=0x7f030008;
-        public static final int found_item=0x7f030009;
-        public static final int header_gradient=0x7f03000a;
-        public static final int item_row=0x7f03000b;
-        public static final int lost_item=0x7f03000c;
-        public static final int register=0x7f03000d;
-        public static final int register_item=0x7f03000e;
+        public static final int displayusers=0x7f030008;
+        public static final int donation=0x7f030009;
+        public static final int found_item=0x7f03000a;
+        public static final int header_gradient=0x7f03000b;
+        public static final int item_row=0x7f03000c;
+        public static final int lost_item=0x7f03000d;
+        public static final int register=0x7f03000e;
+        public static final int register_item=0x7f03000f;
+        public static final int user_row=0x7f030010;
     }
     public static final class menu {
         public static final int activity_lock_unlock_menu=0x7f090000;

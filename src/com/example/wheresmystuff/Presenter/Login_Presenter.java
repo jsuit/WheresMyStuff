@@ -1,11 +1,9 @@
 package com.example.wheresmystuff.Presenter;
 
 import com.example.wheresmystuff.Model.IModel;
-import com.example.wheresmystuff.Model.User;
 import com.example.wheresmystuff.View.ILoginView;
 import com.example.wheresmystuff.View.MainActivity;
 import com.example.wheresmystuff.View.mainUserScreen;
-import com.example.wheresmystuff.validation.ValidatePassword;
 
 public class Login_Presenter {
 
@@ -43,7 +41,7 @@ public class Login_Presenter {
 						myModel.increase_login_attempts(++login_attempts, name);
 						myView.notify_of_error("Unknow user and/or invalid password");
 					}
-					
+					myView.notify_of_error("Unknow user and/or invalid password");
 				}
 				else{
 					myView.call_intent(mainUserScreen.class);

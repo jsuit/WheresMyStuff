@@ -1,19 +1,12 @@
 package com.example.wheresmystuff.View;
 
-import com.example.wheresmystuff.R;
-import com.example.wheresmystuff.Model.DB;
-import com.example.wheresmystuff.Presenter.AddAdminPresenter;
-import com.example.wheresmystuff.R.id;
-import com.example.wheresmystuff.R.layout;
-import com.example.wheresmystuff.R.menu;
-
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
@@ -21,6 +14,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.wheresmystuff.R;
+import com.example.wheresmystuff.Model.DB;
+import com.example.wheresmystuff.Presenter.AddAdminPresenter;
 
 public class AddRemoveAdmin extends Activity implements ILoginView {
 

@@ -1,11 +1,7 @@
 package com.example.wheresmystuff.Presenter;
 
-import com.example.wheresmystuff.Model.DB;
 import com.example.wheresmystuff.Model.IModel;
-import com.example.wheresmystuff.Model.Item.Item;
-import com.example.wheresmystuff.View.DisplayItems;
 import com.example.wheresmystuff.View.IItemView;
-import com.example.wheresmystuff.View.ILoginView;
 
 
 public class ListingPresenter {
@@ -26,7 +22,7 @@ public class ListingPresenter {
 		myView = view;
 		myModel.open();
 		current_user = myModel.getCurUser();
-		myView.setItem(myModel.getItems(myModel.getCurUser(), key));
+		myView.setItem(myModel.getItems(current_user, key));
 		myModel.close();
 	
 	}
