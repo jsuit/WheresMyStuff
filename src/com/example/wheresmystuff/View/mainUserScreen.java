@@ -90,4 +90,10 @@ public class mainUserScreen extends Activity implements IMyProfilePage{
 		startActivity(i);
 		Log.d("Lock/Unlock screen", "RemoveUser clicked");
 	}
+	
+	public void advanced_search(View v){
+		Intent i = new Intent(this, DisplayAllItems.class);
+		startActivity(i);
+		Log.d("displayallitems clicked", "display all items");
+	}	
 }

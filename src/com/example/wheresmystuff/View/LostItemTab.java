@@ -21,6 +21,7 @@ import android.util.Log;
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.display_lost_items);
+	        
 	        my_presenter = new ListingPresenter(new DB(this), this, "L");
 	       if(i!=null) {
 	    	ItemAdapter adapter = new ItemAdapter(this, i);
@@ -30,6 +31,7 @@ import android.util.Log;
 	       	else{
 	       	  Log.i("View", "adapter Not set");
 	       	}
+	       	
 	    }
 
 	    

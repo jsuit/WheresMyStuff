@@ -50,5 +50,17 @@
     <string name="remove_user">Remove User</string>
     <string name="title_activity_add_remove_admin">AddRemoveAdmin</string>
     <string name="set_admin_status">Change Existing User to Admin</string>
+    <string-array name="SearchByList">
+        <item >Category</item>
+        <item >Date</item>
+        <item >Status</item>
+    </string-array>
+        <string name="Search_by">"Search By: "</string>
+        <string name="refine_search">Refine Search</string>
+        <string-array name="RefineSearch">
+            <item >Heirloom</item>
+            <item >Misc</item>
+            <item >Keepsakes</item>
+        </string-array>
 
 </resources>

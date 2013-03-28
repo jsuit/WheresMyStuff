@@ -1,7 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" >
-
+    android:layout_height="fill_parent" 
+    android:background="@color/Black">
+    
     <EditText
         android:id="@+id/Street"
         android:layout_width="wrap_content"
@@ -69,37 +70,6 @@
         android:hint="@string/Country" />
 
     <EditText
-        android:id="@+id/phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/country"
-        android:layout_below="@+id/country"
-        android:layout_marginTop="14dp"
-        android:ems="10"
-        android:hint="@string/Phone_Number"
-        android:inputType="phone" />
-
-    <Button
-        android:id="@+id/FindMe"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/phone"
-        android:layout_alignTop="@+id/Save"
-        android:background="@color/White"
-        android:drawableTop="@drawable/crosshairs"
-        android:text="@string/FindMe" />
-
-    <Button
-        android:id="@+id/Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/phone"
-        android:background="@color/White"
-        android:drawableTop="@drawable/save_button" 
-        android:onClick="saveNewPerson"/>
-
-    <EditText
         android:id="@+id/Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -108,5 +78,30 @@
         android:ems="10"
         android:hint="@string/user_name"
         android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/country"
+        android:layout_below="@+id/country"
+        android:ems="10"
+        android:hint="@string/Phone_Number"
+        android:inputType="phone" >
+
+        <requestFocus />
+    </EditText>
+
+    <Button
+        android:id="@+id/Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/phone"
+        android:layout_below="@+id/phone"
+        
+        android:drawableTop="@drawable/save_button"
+        android:onClick="saveNewPerson"
+         android:background="#80000000" />
 
 </RelativeLayout>

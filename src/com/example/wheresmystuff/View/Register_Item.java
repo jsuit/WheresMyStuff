@@ -1,9 +1,13 @@
 package com.example.wheresmystuff.View;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import com.example.wheresmystuff.R;
 import com.example.wheresmystuff.Model.DB;
@@ -18,6 +22,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -134,7 +139,15 @@ public class Register_Item extends Activity implements IItemView, OnItemSelected
 			if(heirlooms.isChecked()) heir = 1;
 			int m = 0;
 			if(misc.isChecked()) m = 1;
-			Date date = new Date();
+			Calendar cal = new GregorianCalendar();
+			int year = cal.get(Calendar.YEAR);
+			int month = cal.get(Calendar.MONTH);
+			int day = cal.get(Calendar.DAY_OF_MONTH);
+			int hours = cal.get(Calendar.HOUR);
+			int min = cal.get(Calendar.MINUTE);
+			int seconds = cal.get(Calendar.SECOND);
+			String date = year+"-"+month+"-"+day+" "+hours+":"+min+":"+seconds;
+			
 			Log.d("saveLostItem", "Got the goods; now to save the item");
 			//saves also
 			my_presenter.makeAnItem(name, category, "open", description, date, zip, street, keep, heir, m);
@@ -145,6 +158,7 @@ public class Register_Item extends Activity implements IItemView, OnItemSelected
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View arg1, int pos,
 			long arg3) {
+		
 		category = parent.getItemAtPosition(pos).toString();
 		Log.d("spinner", category);
 		

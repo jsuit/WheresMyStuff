@@ -1,15 +1,19 @@
 package com.example.wheresmystuff.Model;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.text.method.DateTimeKeyListener;
 import android.util.Log;
 
 import com.example.wheresmystuff.DB_Helper;
@@ -213,6 +217,16 @@ public class DB implements IModel {
 				return null;
 			}
 
+		}else if("F".compareTo(upper)==0){
+			c = database.query(DB_Helper.ITEM_TABLE, null,
+					DB_Helper.KEY_NAME + "=? AND " + DB_Helper.ITEM_CATEGORY
+							+ "=?", new String[] { current_user, "Found" },
+					null, null, null);
+
+			if (!c.moveToFirst()) {
+				c.close();
+				return null;
+			}
 		}
 		List<Item> items = new ArrayList<Item>();
 		int i = c.getCount();
@@ -225,8 +239,8 @@ public class DB implements IModel {
 					.getColumnIndex(DB_Helper.ITEM_STATUS));
 			String itemDescription = c.getString(c
 					.getColumnIndex(DB_Helper.ITEM_DESCRIPTION));
-			Date date = new Date(c.getString(c
-					.getColumnIndex(DB_Helper.ITEM_DATE)));
+			String date = c.getString(c
+					.getColumnIndex(DB_Helper.ITEM_DATE));
 			int keepsake = c.getInt(c.getColumnIndex(DB_Helper.ITEM_KEEPSAKE));
 			int heirloom = c.getInt(c.getColumnIndex(DB_Helper.ITEM_HEIRLOOM));
 			int misc = c.getInt(c.getColumnIndex(DB_Helper.ITEM_MISC));
@@ -434,6 +448,8 @@ public class DB implements IModel {
 			return null;
 		}
 	}
+	
+	
 
 
 }

@@ -80,15 +80,6 @@
             android:layout_toRightOf="@+id/Heirlooms"
             android:text="@string/Misc" />
 
-        <CheckBox
-            android:id="@+id/keepsakes"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/Street"
-            android:layout_below="@+id/Street"
-            android:layout_marginTop="19dp"
-            android:text="@string/Keepsakes" />
-
         <Button
             android:id="@+id/Save"
             android:layout_width="wrap_content"
@@ -96,9 +87,18 @@
             android:layout_below="@+id/Heirlooms"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="41dp"
-            android:background="@color/White"
+            android:background="@color/Black"
             android:drawableTop="@drawable/save_button"
             android:onClick="saveItem" />
+
+        <CheckBox
+            android:id="@+id/keepsakes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/Street"
+            android:layout_marginTop="24dp"
+            android:layout_toLeftOf="@+id/Save"
+            android:text="@string/Keepsakes" />
         
     </RelativeLayout>
     

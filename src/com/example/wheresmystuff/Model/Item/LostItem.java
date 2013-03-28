@@ -16,7 +16,7 @@ public class LostItem implements Item {
 	private String user;
 	
 	
-	public LostItem(String itemName, String itemCategory, String itemStatus, String itemDescription, String user, Date date,
+	public LostItem(String itemName, String itemCategory, String itemStatus, String itemDescription, String user, String date,
 			int keepsake, int heirloom, int misc, String zip, String street) {
 		
 		itemInfo = new ItemInfo(itemName, keepsake, heirloom, misc, itemStatus, itemDescription, itemCategory, date, zip, street);
@@ -25,6 +25,10 @@ public class LostItem implements Item {
 	}
 	
 	
+
+
+
+
 
 
 	@Override
@@ -101,11 +105,10 @@ public class LostItem implements Item {
 	}
 
 	public String getDateAsString(){
-		Date date = itemInfo.getDate();
+		String date = itemInfo.getDate();
 		Calendar myCal = new GregorianCalendar();
-		myCal.setTime(date);
-		SimpleDateFormat date_format = new SimpleDateFormat("MMM/dd/yyyy");
-		return date_format.format(myCal.getTime());
+		//SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return date;
 	}
 
 

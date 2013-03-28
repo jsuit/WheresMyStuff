@@ -9,9 +9,9 @@ import java.util.GregorianCalendar;
 public class ItemInfo {
 
 	private String itemName, itemCategory, itemStatus, itemDescription, zip, street;
-	private Date date;
+	private String date;
 	private int keepsake, misc, heirloom;
-	public ItemInfo(String itemName, int keepsake, int heirloom, int misc, String itemStatus, String itemDescription, String item_category, Date date, String zip, String street) {
+	public ItemInfo(String itemName, int keepsake, int heirloom, int misc, String itemStatus, String itemDescription, String item_category, String date, String zip, String street) {
 		
 		this.itemName = itemName;
 		this.itemCategory = item_category;
@@ -89,7 +89,7 @@ public class ItemInfo {
 		return integer;
 	}
 	
-	public Date getDate(){
+	public String getDate(){
 		return this.date;
 		
 	}

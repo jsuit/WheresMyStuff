@@ -37,7 +37,7 @@ public class AddItemPresenter {
 
 	
 	public void makeAnItem(String name, String category, String status,
-			String description, Date date, String zip, String street,
+			String description, String date, String zip, String street,
 			int keep, int heir, int m) {
 		// TODO Auto-generated method stub
 
