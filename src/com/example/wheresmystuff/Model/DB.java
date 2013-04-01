@@ -239,8 +239,7 @@ public class DB implements IModel {
 					.getColumnIndex(DB_Helper.ITEM_STATUS));
 			String itemDescription = c.getString(c
 					.getColumnIndex(DB_Helper.ITEM_DESCRIPTION));
-			String date = c.getString(c
-					.getColumnIndex(DB_Helper.ITEM_DATE));
+			long date = c.getLong(c.getColumnIndex(DB_Helper.ITEM_DATE));
 			int keepsake = c.getInt(c.getColumnIndex(DB_Helper.ITEM_KEEPSAKE));
 			int heirloom = c.getInt(c.getColumnIndex(DB_Helper.ITEM_HEIRLOOM));
 			int misc = c.getInt(c.getColumnIndex(DB_Helper.ITEM_MISC));
@@ -253,7 +252,7 @@ public class DB implements IModel {
 			items.add(item);
 			c.moveToNext();
 		}
-		int length = items.size();
+		
 		Item[] a_item = new Item[items.size()];
 		a_item = items.toArray(a_item);
 		c.close();
@@ -281,7 +280,7 @@ public class DB implements IModel {
 
 	@Override
 	public long saveItem(String name, String description, String status,
-			int keep, int heir, int misc, String date, String curUser,
+			int keep, int heir, int misc, Long date, String curUser,
 			String street, String zip, String type) {
 
 		String[] col = { DB_Helper.ITEM_NAME, DB_Helper.ITEM_STATUS,
@@ -447,6 +446,62 @@ public class DB implements IModel {
 			c.close();
 			return null;
 		}
+	}
+	
+	public void search(){
+		
+	}
+
+	@Override
+	public void search(String lost_etc_categories, String refined_search) {
+		// TODO Auto-generated method stub
+	
+		
+	}
+
+	@Override
+	public Cursor searchByDate(String lost_etc_categories, String refined_search) {
+		// TODO Auto-generated method stub
+		
+		Long date = Long.parseLong(refined_search);
+		String[] args = {refined_search, lost_etc_categories};
+		String sql = "SELECT * FROM " + DB_Helper.ITEM_TABLE + " WHERE " + DB_Helper.ITEM_DATE + " >=?" + " AND " 
+		+ DB_Helper.ITEM_CATEGORY + "=?"  + " ORDER BY " + 
+		DB_Helper.ITEM_DATE + " DESC";
+		
+		Cursor c = database.rawQuery(sql, args);
+		
+		return c;
+	}
+
+	@Override
+	public Cursor searchByCategory(String lost_etc_categories,
+			String refined_search) {
+				
+		refined_search=refined_search.toLowerCase();
+		
+		String [] args = {lost_etc_categories,"1"};
+		
+		String sql = "SELECT * FROM " + DB_Helper.ITEM_TABLE + " WHERE " + DB_Helper.ITEM_CATEGORY + "=? AND " + "item_"+refined_search+ "=?" +
+					" ORDER BY " + DB_Helper.ITEM_DATE + " DESC";
+		 Cursor c =    database.rawQuery(sql, args);
+		 return c;
+	}
+
+	@Override
+	public Cursor searchByStatus(String lost_etc_categories, String refined_search) {
+		
+		
+		String [] args = {lost_etc_categories,refined_search};
+		
+		String sql = "SELECT * FROM " + DB_Helper.ITEM_TABLE + " WHERE " + DB_Helper.ITEM_CATEGORY + "=? AND " + DB_Helper.ITEM_STATUS + "=?";
+		 Cursor c =    database.rawQuery(sql, args);
+		 c.moveToFirst();
+		 return c;
+		
+		
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

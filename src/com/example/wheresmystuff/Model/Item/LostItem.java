@@ -16,7 +16,7 @@ public class LostItem implements Item {
 	private String user;
 	
 	
-	public LostItem(String itemName, String itemCategory, String itemStatus, String itemDescription, String user, String date,
+	public LostItem(String itemName, String itemCategory, String itemStatus, String itemDescription, String user, long date,
 			int keepsake, int heirloom, int misc, String zip, String street) {
 		
 		itemInfo = new ItemInfo(itemName, keepsake, heirloom, misc, itemStatus, itemDescription, itemCategory, date, zip, street);
@@ -105,10 +105,26 @@ public class LostItem implements Item {
 	}
 
 	public String getDateAsString(){
-		String date = itemInfo.getDate();
-		Calendar myCal = new GregorianCalendar();
-		//SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		return date;
+		long date = itemInfo.getDate();
+	
+		
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		Date d = new Date(date);
+		return df.format(d);
+		
+	}
+
+
+
+
+
+
+
+
+	@Override
+	public Long getDate() {
+		// TODO Auto-generated method stub
+		return itemInfo.getDate();
 	}
 
 

@@ -146,11 +146,12 @@ public class Register_Item extends Activity implements IItemView, OnItemSelected
 			int hours = cal.get(Calendar.HOUR);
 			int min = cal.get(Calendar.MINUTE);
 			int seconds = cal.get(Calendar.SECOND);
-			String date = year+"-"+month+"-"+day+" "+hours+":"+min+":"+seconds;
+			long currentTime = System.currentTimeMillis();
+		//	String date = year+"-"+month+"-"+day+" "+hours+":"+min+":"+seconds;
 			
 			Log.d("saveLostItem", "Got the goods; now to save the item");
 			//saves also
-			my_presenter.makeAnItem(name, category, "open", description, date, zip, street, keep, heir, m);
+			my_presenter.makeAnItem(name, category, "Open", description, currentTime, zip, street, keep, heir, m);
 
 			Log.d("saveLostItemDone", "saved the item");		
 	}

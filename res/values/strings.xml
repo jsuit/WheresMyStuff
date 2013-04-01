@@ -47,20 +47,24 @@
     <string name="Select_Category">Select Category:</string>
     <string name="Main_Street">1234 Main Street</string>
     <string name="More_Info">More info</string>
-    <string name="remove_user">Remove User</string>
+    <string-array name="SearchByList"><item>Date</item><item>Category</item>
+        
+        <item>Status</item>
+        
+    </string-array><string name="remove_user">Remove User</string>
     <string name="title_activity_add_remove_admin">AddRemoveAdmin</string>
     <string name="set_admin_status">Change Existing User to Admin</string>
-    <string-array name="SearchByList">
-        <item >Category</item>
-        <item >Date</item>
-        <item >Status</item>
-    </string-array>
+    
         <string name="Search_by">"Search By: "</string>
         <string name="refine_search">Refine Search</string>
         <string-array name="RefineSearch">
             <item >Heirloom</item>
             <item >Misc</item>
-            <item >Keepsakes</item>
+            <item >Keepsake</item>
+        </string-array>
+        <string-array name="Status">
+            <item >Open</item>
+            <item >Off</item>
         </string-array>
 
 </resources>

@@ -12,6 +12,7 @@ public final class R {
         public static final int Category=0x7f070000;
         public static final int RefineSearch=0x7f070002;
         public static final int SearchByList=0x7f070001;
+        public static final int Status=0x7f070003;
     }
     public static final class attr {
     }
@@ -179,15 +180,16 @@ public final class R {
         public static final int wheresmystuffimage=0x7f020008;
     }
     public static final class id {
-        public static final int Heirlooms=0x7f0a0038;
-        public static final int Misc=0x7f0a003a;
-        public static final int Name=0x7f0a0030;
-        public static final int Save=0x7f0a0034;
-        public static final int Street=0x7f0a002e;
-        public static final int action_settings=0x7f0a003d;
+        public static final int Heirlooms=0x7f0a003c;
+        public static final int Misc=0x7f0a003e;
+        public static final int Name=0x7f0a0034;
+        public static final int Save=0x7f0a0038;
+        public static final int Street=0x7f0a0032;
+        public static final int action_settings=0x7f0a0041;
         public static final int addRemove=0x7f0a0019;
         public static final int adminID=0x7f0a0001;
         public static final int adv_search=0x7f0a0015;
+        public static final int all_items=0x7f0a0028;
         public static final int autoCompleteTextView1=0x7f0a0013;
         public static final int btnLogin=0x7f0a0010;
         public static final int btn_register=0x7f0a0011;
@@ -195,52 +197,55 @@ public final class R {
         public static final int button2=0x7f0a0006;
         public static final int button3=0x7f0a0007;
         public static final int button5=0x7f0a0014;
-        public static final int country=0x7f0a0032;
-        public static final int date=0x7f0a0028;
+        public static final int country=0x7f0a0036;
+        public static final int date=0x7f0a002c;
+        public static final int datePicker1=0x7f0a0027;
         public static final int donations_radio=0x7f0a001f;
-        public static final int email=0x7f0a002f;
+        public static final int email=0x7f0a0033;
         public static final int email_address=0x7f0a0002;
         public static final int footer=0x7f0a000d;
         public static final int found_radio=0x7f0a0020;
-        public static final int from=0x7f0a002d;
+        public static final int from=0x7f0a0031;
         public static final int header=0x7f0a000c;
-        public static final int item_date_row=0x7f0a002b;
-        public static final int item_description=0x7f0a0036;
-        public static final int item_description_row=0x7f0a002a;
-        public static final int item_name=0x7f0a0035;
-        public static final int item_name_row=0x7f0a0029;
-        public static final int item_status_row=0x7f0a002c;
-        public static final int keepsakes=0x7f0a0039;
+        public static final int item_date_row=0x7f0a002f;
+        public static final int item_description=0x7f0a003a;
+        public static final int item_description_row=0x7f0a002e;
+        public static final int item_name=0x7f0a0039;
+        public static final int item_name_row=0x7f0a002d;
+        public static final int item_status_row=0x7f0a0030;
+        public static final int keepsakes=0x7f0a003d;
         public static final int linearLayout1=0x7f0a0000;
-        public static final int list_of_many_items=0x7f0a0024;
         public static final int lock_button=0x7f0a000a;
         public static final int lock_unlock=0x7f0a001a;
         public static final int lock_username=0x7f0a0008;
         public static final int login_password=0x7f0a000f;
         public static final int lost_radio=0x7f0a001e;
         public static final int needed_radio=0x7f0a0021;
+        public static final int off_radio=0x7f0a0026;
+        public static final int on_radio=0x7f0a0025;
         public static final int password=0x7f0a0003;
-        public static final int phone=0x7f0a0033;
+        public static final int phone=0x7f0a0037;
         public static final int postItemButton=0x7f0a0017;
         public static final int quickContactBadge1=0x7f0a0012;
         public static final int radioGroup=0x7f0a001d;
         public static final int remove_user_button=0x7f0a001b;
         public static final int retype_password=0x7f0a0004;
-        public static final int search_btn=0x7f0a0022;
-        public static final int search_by=0x7f0a0025;
+        public static final int search_btn=0x7f0a0029;
+        public static final int search_by=0x7f0a0022;
         public static final int search_category=0x7f0a0023;
-        public static final int spinnerTarget=0x7f0a003b;
-        public static final int spinner_Category=0x7f0a0037;
-        public static final int subject=0x7f0a0026;
-        public static final int to=0x7f0a0027;
+        public static final int spinnerTarget=0x7f0a003f;
+        public static final int spinner_Category=0x7f0a003b;
+        public static final int status_radio=0x7f0a0024;
+        public static final int subject=0x7f0a002a;
+        public static final int to=0x7f0a002b;
         public static final int unlock_button=0x7f0a000b;
         public static final int unlock_username=0x7f0a0009;
         public static final int userId=0x7f0a000e;
-        public static final int user_row=0x7f0a003c;
+        public static final int user_row=0x7f0a0040;
         public static final int wheresmystuffimage=0x7f0a001c;
         public static final int yourContactsButton=0x7f0a0018;
         public static final int your_listingButton=0x7f0a0016;
-        public static final int zip_code=0x7f0a0031;
+        public static final int zip_code=0x7f0a0035;
     }
     public static final class layout {
         public static final int activity_add_remove_admin=0x7f030000;
