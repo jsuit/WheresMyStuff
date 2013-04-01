@@ -1,125 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:android1="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/Black" >
+    android:background="@color/Black"
+     >
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
+      <RadioGroup
+          android:id="@+id/radioGroup"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal" 
+          android:checkedButton="@+id/lost_radio">
+
+    <RadioButton
+        android:id="@+id/lost_radio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:checkedButton="@+id/lost_radio"
-        android:orientation="horizontal"
-         >
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:textSize="12dp"
+        android:checked="true"
+       
+        android:text="Lost" />
 
-        <RadioButton
-            android:id="@+id/lost_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:checked="true"
-            android:text="Lost"
+    <RadioButton
+        android:id="@+id/donations_radio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Donations"
+       
+        android:textSize="12dp" />
+
+    <RadioButton
+        android:id="@+id/found_radio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       
+        android:text="Found"
+        android:textSize="12dp" />
+
+    <RadioButton
+        android:id="@+id/needed_radio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Needed"
          
-            android:textSize="12dp" />
+        android:textSize="12dp" />
+       </RadioGroup>
 
-        <RadioButton
-            android:id="@+id/donations_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Donations"
+      <Button
+          android:id="@+id/search_btn"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignRight="@+id/radioGroup"
+          android:layout_below="@+id/search_category"
+          android:onClick="search_btn"
+          android:text="Search" />
+
+      <ListView
+          android:id="@+id/list_of_many_items"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@+id/search_btn" >
+      </ListView>
+
+      <Spinner
+          android:id="@+id/search_by"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@+id/radioGroup"
+          android:prompt="@string/Search_by"
+          android:spinnerMode="dropdown"
+          android:visibility="visible" />
+
+      <Spinner
+          android:id="@+id/search_category"
+          android:layout_width="fill_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@+id/search_by"
+          android:prompt="@string/refine_search"
+          android:spinnerMode="dropdown"
+          android:visibility="visible" />
       
-            android:textSize="12dp" />
-
-        <RadioButton
-            android:id="@+id/found_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Found"
-          
-            android:textSize="12dp" />
-
-        <RadioButton
-            android:id="@+id/needed_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Needed"
-         
-            android:textSize="12dp" />
-    </RadioGroup>
-
-    <Spinner
-        android:id="@+id/search_by"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/radioGroup"
-        android:prompt="@string/Search_by"
-        android:spinnerMode="dialog"
-        android:visibility="visible" />
-
-    <Spinner
-        android:id="@+id/search_category"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/search_by"
-        android:prompt="@string/refine_search"
-        android:spinnerMode="dialog"
-        android:visibility="gone" />
-
-    <RadioGroup
-        android1:id="@+id/status_radio"
-        android1:layout_width="wrap_content"
-        android1:layout_height="wrap_content"
-        android1:layout_alignParentLeft="true"
-        android1:layout_below="@+id/search_by"
-        android1:layout_marginLeft="21dp"
-        android1:layout_marginTop="24dp" 
-        android:visibility="gone">
-
-        <RadioButton
-            android1:id="@+id/on_radio"
-            android1:layout_width="wrap_content"
-            android1:layout_height="wrap_content"
-            android1:checked="false"
-            android:onClick="onRadioButtonStatusClicked"
-            android1:text="Open" />
-
-        <RadioButton
-            android1:id="@+id/off_radio"
-            android1:layout_width="wrap_content"
-            android1:layout_height="wrap_content"
-            android:onClick="onRadioButtonStatusClicked"
-            android1:text="Closed" />
-    </RadioGroup>
-
-    <DatePicker
-        android1:id="@+id/datePicker1"
-        android1:layout_width="wrap_content"
-        android1:layout_height="wrap_content"
-        android1:layout_alignParentLeft="true"
-        android1:layout_below="@+id/search_by"
-        android1:visibility="visible" />
-
-    <ListView
-        android1:id="@+id/all_items"
-        android1:layout_width="match_parent"
-        android1:layout_height="wrap_content"
-        android1:layout_alignParentLeft="true"
-        android1:layout_below="@+id/search_btn"
-        android1:layout_marginTop="30dp" >
-    </ListView>
-
-    <Button
-        android1:id="@+id/search_btn"
-        android1:layout_width="wrap_content"
-        android1:layout_height="wrap_content"
-        android1:layout_alignRight="@+id/radioGroup"
-        android1:layout_below="@+id/datePicker1"
-        android1:layout_marginTop="15dp"
-        android1:onClick="search_btn"
-        android1:text="Search" />
-
 </RelativeLayout>

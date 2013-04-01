@@ -65,13 +65,4 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 	    return rowView;
 	  }
 	
-	public int getSize(){
-		if(items!=null)
-		return items.length;
-		else{
-			return 0;
-		}
-	}
-		
-	
 }

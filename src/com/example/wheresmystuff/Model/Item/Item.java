@@ -25,7 +25,5 @@ public interface Item {
 
 	public String getDateAsString();
 
-	public Long getDate();
-
 	
 }

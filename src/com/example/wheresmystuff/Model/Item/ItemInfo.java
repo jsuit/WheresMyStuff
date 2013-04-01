@@ -9,16 +9,16 @@ import java.util.GregorianCalendar;
 public class ItemInfo {
 
 	private String itemName, itemCategory, itemStatus, itemDescription, zip, street;
-	private long date;
+	private String date;
 	private int keepsake, misc, heirloom;
-	public ItemInfo(String itemName, int keepsake, int heirloom, int misc, String itemStatus, String itemDescription, String item_category, long date2, String zip, String street) {
+	public ItemInfo(String itemName, int keepsake, int heirloom, int misc, String itemStatus, String itemDescription, String item_category, String date, String zip, String street) {
 		
 		this.itemName = itemName;
 		this.itemCategory = item_category;
 		this.itemStatus = itemStatus;
 		this.itemDescription = itemDescription;
 		//lost, found, donations, or required
-		this.date = date2;
+		this.date = date;
 		this.keepsake = keepsake;
 		this.misc = misc;
 		this.heirloom=heirloom; 
@@ -89,7 +89,7 @@ public class ItemInfo {
 		return integer;
 	}
 	
-	public long getDate(){
+	public String getDate(){
 		return this.date;
 		
 	}
