@@ -16,19 +16,23 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
+import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.provider.CalendarContract.Calendars;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.DatePicker.OnDateChangedListener;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -136,6 +140,7 @@ public class DisplayAllItems extends Activity implements
 
 					@Override
 					public void onCheckedChanged(RadioGroup group, int checkedId) {
+						l_view.setAdapter(null);
 						RadioButton checkedRadioButton = (RadioButton) findViewById(checkedId);
 						search_criteria_radio = checkedRadioButton.getText()
 								.toString();
@@ -149,12 +154,14 @@ public class DisplayAllItems extends Activity implements
 
 					@Override
 					public void onCheckedChanged(RadioGroup group, int checkedId) {
+						
 						RadioButton checkedRadioButton = (RadioButton) findViewById(checkedId);
 						refined_search = checkedRadioButton.getText()
 								.toString();
 						date = false;
 						category = false;
 						status = true;
+						
 
 					}
 				});
@@ -165,7 +172,7 @@ public class DisplayAllItems extends Activity implements
 
 		if (((RadioButton) v).isChecked()) {
 			refined_search = ((RadioButton) v).getText().toString();
-			status_text.setText(refined_search);
+			
 		}
 
 	}
@@ -247,19 +254,22 @@ public class DisplayAllItems extends Activity implements
 			long arg3) {
 
 		if (parent.getId() == R.id.search_by) {
-
+			l_view.setAdapter(null);
 			search_criteria = parent.getItemAtPosition(pos).toString();
 			presenter.getCriteria(search_criteria);
 			// display next spinner if needed
 			presenter.displayCategory();
+			
 
 		}
 
 		else if (parent.getId() == R.id.search_category) {
+			l_view.setAdapter(null);
 			date = false;
 			category = true;
 			status = false;
 			refined_search = parent.getItemAtPosition(pos).toString();
+			
 		}
 
 	}
@@ -271,10 +281,12 @@ public class DisplayAllItems extends Activity implements
 	}
 
 	public void search_btn(View v) {
-
+		l_view.setAdapter(null);
+		if(refined_search.compareTo("Open") == 0 || "Closed".compareTo(refined_search)==0)
+			status_text.setText(refined_search);
 		presenter.search(presenter.check(search_criteria_radio,
 				search_criteria, refined_search), date, category, status);
-
+		
 		// startActivity(i);
 		RadioButton rb = (RadioButton) findViewById(R.id.off_radio);
 		RadioButton rb2 = (RadioButton) findViewById(R.id.on_radio);
@@ -299,6 +311,7 @@ public class DisplayAllItems extends Activity implements
 	@Override
 	public void makeRadioInvisible() {
 		// TODO Auto-generated method stub
+		
 		status_radio.setVisibility(View.GONE);
 		status_text.setVisibility(View.GONE);
 
@@ -307,6 +320,7 @@ public class DisplayAllItems extends Activity implements
 	@Override
 	public void makeRadioVisible() {
 		// TODO Auto-generated method stub
+		
 		status_radio.setVisibility(View.VISIBLE);
 		status_text.setVisibility(View.VISIBLE);
 	}

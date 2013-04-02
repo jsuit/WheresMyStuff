@@ -1,20 +1,14 @@
 package com.example.wheresmystuff.Presenter;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 import android.database.Cursor;
-import android.text.format.DateFormat;
 
 import com.example.wheresmystuff.DB_Helper;
 import com.example.wheresmystuff.Model.IModel;
 import com.example.wheresmystuff.Model.Item.Item;
 import com.example.wheresmystuff.Model.Item.LostItem;
-import com.example.wheresmystuff.View.DisplayItems;
-import com.example.wheresmystuff.View.IItemView;
 import com.example.wheresmystuff.View.IItemView2;
 import com.example.wheresmystuff.validation.CheckDisplayAll;
 
