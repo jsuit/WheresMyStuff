@@ -1,43 +1,30 @@
 package com.example.wheresmystuff.View;
 
-import java.sql.Timestamp;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+
+import android.app.Activity;
+import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.example.wheresmystuff.R;
 import com.example.wheresmystuff.Adapter.ItemAdapter;
 import com.example.wheresmystuff.Model.DB;
 import com.example.wheresmystuff.Model.Item.Item;
 import com.example.wheresmystuff.Presenter.advancedSearchPresenter;
-
-import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.DatePickerDialog.OnDateSetListener;
-import android.app.Dialog;
-import android.app.ListActivity;
-import android.content.Context;
-import android.content.Intent;
-import android.database.DataSetObserver;
-import android.os.Bundle;
-import android.provider.CalendarContract.Calendars;
-import android.support.v4.app.DialogFragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.DatePicker.OnDateChangedListener;
-import android.widget.ListAdapter;
-import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 public class DisplayAllItems extends Activity implements
 		OnItemSelectedListener, IItemView2 {

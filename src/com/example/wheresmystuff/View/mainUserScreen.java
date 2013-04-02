@@ -91,7 +91,16 @@ public class mainUserScreen extends Activity implements IMyProfilePage{
 		Log.d("Lock/Unlock screen", "RemoveUser clicked");
 	}
 	
+	public void ButtonClick(View v){
+		
+	}
+	
+	public void yourContacts(View v){
+		
+	}	
+		
 	public void advanced_search(View v){
+	
 		Intent i = new Intent(this, DisplayAllItems.class);
 		startActivity(i);
 		Log.d("displayallitems clicked", "display all items");
