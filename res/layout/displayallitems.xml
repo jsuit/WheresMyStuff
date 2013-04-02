@@ -48,21 +48,13 @@
         android:textSize="12dp" />
        </RadioGroup>
 
-      <Button
-          android:id="@+id/search_btn"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignRight="@+id/radioGroup"
-          android:layout_below="@+id/search_category"
-          android:onClick="search_btn"
-          android:text="Search" />
-
       <ListView
           android:id="@+id/list_of_many_items"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_alignParentLeft="true"
-          android:layout_below="@+id/search_btn" >
+          android:layout_below="@+id/search_btn"
+          android:visibility="visible" >
       </ListView>
 
       <Spinner
@@ -75,6 +67,61 @@
           android:spinnerMode="dropdown"
           android:visibility="visible" />
 
+      <Button
+          android:id="@+id/date_btn"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_above="@+id/list_of_many_items"
+          android:layout_alignParentLeft="true"
+          android:onClick="datePicker"
+          android:visibility="visible"
+          android:text="Date" />
+      
+      <RadioGroup
+          android:id="@+id/status_radio"
+          android:layout_width="wrap_content"
+         
+          android:layout_height="wrap_content"
+       
+          android:layout_alignParentLeft="true"
+          android:layout_below="@+id/search_by"
+          android:layout_marginLeft="21dp"
+          android:layout_marginTop="24dp"
+          android:visibility="gone" 
+          android:orientation="horizontal">
+
+      <RadioButton
+          android:id="@+id/on_radio"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignBaseline="@+id/search_btn"
+          android:layout_alignBottom="@+id/search_btn"
+          android:layout_alignParentLeft="true"
+          android:checked="false"
+          android:onClick="onRadioButtonStatusClicked"
+          android:text="Open" />
+
+      <RadioButton
+          android:id="@+id/off_radio"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignBaseline="@+id/on_radio"
+          android:layout_alignBottom="@+id/on_radio"
+          android:layout_toRightOf="@+id/on_radio"
+          android:onClick="onRadioButtonStatusClicked"
+          android:text="Closed" />
+      
+      </RadioGroup>
+
+      <Button
+          android:id="@+id/search_btn"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:layout_below="@+id/search_category"
+          android:onClick="search_btn"
+          android:text="Search" />
+
       <Spinner
           android:id="@+id/search_category"
           android:layout_width="fill_parent"
@@ -84,5 +131,16 @@
           android:prompt="@string/refine_search"
           android:spinnerMode="dropdown"
           android:visibility="visible" />
+
+      <TextView
+          android:id="@+id/OpenClosed"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignBottom="@+id/search_btn"
+          android:layout_below="@+id/search_category"
+          android:layout_centerHorizontal="true"
+          android:text="Open"
+          android:textAppearance="?android:attr/textAppearanceLarge"
+          android:visibility="gone" />
       
 </RelativeLayout>

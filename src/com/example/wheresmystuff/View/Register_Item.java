@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Gravity;
@@ -139,18 +140,12 @@ public class Register_Item extends Activity implements IItemView, OnItemSelected
 			if(heirlooms.isChecked()) heir = 1;
 			int m = 0;
 			if(misc.isChecked()) m = 1;
-			Calendar cal = new GregorianCalendar();
-			int year = cal.get(Calendar.YEAR);
-			int month = cal.get(Calendar.MONTH);
-			int day = cal.get(Calendar.DAY_OF_MONTH);
-			int hours = cal.get(Calendar.HOUR);
-			int min = cal.get(Calendar.MINUTE);
-			int seconds = cal.get(Calendar.SECOND);
-			String date = year+"-"+month+"-"+day+" "+hours+":"+min+":"+seconds;
+			long currentTime = System.currentTimeMillis();
+			
 			
 			Log.d("saveLostItem", "Got the goods; now to save the item");
 			//saves also
-			my_presenter.makeAnItem(name, category, "open", description, date, zip, street, keep, heir, m);
+			my_presenter.makeAnItem(name, category, "Open", description, currentTime, zip, street, keep, heir, m);
 
 			Log.d("saveLostItemDone", "saved the item");		
 	}

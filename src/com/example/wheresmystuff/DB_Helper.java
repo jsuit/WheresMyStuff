@@ -34,7 +34,7 @@ public class DB_Helper extends SQLiteOpenHelper {
 	public static final String ITEM_STREET = "item_street";
 	public static final String ITEM_CATEGORY = "item_category";
 	public static final String ITEM_DATE = "item_date";
-	public static final String ITEM_KEEPSAKE = "item_keepsake";
+	public static final String ITEM_KEEPSAKE = "item_keepsakes";
 	public static final String ITEM_HEIRLOOM = "item_heirloom";
 	public static final String ITEM_MISC = "item_misc";
 	public static final String CREATE_ITEM_DB = "CREATE TABLE "
