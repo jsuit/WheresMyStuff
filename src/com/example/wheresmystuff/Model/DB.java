@@ -503,14 +503,30 @@ public class DB implements IModel {
 		// TODO Auto-generated method stub
 
 	}
-	
+	@Override
+	public Cursor searchByItemName( String lost_etc_categories, String [] name_location){
+		//first member in itemname should be the name, second the zip
+		
+		
+		Cursor c = database.query(DB_Helper.ITEM_TABLE, null,DB_Helper.ITEM_CATEGORY + "=? AND " +
+				DB_Helper.ITEM_NAME+"=? AND " + DB_Helper.ITEM_ZIP + "=?", new String[] { lost_etc_categories, name_location[0], name_location[1] },
+				null, null, DB_Helper.ITEM_NAME + " ASC");
+		c.moveToFirst();
+		return c;
+	}
+	@Override
 	public Cursor searchByItemName( String lost_etc_categories, String itemName){
+		//first member in itemname should be the name, second the zip
 		
 		
 		Cursor c = database.query(DB_Helper.ITEM_TABLE, null,DB_Helper.ITEM_CATEGORY + "=? AND " +
 				DB_Helper.ITEM_NAME+"=?", new String[] { lost_etc_categories, itemName },
 				null, null, DB_Helper.ITEM_NAME + " ASC");
-		c.moveToFirst();
+		if(!c.moveToFirst()){
+			c = database.query(DB_Helper.ITEM_TABLE, null,DB_Helper.ITEM_CATEGORY + "=? AND " +
+					DB_Helper.ITEM_ZIP +"=?", new String[] { lost_etc_categories, itemName },
+					null, null, DB_Helper.ITEM_NAME + " ASC");
+		}
 		return c;
 	}
 

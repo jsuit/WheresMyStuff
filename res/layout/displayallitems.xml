@@ -48,14 +48,7 @@
         android:textSize="12dp" />
        </RadioGroup>
 
-      <ListView
-          android:id="@+id/list_of_many_items"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_below="@+id/search_btn"
-          android:visibility="visible" >
-      </ListView>
+      
 
       <Spinner
           android:id="@+id/search_by"
@@ -88,20 +81,6 @@
           android:onClick="search_btn"
           android:text="Search" />
 
-      <AutoCompleteTextView
-          android:id="@+id/autoCompleteTextView1"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_above="@+id/list_of_many_items"
-          android:layout_alignParentRight="true"
-          android:ems="10"
-          android:hint="Name"
-          android:visibility="gone"
-          android:textColor="@color/Black" >
-          
-          <requestFocus />
-      </AutoCompleteTextView>
-
       <Button
           android:id="@+id/date_btn"
           android:layout_width="wrap_content"
@@ -119,7 +98,7 @@
           android:layout_alignRight="@+id/radioGroup"
           android:layout_alignTop="@+id/search_btn"
           android:orientation="horizontal"
-          android:visibility="visible" >
+          android:visibility="gone" >
 
           <RadioButton
               android:id="@+id/on_radio"
@@ -142,5 +121,41 @@
               android:onClick="onRadioButtonStatusClicked"
               android:text="Closed" />
       </RadioGroup>
+
+      <AutoCompleteTextView
+          android:id="@+id/autoCompleteTextView1"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignBaseline="@+id/search_btn"
+          android:layout_alignBottom="@+id/search_btn"
+          android:layout_alignParentRight="true"
+          android:ems="10"
+          android:hint="Name"
+          android:textColor="@color/Black"
+          android:visibility="visible" />
+
+      <AutoCompleteTextView
+          android:id="@+id/zip"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:layout_below="@+id/autoCompleteTextView1"
+          android:ems="10"
+          android:hint="Zip"
+          android:visibility="gone"
+          android:text="" >
+
+          <requestFocus />
+      </AutoCompleteTextView>
+      
+      <ListView
+          android:id="@+id/list_of_many_items"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_alignParentLeft="true"
+          android:layout_below="@+id/search_btn"
+          android:visibility="visible"
+          android:layout_marginTop="30dp" >
+      </ListView>
       
 </RelativeLayout>

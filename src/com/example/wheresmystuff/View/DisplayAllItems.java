@@ -52,8 +52,8 @@ public class DisplayAllItems extends Activity implements
 	private boolean item_name = false;
 	private boolean item_location = false;
 	private ListView l_view;
-	ItemAdapter adapter;
-
+    private	ItemAdapter adapter;
+    private AutoCompleteTextView zip_code;
 	private OnDateSetListener date_listener;
 	private AutoCompleteTextView autotext;
 
@@ -111,7 +111,7 @@ public class DisplayAllItems extends Activity implements
 
 		l_view = (ListView) findViewById(R.id.list_of_many_items);
 
-		
+		zip_code = (AutoCompleteTextView) findViewById(R.id.zip);
 		
 
 	}
@@ -187,8 +187,7 @@ public class DisplayAllItems extends Activity implements
 	public void setAdapter() {
 		adapter = new ItemAdapter(this, items);
 		l_view.setAdapter(adapter);
-		adapter.notifyDataSetChanged();
-		// l_view.setAdapter(adapter);
+		
 
 	}
 
@@ -293,17 +292,12 @@ public class DisplayAllItems extends Activity implements
 
 	public void search_btn(View v) {
 		l_view.setAdapter(null);
-		
-	//	if (refined_search.compareTo("Open") == 0
-		//		|| "Closed".compareTo(refined_search) == 0)
-			
 
 		presenter.search(presenter.check(search_criteria_radio,
 				search_criteria, refined_search), date, category, status);
 
-		// startActivity(i);
-		RadioButton rb = (RadioButton) findViewById(R.id.off_radio);
-		RadioButton rb2 = (RadioButton) findViewById(R.id.on_radio);
+		
+		
 		
 
 	}
@@ -345,15 +339,33 @@ public class DisplayAllItems extends Activity implements
 		return cal.getTimeInMillis();
 
 	}
+	
+	public void makeNameVisible(){
+		autotext.setVisibility(View.VISIBLE);
+	}
+	
+	public void makeZipVisible(){
+		zip_code.setVisibility(View.VISIBLE);
+	}
 	@Override
 	public void makeAutoCompleteTextViewVisible() {
-		autotext.setVisibility(View.VISIBLE);
+		makeNameVisible();
+		makeZipVisible();
+		
 	}
 	@Override
 	public void makeAutoCompleteTextViewInvisible() {
+		makeNameInVisible();
+		makeZipInVisible();
+	}
+	@Override
+	public void makeNameInVisible(){
 		autotext.setVisibility(View.GONE);
 	}
-
+	@Override
+	public void makeZipInVisible(){
+		zip_code.setVisibility(View.GONE);
+	}
 
 	@Override
 	public void setHint(String string) {
@@ -363,14 +375,10 @@ public class DisplayAllItems extends Activity implements
 	}
 
 	@Override
-	public String getNameLocation() {
-		if(autotext.getText() == null){
-			notify_of_error("Error", "Please input Data into text field");
-			return null;
-		}else{
-			
-		return autotext.getText().toString();
-		}
+	public String [] getNameLocation() {
+		
+		String [] array = {autotext.getText().toString(), zip_code.getText().toString()};
+		return array;
 	}
 
 	@Override
@@ -378,5 +386,7 @@ public class DisplayAllItems extends Activity implements
 		// TODO Auto-generated method stub
 		autotext.setText("");
 	}
+
+	
 
 }

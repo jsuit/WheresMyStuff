@@ -11,6 +11,7 @@ import com.example.wheresmystuff.Model.Item.Item;
 import com.example.wheresmystuff.Model.Item.LostItem;
 import com.example.wheresmystuff.View.IItemView2;
 import com.example.wheresmystuff.validation.CheckDisplayAll;
+import com.example.wheresmystuff.validation.CheckNameLocation;
 
 public class advancedSearchPresenter {
 
@@ -71,16 +72,9 @@ public class advancedSearchPresenter {
 			myView.setTextToNull();
 			myView.setHint("Item Name");
 			myView.makeAutoCompleteTextViewVisible();
-		}else if("location".compareTo(criteria) == 0){
-			myView.makeDatePickerInvisible();
-			myView.makeInvisibleSpinner();
-			myView.makeRadioInvisible();
-			myView.setTextToNull();
-			myView.setHint("Zip");
-			myView.makeAutoCompleteTextViewVisible();
 		}
-
 	}
+
 
 	/**
 	 * check to make sure we have the right amount of info. param:
@@ -108,6 +102,12 @@ public class advancedSearchPresenter {
 				}
 				return false;
 			}
+
+			@Override
+			public String name_location() {
+				// TODO Auto-generated method stub
+				return null;
+			}
 		};
 
 		if (checkObject.check()) {
@@ -132,12 +132,18 @@ public class advancedSearchPresenter {
 			c= myModel.searchByDate(lost_etc_categories, refined_search);
 		else if (category) {
 			if("item name".compareTo(criteria) == 0){
-				c = myModel.searchByItemName(lost_etc_categories, myView.getNameLocation());
+				String [] array = myView.getNameLocation();
+				CheckDisplayAll check = new CheckNameLocation(array);
+				if(check.check())
+				
+					c = myModel.searchByItemName(lost_etc_categories, array);
+				else{
+					String str = check.name_location();
+					c = myModel.searchByItemName(lost_etc_categories, str);
+				}
+			}else{
+				c= myModel.searchByCategory(lost_etc_categories, refined_search);
 			}
-			else if("location".compareTo(criteria) == 0){
-				c = myModel.searchByZip(lost_etc_categories, myView.getNameLocation());
-			}else
-			c= myModel.searchByCategory(lost_etc_categories, refined_search);
 		} else if (status) {
 			c= myModel.searchByStatus(lost_etc_categories, refined_search);	
 		}

@@ -17,16 +17,25 @@ public interface IItemView2 extends IItemView {
 	Long getDate();
 
 	public void setAdapter();
-	public void makeAutoCompleteTextViewVisible() ;
-	
+
+	public void makeAutoCompleteTextViewVisible();
 
 	public void setHint(String string);
 
 	public void makeAutoCompleteTextViewInvisible();
 
-	public String getNameLocation();
+	public String[] getNameLocation();
 
 	public void setTextToNull();
 
+	public void makeNameInVisible();
+
+	public void makeNameVisible();
+
+	public void makeZipVisible();
+
+	public void makeZipInVisible();
+
 	
+
 }
