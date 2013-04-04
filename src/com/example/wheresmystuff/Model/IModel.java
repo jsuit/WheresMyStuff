@@ -70,6 +70,10 @@ public interface IModel {
 	long saveItem(String name, String description, String status, int keep,
 			int heir, int misc, Long date, String curUser, String street,
 			String zip, String type);
+	Cursor searchByItemName(String lost_etc_categories, String itemName);
+	;
+	Cursor searchByZip(String lost_etc_categories, String refined_search);
+	
 	
 	
 

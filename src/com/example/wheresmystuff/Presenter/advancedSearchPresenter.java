@@ -53,14 +53,31 @@ public class advancedSearchPresenter {
 			myView.makeSpinnerVisible();
 			myView.makeDatePickerInvisible();
 			myView.makeRadioInvisible();
+			myView.makeAutoCompleteTextViewInvisible();
 		} else if ("date".compareTo(criteria) == 0) {
 			myView.makeInvisibleSpinner();
 			myView.makeDatePickerVisible();
 			myView.makeRadioInvisible();
+			myView.makeAutoCompleteTextViewInvisible();
 		} else if ("status".compareTo(criteria) == 0) {
 			myView.makeDatePickerInvisible();
 			myView.makeInvisibleSpinner();
 			myView.makeRadioVisible();
+			myView.makeAutoCompleteTextViewInvisible();
+		}else if("item name".compareTo(criteria) == 0){
+			myView.makeDatePickerInvisible();
+			myView.makeInvisibleSpinner();
+			myView.makeRadioInvisible();
+			myView.setTextToNull();
+			myView.setHint("Item Name");
+			myView.makeAutoCompleteTextViewVisible();
+		}else if("location".compareTo(criteria) == 0){
+			myView.makeDatePickerInvisible();
+			myView.makeInvisibleSpinner();
+			myView.makeRadioInvisible();
+			myView.setTextToNull();
+			myView.setHint("Zip");
+			myView.makeAutoCompleteTextViewVisible();
 		}
 
 	}
@@ -103,7 +120,7 @@ public class advancedSearchPresenter {
 		}
 	}
 
-	@SuppressWarnings("resource")
+	
 	public void search(boolean proceed, boolean date, boolean category,
 			boolean status) {
 		// TODO Auto-generated method stub
@@ -114,11 +131,15 @@ public class advancedSearchPresenter {
 		if (date)
 			c= myModel.searchByDate(lost_etc_categories, refined_search);
 		else if (category) {
+			if("item name".compareTo(criteria) == 0){
+				c = myModel.searchByItemName(lost_etc_categories, myView.getNameLocation());
+			}
+			else if("location".compareTo(criteria) == 0){
+				c = myModel.searchByZip(lost_etc_categories, myView.getNameLocation());
+			}else
 			c= myModel.searchByCategory(lost_etc_categories, refined_search);
 		} else if (status) {
-			c= myModel.searchByStatus(lost_etc_categories, refined_search);
-			
-
+			c= myModel.searchByStatus(lost_etc_categories, refined_search);	
 		}
 
 		myView.setItem(toItem(c));
@@ -158,6 +179,7 @@ public class advancedSearchPresenter {
 				c.moveToNext();
 			}
 		int length = array.size();
+		
 		Item[] a_item = new Item[length];
 		a_item = array.toArray(a_item);
 

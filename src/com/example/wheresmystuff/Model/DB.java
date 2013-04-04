@@ -503,6 +503,28 @@ public class DB implements IModel {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public Cursor searchByItemName( String lost_etc_categories, String itemName){
+		
+		
+		Cursor c = database.query(DB_Helper.ITEM_TABLE, null,DB_Helper.ITEM_CATEGORY + "=? AND " +
+				DB_Helper.ITEM_NAME+"=?", new String[] { lost_etc_categories, itemName },
+				null, null, DB_Helper.ITEM_NAME + " ASC");
+		c.moveToFirst();
+		return c;
+	}
+
+	@Override
+	public Cursor searchByZip(String lost_etc_categories,
+			String refined_search) {
+		// TODO Auto-generated method stub
+		
+		Cursor c = database.query(DB_Helper.ITEM_TABLE, null,DB_Helper.ITEM_CATEGORY + "=? AND " +
+				DB_Helper.ITEM_ZIP +"=?", new String[] { lost_etc_categories, refined_search },
+				null, null, DB_Helper.ITEM_NAME + " ASC");
+		return c;
+		
+	}
 
 	
 

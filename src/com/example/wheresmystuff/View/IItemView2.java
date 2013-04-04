@@ -17,4 +17,16 @@ public interface IItemView2 extends IItemView {
 	Long getDate();
 
 	public void setAdapter();
+	public void makeAutoCompleteTextViewVisible() ;
+	
+
+	public void setHint(String string);
+
+	public void makeAutoCompleteTextViewInvisible();
+
+	public String getNameLocation();
+
+	public void setTextToNull();
+
+	
 }

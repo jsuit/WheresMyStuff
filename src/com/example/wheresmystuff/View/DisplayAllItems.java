@@ -5,13 +5,17 @@ import java.util.GregorianCalendar;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
@@ -45,19 +49,24 @@ public class DisplayAllItems extends Activity implements
 	private boolean date = true;
 	private boolean category = false;
 	private boolean status = false;
+	private boolean item_name = false;
+	private boolean item_location = false;
 	private ListView l_view;
 	ItemAdapter adapter;
-	TextView status_text;
+
 	private OnDateSetListener date_listener;
+	private AutoCompleteTextView autotext;
+
 	public void onCreate(Bundle savedInstanceState) {
+
 		search_criteria_radio = "Lost";
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.displayallitems);
+
 		
-		status_text = (TextView) findViewById(R.id.OpenClosed);
 		spinner = (Spinner) findViewById(R.id.search_by);
 		spinner2 = (Spinner) findViewById(R.id.search_category);
-
+		autotext = (AutoCompleteTextView) findViewById(R.id.autoCompleteTextView1);
 		ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_spinner_dropdown_item, getResources()
 						.getStringArray(R.array.SearchByList));
@@ -80,10 +89,7 @@ public class DisplayAllItems extends Activity implements
 		setUPPickers();
 		setUpRadios();
 
-		
 		date_listener = new OnDateSetListener() {
-
-			
 
 			@Override
 			public void onDateSet(DatePicker view, int myear, int monthOfYear,
@@ -96,24 +102,27 @@ public class DisplayAllItems extends Activity implements
 				category = false;
 				status = false;
 				refined_search = getDate().toString();
-				
+
 			}
 
 		};
-		
+
 		presenter = new advancedSearchPresenter(new DB(this), this);
 
 		l_view = (ListView) findViewById(R.id.list_of_many_items);
-	
+
+		
+		
+
 	}
+
 	private void setUPPickers() {
 		// TODO Auto-generated method stub
 		Calendar c = new GregorianCalendar();
 		year = c.get(Calendar.YEAR);
 		month = c.get(Calendar.MONTH);
 		day = c.get(Calendar.DAY_OF_MONTH);
-		
-		
+
 		// DatePickerDialog.OnDateSetListener
 
 		refined_search = getDate().toString();
@@ -141,14 +150,13 @@ public class DisplayAllItems extends Activity implements
 
 					@Override
 					public void onCheckedChanged(RadioGroup group, int checkedId) {
-						
+
 						RadioButton checkedRadioButton = (RadioButton) findViewById(checkedId);
 						refined_search = checkedRadioButton.getText()
 								.toString();
 						date = false;
 						category = false;
 						status = true;
-						
 
 					}
 				});
@@ -159,7 +167,7 @@ public class DisplayAllItems extends Activity implements
 
 		if (((RadioButton) v).isChecked()) {
 			refined_search = ((RadioButton) v).getText().toString();
-			
+
 		}
 
 	}
@@ -188,7 +196,8 @@ public class DisplayAllItems extends Activity implements
 	 * Button handler for date picker
 	 */
 	public void datePicker(View v) {
-		DatePickerDialog date_picker = new DatePickerDialog(this, date_listener, year, month, day);
+		DatePickerDialog date_picker = new DatePickerDialog(this,
+				date_listener, year, month, day);
 		date_picker.show();
 	}
 
@@ -207,6 +216,20 @@ public class DisplayAllItems extends Activity implements
 	@Override
 	public void notify_of_error(String error_message, String title) {
 		// TODO Auto-generated method stub
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setMessage(error_message);
+		builder.setTitle(title);
+		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+
+			      public void onClick(DialogInterface dialog, int id) {
+			    	  return;
+
+			         }
+
+			     });
+		
+		builder.create().show();
 
 	}
 
@@ -243,20 +266,21 @@ public class DisplayAllItems extends Activity implements
 		if (parent.getId() == R.id.search_by) {
 			l_view.setAdapter(null);
 			search_criteria = parent.getItemAtPosition(pos).toString();
+			Log.d("Search_criteria is", search_criteria);
 			presenter.getCriteria(search_criteria);
 			// display next spinner if needed
 			presenter.displayCategory();
-			
 
 		}
 
 		else if (parent.getId() == R.id.search_category) {
 			l_view.setAdapter(null);
+			
 			date = false;
 			category = true;
 			status = false;
 			refined_search = parent.getItemAtPosition(pos).toString();
-			
+
 		}
 
 	}
@@ -269,16 +293,18 @@ public class DisplayAllItems extends Activity implements
 
 	public void search_btn(View v) {
 		l_view.setAdapter(null);
-		if(refined_search.compareTo("Open") == 0 || "Closed".compareTo(refined_search)==0)
-			status_text.setText(refined_search);
+		
+	//	if (refined_search.compareTo("Open") == 0
+		//		|| "Closed".compareTo(refined_search) == 0)
+			
+
 		presenter.search(presenter.check(search_criteria_radio,
 				search_criteria, refined_search), date, category, status);
-		
+
 		// startActivity(i);
 		RadioButton rb = (RadioButton) findViewById(R.id.off_radio);
 		RadioButton rb2 = (RadioButton) findViewById(R.id.on_radio);
-		rb.setChecked(false);
-		rb2.setChecked(false);
+		
 
 	}
 
@@ -298,18 +324,18 @@ public class DisplayAllItems extends Activity implements
 	@Override
 	public void makeRadioInvisible() {
 		// TODO Auto-generated method stub
-		
+
 		status_radio.setVisibility(View.GONE);
-		status_text.setVisibility(View.GONE);
+		
 
 	}
 
 	@Override
 	public void makeRadioVisible() {
 		// TODO Auto-generated method stub
-		
+
 		status_radio.setVisibility(View.VISIBLE);
-		status_text.setVisibility(View.VISIBLE);
+		
 	}
 
 	@Override
@@ -319,7 +345,38 @@ public class DisplayAllItems extends Activity implements
 		return cal.getTimeInMillis();
 
 	}
+	@Override
+	public void makeAutoCompleteTextViewVisible() {
+		autotext.setVisibility(View.VISIBLE);
+	}
+	@Override
+	public void makeAutoCompleteTextViewInvisible() {
+		autotext.setVisibility(View.GONE);
+	}
 
-	
+
+	@Override
+	public void setHint(String string) {
+		// TODO Auto-generated method stub
+		autotext.setHint(string);
+		
+	}
+
+	@Override
+	public String getNameLocation() {
+		if(autotext.getText() == null){
+			notify_of_error("Error", "Please input Data into text field");
+			return null;
+		}else{
+			
+		return autotext.getText().toString();
+		}
+	}
+
+	@Override
+	public void setTextToNull() {
+		// TODO Auto-generated method stub
+		autotext.setText("");
+	}
 
 }
