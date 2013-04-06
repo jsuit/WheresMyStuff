@@ -1,5 +1,9 @@
 package com.example.wheresmystuff.Adapter;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
 import com.example.wheresmystuff.R;
 import com.example.wheresmystuff.Model.Item.Item;
 
@@ -19,11 +23,12 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 	private final Context context;
 	/** the people to show in the list */
 	private final Item[] items;
-	
+	Calendar cal;
 	public ItemAdapter(Context ctx, Item[] i) {
 		super(ctx, R.layout.item_row, i);
 		context = ctx;
 		items = i;
+		cal = new GregorianCalendar();
 	}
 	
 	@Override
@@ -50,8 +55,11 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 	    SpannableString descr = new SpannableString("DESCRIPTION:  "+items[position].getItemDescription());
 	    descr.setSpan(new UnderlineSpan(), 0, label2.length(), 0);
 	    item_desrc.setText(descr);
-	    SpannableString date = new SpannableString("DATE ENTERED:  " +items[position].getDateAsString());
+	    cal.setTimeInMillis(items[position].getDateAsString());
+	    
+	    SpannableString date = new SpannableString("DATE ENTERED:  " + cal.getTime().toString());
 	    date.setSpan(new UnderlineSpan(), 0, label3.length(), 0);
+	 
 	    item_date.setText(date);
 	    SpannableString status = new SpannableString("STATUS:  " +items[position].getItemStatus());
 	    status.setSpan(new UnderlineSpan(), 0, label4.length(), 0);

@@ -54,6 +54,7 @@
         <item >Category</item>
         <item >Date</item>
         <item >Status</item>
+        <item >Item Name</item>
     </string-array>
         <string name="Search_by">"Search By: "</string>
         <string name="refine_search">Refine Search</string>

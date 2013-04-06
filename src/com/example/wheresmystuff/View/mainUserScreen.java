@@ -1,25 +1,20 @@
 package com.example.wheresmystuff.View;
 
-import com.example.wheresmystuff.R;
-import com.example.wheresmystuff.Model.DB;
-import com.example.wheresmystuff.Presenter.Register_Presenter;
-import com.example.wheresmystuff.Presenter.User_Screen_Presenter;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Layout;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
+
+import com.example.wheresmystuff.R;
+import com.example.wheresmystuff.Model.DB;
+import com.example.wheresmystuff.Presenter.User_Screen_Presenter;
 
 public class mainUserScreen extends Activity implements IMyProfilePage{
-
+ private User_Screen_Presenter presenter; 
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 	
@@ -29,7 +24,7 @@ public class mainUserScreen extends Activity implements IMyProfilePage{
 	protected void onResume(){
 		super.onResume();
 		setContentView(R.layout.activity_main_user_screen);	
-		User_Screen_Presenter presenter = new User_Screen_Presenter(this, new DB(this));
+		presenter = new User_Screen_Presenter(this, new DB(this));
 		presenter.checkAdmin();
 	}
 	
@@ -91,7 +86,18 @@ public class mainUserScreen extends Activity implements IMyProfilePage{
 		Log.d("Lock/Unlock screen", "RemoveUser clicked");
 	}
 	
+	public void ButtonClick(View v){
+		
+		
+		
+	}
+	
+	public void yourContacts(View v){
+		
+	}	
+		
 	public void advanced_search(View v){
+	
 		Intent i = new Intent(this, DisplayAllItems.class);
 		startActivity(i);
 		Log.d("displayallitems clicked", "display all items");
