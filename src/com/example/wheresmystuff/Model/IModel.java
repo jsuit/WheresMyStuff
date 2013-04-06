@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.example.wheresmystuff.Model.Item.Item;
 
+import android.database.Cursor;
 import android.database.SQLException;
 
 public interface IModel {
@@ -50,9 +51,7 @@ public interface IModel {
 
 	boolean isAdmin(String uid);
 	boolean find_password(String password, String uid);
-	long saveItem(String name, String description, String status, int i, int j,
-			int k, String date, String curUser, String street, String zip,
-			String category);
+	
 	Collection<String> getLockedAccounts();
 	void unlockAccount(String uid);
 	void removeAdmin(String uid);
@@ -64,6 +63,18 @@ public interface IModel {
 	List<String> getAccounts();
 
 	boolean find_email(String email, String uid);
+	Cursor searchByStatus(String lost_etc_categories, String refined_search);
+	Cursor searchByCategory(String lost_etc_categories, String refined_search);
+	Cursor searchByDate(String lost_etc_categories, String refined_search);
+	void search(String lost_etc_categories, String refined_search);
+	long saveItem(String name, String description, String status, int keep,
+			int heir, int misc, Long date, String curUser, String street,
+			String zip, String type);
+	Cursor searchByItemName(String lost_etc_categories, String[] strings);
+	;
+	Cursor searchByZip(String lost_etc_categories, String refined_search);
+	Cursor searchByItemName(String lost_etc_categories, String itemName);
+	
 	
 	
 

@@ -23,7 +23,7 @@ public interface Item {
 
 	public int[] kindofItem();
 
-	public String getDateAsString();
+	public Long getDateAsString();
 
 	
 }

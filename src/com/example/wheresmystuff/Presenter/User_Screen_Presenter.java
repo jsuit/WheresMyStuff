@@ -2,9 +2,14 @@ package com.example.wheresmystuff.Presenter;
 
 import java.util.ArrayList;
 
+import android.content.Intent;
+import android.database.Cursor;
+
 import com.example.wheresmystuff.Model.IModel;
+import com.example.wheresmystuff.View.DisplayAllItems;
 import com.example.wheresmystuff.View.ILoginView;
 import com.example.wheresmystuff.View.IMyProfilePage;
+import com.example.wheresmystuff.View.RemoveUser;
 
 
 public class User_Screen_Presenter {
@@ -27,6 +32,8 @@ public class User_Screen_Presenter {
 		}else myView.makeAdminButtonsInvisisble();
 		myModel.close();
 	}
+
+	
 	
 	
 	

@@ -37,7 +37,7 @@ public class AddItemPresenter {
 
 	
 	public void makeAnItem(String name, String category, String status,
-			String description, String date, String zip, String street,
+			String description, Long date, String zip, String street,
 			int keep, int heir, int m) {
 		// TODO Auto-generated method stub
 
@@ -59,9 +59,7 @@ public class AddItemPresenter {
 	public void confirmTheSave(Item i) {
 		// TODO Auto-generated method stub
 		myModel.open();
-		String name = i.getItemName();
-		String description = i.getItemDescription();
-		String status = i.getItemStatus();
+		
 		int[] array = i.kindofItem();
 
 		// ****Make validation classes******
@@ -70,11 +68,7 @@ public class AddItemPresenter {
 					"You must choose either a Heirloom, Keepsake, or Misc",
 					"Error");
 		} else {
-			String date = i.getDateAsString().toString();
-			String category = i.getItemCategory();
-			String curUser = myModel.getCurUser();
-			String zip = i.getZip();
-			String street = i.getStreet();
+			
 			myView.confirm("Are you sure?", "Confirm");
 		}
 		myModel.close();
@@ -86,7 +80,7 @@ public class AddItemPresenter {
 		String description = i.getItemDescription();
 		String status = i.getItemStatus();
 		int[] array = i.kindofItem();
-		String date = i.getDateAsString().toString();
+		Long date = i.getDateAsString();
 		String category = i.getItemCategory();
 		myModel.open();
 		String curUser = myModel.getCurUser();
