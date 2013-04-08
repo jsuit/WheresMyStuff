@@ -290,7 +290,7 @@ public class DB implements IModel {
 				DB_Helper.ITEM_HEIRLOOM, DB_Helper.ITEM_MISC };
 
 		ContentValues cv = new ContentValues();
-		cv.put(col[0], name);
+		cv.put(col[0], name.toLowerCase());
 		cv.put(col[1], status);
 		cv.put(col[2], description);
 		cv.put(col[3], type);
@@ -509,7 +509,7 @@ public class DB implements IModel {
 		
 		
 		Cursor c = database.query(DB_Helper.ITEM_TABLE, null,DB_Helper.ITEM_CATEGORY + "=? AND " +
-				DB_Helper.ITEM_NAME+"=? AND " + DB_Helper.ITEM_ZIP + "=?", new String[] { lost_etc_categories, name_location[0], name_location[1] },
+				DB_Helper.ITEM_NAME+"=? AND " + DB_Helper.ITEM_ZIP + "=?", new String[] { lost_etc_categories, name_location[0].toLowerCase(), name_location[1] },
 				null, null, DB_Helper.ITEM_NAME + " ASC");
 		c.moveToFirst();
 		return c;
@@ -520,7 +520,7 @@ public class DB implements IModel {
 		
 		
 		Cursor c = database.query(DB_Helper.ITEM_TABLE, null,DB_Helper.ITEM_CATEGORY + "=? AND " +
-				DB_Helper.ITEM_NAME+"=?", new String[] { lost_etc_categories, itemName },
+				DB_Helper.ITEM_NAME+"=?", new String[] { lost_etc_categories, itemName.toLowerCase() },
 				null, null, DB_Helper.ITEM_NAME + " ASC");
 		if(!c.moveToFirst()){
 			c = database.query(DB_Helper.ITEM_TABLE, null,DB_Helper.ITEM_CATEGORY + "=? AND " +
