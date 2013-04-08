@@ -134,8 +134,8 @@ public class advancedSearchPresenter {
 			if("item name".compareTo(criteria) == 0){
 				String [] array = myView.getNameLocation();
 				CheckDisplayAll check = new CheckNameLocation(array);
-				if(check.check())
 				
+				if(check.check())
 					c = myModel.searchByItemName(lost_etc_categories, array);
 				else{
 					String str = check.name_location();
