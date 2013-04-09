@@ -1,12 +1,15 @@
 package com.example.wheresmystuff.Model;
 
+
+/**
+* User Inteface. All the kind of users will extend this interface 
+* 
+*
+*/
+
+
 public interface User {
 
-	//No item class yet.
-	//public void add_n_items(Item item, int numberOfItems);
-	
-	//public void remove_n_items(Item item, int numberOfItems);
-	
 	public String getPassword();
 	
 	public int getLoginAttempts();

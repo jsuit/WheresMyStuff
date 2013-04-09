@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -23,6 +24,13 @@ import com.example.wheresmystuff.Model.Item.LostItem;
 
 public class DB implements IModel {
 
+	 /**
+     * Database class. This holds the actual database.
+     * 
+     * @param item the item to add to the buffer
+     */
+	
+	
 	private final static String TRUE = "1";
 	private final static String FALSE = "0";
 	private DB_Helper my_helper;
@@ -42,6 +50,12 @@ public class DB implements IModel {
 	}
 
 	@Override
+	
+	 /**
+     * Saves a person to the database.
+     * 
+     * @param User to save to database
+     */
 	public long addPerson(User p) {
 		ContentValues values = new ContentValues();
 
@@ -66,6 +80,12 @@ public class DB implements IModel {
 		return id;
 	}
 
+	
+	 /**
+     * user called admin is always an admin.
+     * 
+     * @param name of user, values of user to save
+     */
 	private ContentValues firstAdmin(String name, ContentValues values) {
 
 		if("admin".compareTo(name) == 0){
@@ -76,6 +96,12 @@ public class DB implements IModel {
 	}
 
 	@Override
+	 /**
+     * Method that is used during login. Want to know if there is a usr with the same password and id. If there is, return true; else 
+     * return false
+     * 
+     * @param user id of person and their password
+     */
 	public boolean findPerson(String uid, String password) {
 
 		String[] columns = new String[] {DB_Helper.KEY_NAME,
@@ -94,12 +120,7 @@ public class DB implements IModel {
 		return true;
 	}
 
-	@Override
-	public void removePerson(String id) {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 	@Override
 	public boolean find_uid(String uid) {
 
@@ -194,7 +215,7 @@ public class DB implements IModel {
 	public Item[] getItems(String current_user, String key) {
 		assert (key != null);
 		Cursor c = null;
-		String upper = key.toUpperCase();
+		String upper = key.toUpperCase(Locale.US);
 
 		if ("L".compareTo(upper) == 0) {
 			c = database.query(DB_Helper.ITEM_TABLE, null,
@@ -290,7 +311,7 @@ public class DB implements IModel {
 				DB_Helper.ITEM_HEIRLOOM, DB_Helper.ITEM_MISC };
 
 		ContentValues cv = new ContentValues();
-		cv.put(col[0], name.toLowerCase());
+		cv.put(col[0], name.toLowerCase(Locale.US));
 		cv.put(col[1], status);
 		cv.put(col[2], description);
 		cv.put(col[3], type);
@@ -402,6 +423,12 @@ public class DB implements IModel {
 		return value;
 	}
 	 @Override
+	 /**
+	     * Removes a user.
+	     * 
+	     * @param String uid of user to unlock
+	     *	@return returns number of items deleted + number of usrs deleted
+	     */
 	public int removeUser(String uid){
 		open();
 		String [] where = {uid};
@@ -448,16 +475,7 @@ public class DB implements IModel {
 		}
 	}
 
-	public void search(){
-
-	}
-
-	@Override
-	public void search(String lost_etc_categories, String refined_search) {
-		// TODO Auto-generated method stub
-
-
-	}
+	
 
 	@Override
 	public Cursor searchByDate(String lost_etc_categories, String refined_search) {
@@ -478,7 +496,7 @@ public class DB implements IModel {
 	public Cursor searchByCategory(String lost_etc_categories,
 			String refined_search) {
 
-		refined_search=refined_search.toLowerCase();
+		refined_search=refined_search.toLowerCase(Locale.US);
 		int value = "item_keepsakes".compareTo("item_"+refined_search);
 		String [] args = {lost_etc_categories,"1"};
 
@@ -509,7 +527,7 @@ public class DB implements IModel {
 		
 		
 		Cursor c = database.query(DB_Helper.ITEM_TABLE, null,DB_Helper.ITEM_CATEGORY + "=? AND " +
-				DB_Helper.ITEM_NAME+"=? AND " + DB_Helper.ITEM_ZIP + "=?", new String[] { lost_etc_categories, name_location[0].toLowerCase(), name_location[1] },
+				DB_Helper.ITEM_NAME+"=? AND " + DB_Helper.ITEM_ZIP + "=?", new String[] { lost_etc_categories, name_location[0].toLowerCase(Locale.US), name_location[1] },
 				null, null, DB_Helper.ITEM_NAME + " ASC");
 		c.moveToFirst();
 		return c;

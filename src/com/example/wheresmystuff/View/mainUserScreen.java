@@ -15,6 +15,7 @@ import com.example.wheresmystuff.Presenter.User_Screen_Presenter;
 
 public class mainUserScreen extends Activity implements IMyProfilePage{
  private User_Screen_Presenter presenter; 
+ 
 	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 	
@@ -27,6 +28,7 @@ public class mainUserScreen extends Activity implements IMyProfilePage{
 		presenter = new User_Screen_Presenter(this, new DB(this));
 		presenter.checkAdmin();
 	}
+	
 	
 	public void postItem(View post_button){
 		Intent i = new Intent(this, Register_Item.class);
