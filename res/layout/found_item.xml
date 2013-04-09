@@ -13,6 +13,7 @@
         android:paddingLeft="8dip"
         android:paddingBottom="4dip"
         android:textSize="18dip"
+        android:textIsSelectable="true"
         android:textStyle="bold" />
  
     <!-- To email -->
@@ -21,6 +22,7 @@
         android:layout_width="wrap_content"
         android:paddingLeft="8dip"
         android:paddingBottom="6dip"
+        android:textIsSelectable="true"
         android:textSize="15dip"
         android:layout_below="@id/subject"/>
  
@@ -29,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:textIsSelectable="true"
         android:padding="8dip"/>
  
 </RelativeLayout>

@@ -28,6 +28,7 @@ public class AddRemoveAdmin extends Activity implements ILoginView {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_remove_admin);
 		my_presenter = new AddAdminPresenter(this, new DB(this));
+		
 	}
 
 	@Override

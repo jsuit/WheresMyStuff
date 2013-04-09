@@ -2,6 +2,7 @@ package com.example.wheresmystuff.Presenter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import android.database.Cursor;
 
@@ -32,7 +33,7 @@ public class advancedSearchPresenter {
 
 	public void getCriteria(String criteria) {
 		this.criteria = criteria;
-		this.criteria = this.criteria.toLowerCase();
+		this.criteria = this.criteria.toLowerCase(Locale.US);
 
 	}
 

@@ -14,6 +14,12 @@ import android.widget.TextView;
 import com.example.wheresmystuff.R;
 
 public class UserAdapter extends ArrayAdapter<String> {
+	 /**
+     *	sets a row with the user's name.
+     * 
+     * @param item the item to add to the buffer
+     */
+	
 	/** The context for the adapter */
 	private final Context context;
 	/** the people to show in the list */

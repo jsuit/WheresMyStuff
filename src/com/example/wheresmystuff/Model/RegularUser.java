@@ -1,5 +1,11 @@
 package com.example.wheresmystuff.Model;
 
+/**
+* Reg User. 
+* Doesn't have admin priveleges. 
+* 
+*
+*/
 
 public class RegularUser implements User {
 
@@ -7,6 +13,14 @@ public class RegularUser implements User {
 	private boolean acc_status, admin_status;
 	private ContactInfo contact_info;
 	private int login = 0;
+	
+
+	 /**
+     * Constructor that takes in the information of the user.
+     * 
+     * @param email, name, password, phoneNum, zip, stret, int login attempts
+     */
+	
 	
 	public RegularUser(String email, String name, String password, String phoneNum, String zip, String street, int login_attempt) {
 		

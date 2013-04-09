@@ -18,6 +18,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * Adapter class that sets item info on a row
+ * 
+ * @param item the item to add to the buffer
+ */
+
+
 public class ItemAdapter extends ArrayAdapter<Item> {
 	/** The context for the adapter */
 	private final Context context;
@@ -32,6 +39,13 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 	}
 	
 	@Override
+	
+	 /**
+     * This method is overriden. But the user should see the name of item, description of item, date item was added, status of item; each on
+     * its own row. 
+     * 
+     * @param item the item to add to the buffer
+     */
 	  public View getView(int position, View convertView, ViewGroup parent) {
 		//Set up the view by creating the widgets out of the xml spec
 	    LayoutInflater inflater = (LayoutInflater) context
@@ -64,7 +78,7 @@ public class ItemAdapter extends ArrayAdapter<Item> {
 	    SpannableString status = new SpannableString("STATUS:  " +items[position].getItemStatus());
 	    status.setSpan(new UnderlineSpan(), 0, label4.length(), 0);
 	    item_status.setText(status);
-          Log.d("Adapter", "Set row for: " + position);
+        Log.d("Adapter", "Set row for: " + position);
           
 	    
 	    Log.d("Model", "Got row " + position);

@@ -4,7 +4,11 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
+/**
+ *  Class that opens up and closes the connection to the database. 
+ *   
+ * 
+ */
 public class DB_Helper extends SQLiteOpenHelper {
 	
 	public static final String KEY_ROW_ID = "id";
