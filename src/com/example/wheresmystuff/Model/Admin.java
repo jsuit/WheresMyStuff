@@ -13,14 +13,14 @@ package com.example.wheresmystuff.Model;
 
 public class Admin extends RegularUser {
 
-<<<<<<< HEAD
+
 	
 	 /**
      * Constructor that takes in all the information to make a User.
      * 
      * @param Strings: email, name, password, phoneNum, zip, street; int: login_attempts
      */
-=======
+
 	/**
 	 * Constructor that takes in all the information to make a User.
 	 * 
@@ -28,7 +28,7 @@ public class Admin extends RegularUser {
 	 *            : email, name, password, phoneNum, zip, street; int:
 	 *            login_attempts
 	 */
->>>>>>> experimental
+
 	public Admin(String email, String name, String password, String phoneNum,
 			String zip, String street, int login_attempt) {
 		super(email, name, password, phoneNum, zip, street, login_attempt);

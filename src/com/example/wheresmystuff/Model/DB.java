@@ -703,15 +703,15 @@ public class DB implements IModel {
 	public Cursor searchByCategory(String lost_etc_categories,
 			String refined_search) {
 
-<<<<<<< HEAD
+
 		refined_search=refined_search.toLowerCase(Locale.US);
 		int value = "item_keepsakes".compareTo("item_"+refined_search);
 		String [] args = {lost_etc_categories,"1"};
-=======
+
 		refined_search = refined_search.toLowerCase(Locale.US);
 		int value = "item_keepsakes".compareTo("item_" + refined_search);
 		String[] args = { lost_etc_categories, "1" };
->>>>>>> experimental
+
 
 		String sql = "SELECT * FROM " + DB_Helper.ITEM_TABLE + " WHERE "
 				+ DB_Helper.ITEM_CATEGORY + "=? AND " + "item_"
@@ -747,15 +747,6 @@ public class DB implements IModel {
 	}
 
 	@Override
-<<<<<<< HEAD
-	public Cursor searchByItemName( String lost_etc_categories, String [] name_location){
-		//first member in itemname should be the name, second the zip
-		
-		
-		Cursor c = database.query(DB_Helper.ITEM_TABLE, null,DB_Helper.ITEM_CATEGORY + "=? AND " +
-				DB_Helper.ITEM_NAME+"=? AND " + DB_Helper.ITEM_ZIP + "=?", new String[] { lost_etc_categories, name_location[0].toLowerCase(Locale.US), name_location[1] },
-				null, null, DB_Helper.ITEM_NAME + " ASC");
-=======
 	/**
 	 *Finds all items of a certain type (Lost, Found, Needed, Donations) by name and/or location of item 
 	 *First parameter tells us the type. Second parameter has name of item and/or location
@@ -763,6 +754,15 @@ public class DB implements IModel {
 	 * @param String lost_etc_categories, String [] name_location
 	 * @return Cursor
 	 */
+	public Cursor searchByItemName( String lost_etc_categories, String [] name_location){
+		//first member in itemname should be the name, second the zip
+		
+		
+		Cursor c = database.query(DB_Helper.ITEM_TABLE, null,DB_Helper.ITEM_CATEGORY + "=? AND " +
+				DB_Helper.ITEM_NAME+"=? AND " + DB_Helper.ITEM_ZIP + "=?", new String[] { lost_etc_categories, name_location[0].toLowerCase(Locale.US), name_location[1] },
+				null, null, DB_Helper.ITEM_NAME + " ASC");
+
+	
 	public Cursor searchByItemName(String lost_etc_categories,
 			String[] name_location) {
 		// first member in itemname should be the name, second the zip
