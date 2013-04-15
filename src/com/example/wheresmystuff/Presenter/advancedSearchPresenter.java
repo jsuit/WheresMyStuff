@@ -14,40 +14,51 @@ import com.example.wheresmystuff.View.IItemView2;
 import com.example.wheresmystuff.validation.CheckDisplayAll;
 import com.example.wheresmystuff.validation.CheckNameLocation;
 
+/**
+ * Class that searches and tells the UI how to display itself.
+ *
+ */
+
 public class advancedSearchPresenter {
 
+	//criteria is category, date, item name, etc.
 	private String criteria;
 	private final IModel myModel;
 	/** the view to display to */
 	private final IItemView2 myView;
 	private String current_user;
+	
 	private String refined_search;
 	private String kind;
 	private String lost_etc_categories;
 	private String status;
 
+	/**
+     * Constructor
+     * 
+     * @param myModel, view
+     *
+     */
 	public advancedSearchPresenter(IModel myModel, IItemView2 view) {
 		myView = view;
 		this.myModel = myModel;
 	}
 
+	/**
+     *  Criteria that determines what we are to search
+     * 
+     * @param String criteria
+     *	@return void
+     */
 	public void getCriteria(String criteria) {
 		this.criteria = criteria;
 		this.criteria = this.criteria.toLowerCase(Locale.US);
 
 	}
 
-	public void displayIfPossible() {
-		// TODO Auto-generated method stub
 
-	}
-
-	public void refineSearch(String category) {
-		// TODO Auto-generated method stub
-		// search for a specific category
-		refined_search = category;
-		// setListAdapter if search returns something
-	}
+	
+	
 
 	public void displayCategory() {
 		// TODO Auto-generated method stub

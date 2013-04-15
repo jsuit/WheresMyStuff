@@ -6,30 +6,22 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-
-
 import com.example.wheresmystuff.Model.User;
 
 public class LostItem implements Item {
 
 	private ItemInfo itemInfo;
 	private String user;
-	
-	
-	public LostItem(String itemName, String itemCategory, String itemStatus, String itemDescription, String user, long date,
-			int keepsake, int heirloom, int misc, String zip, String street) {
-		
-		itemInfo = new ItemInfo(itemName, keepsake, heirloom, misc, itemStatus, itemDescription, itemCategory, date, zip, street);
+
+	public LostItem(String itemName, String itemCategory, String itemStatus,
+			String itemDescription, String user, long date, int keepsake,
+			int heirloom, int misc, String zip, String street) {
+
+		itemInfo = new ItemInfo(itemName, keepsake, heirloom, misc, itemStatus,
+				itemDescription, itemCategory, date, zip, street);
 		this.user = user;
-		
+
 	}
-	
-	
-
-
-
-
-
 
 	@Override
 	public void setItemName(String newItemName) {
@@ -51,11 +43,11 @@ public class LostItem implements Item {
 		itemInfo.setItemStatus(newItemStatus);
 
 	}
-	
+
 	@Override
 	public void setItemDescription(String newItemDescription) {
 		itemInfo.setItemDescription(newItemDescription);
-		
+
 	}
 
 	@Override
@@ -75,42 +67,38 @@ public class LostItem implements Item {
 		// TODO Auto-generated method stub
 		return itemInfo.getItemStatus();
 	}
-	
+
 	@Override
 	public String getItemDescription() {
 		return itemInfo.getItemDescription();
-		
-	}
 
+	}
 
 	@Override
 	public String getStreet() {
 		return itemInfo.getStreet();
 	}
 
-
 	@Override
 	public String getZip() {
 		// TODO Auto-generated method stub
-		
+
 		return itemInfo.getZip();
 	}
 
-
 	@Override
-	public int [] kindofItem() {
+	public int[] kindofItem() {
 		// TODO Auto-generated method stub
-		int [] bool = itemInfo.getItemInfo();
+		int[] bool = itemInfo.getItemInfo();
 		return bool;
 	}
 
-	public Long getDateAsString(){
+	public Long getDateAsString() {
 		Long date = itemInfo.getDate();
 		Calendar myCal = new GregorianCalendar();
-		//SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		// SimpleDateFormat date_format = new
+		// SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return date;
 	}
-
-
 
 }
