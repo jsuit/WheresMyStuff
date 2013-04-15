@@ -137,6 +137,7 @@
             android:onClick="removeUser"
             android:text="@string/remove_user" />
 
+<<<<<<< HEAD
         <ImageView
             android:id="@+id/wheresmystuffimage"
             android:layout_marginTop="20dp"
@@ -144,6 +145,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:src="@drawable/wheresmystuffimage" />
+=======
+        <Button
+            android:id="@+id/logout"
+             style="?android:attr/buttonStyleSmall"
+            android:layout_width="fill_parent"
+            android:layout_marginTop="5dip"
+            android:layout_height="wrap_content"
+            android:text="Logout"
+            android:onClick="logout"
+            android:textColor="@color/White" />
+>>>>>>> New Everything
 
     </LinearLayout>
 

@@ -3,7 +3,11 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
+<<<<<<< HEAD
      android:background="@color/Black"> >
+=======
+     android:background="@color/Black"> 
+>>>>>>> New Everything
  
     <ListView
         android:id="@android:id/list"

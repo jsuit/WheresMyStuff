@@ -1,6 +1,9 @@
 package com.example.wheresmystuff.Model;
 
+<<<<<<< HEAD
 import java.text.SimpleDateFormat;
+=======
+>>>>>>> New Everything
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -24,6 +27,7 @@ import com.example.wheresmystuff.Model.Item.LostItem;
 
 public class DB implements IModel {
 
+<<<<<<< HEAD
 	 /**
      * Database class. This holds the actual database.
      * 
@@ -35,6 +39,19 @@ public class DB implements IModel {
 	private final static String FALSE = "0";
 	private DB_Helper my_helper;
 	private SQLiteDatabase database;
+=======
+	/**
+	 * Database class. This holds the actual database.
+	 * 
+	 * @param item
+	 *            the item to add to the buffer
+	 */
+
+	private final static String TRUE = "1";
+	private final static String FALSE = "0";
+	private DB_Helper my_helper;
+	private static SQLiteDatabase database;
+>>>>>>> New Everything
 	private static String curUser;
 
 	public DB(Context context) {
@@ -42,6 +59,7 @@ public class DB implements IModel {
 	}
 
 	public void open() {
+<<<<<<< HEAD
 		database = my_helper.getWritableDatabase();
 	}
 
@@ -56,6 +74,23 @@ public class DB implements IModel {
      * 
      * @param User to save to database
      */
+=======
+		if (database == null || !database.isOpen())
+			database = my_helper.getWritableDatabase();
+	}
+
+	public void close() {
+		if (database != null && database.isOpen())
+			my_helper.close();
+	}
+
+	@Override
+	/**
+	 * Saves a person to the database.
+	 * 
+	 * @param User to save to database
+	 */
+>>>>>>> New Everything
 	public long addPerson(User p) {
 		ContentValues values = new ContentValues();
 
@@ -73,13 +108,21 @@ public class DB implements IModel {
 		// put non_contact info into values
 		values.put(columns[5], p.getLoginAttempts());
 		values.put(columns[6], p.getPassword());
+<<<<<<< HEAD
 		if (p.isAdmin()) values.put(columns[7], 1);
 		else values.put(columns[7], 0);
+=======
+		if (p.isAdmin())
+			values.put(columns[7], 1);
+		else
+			values.put(columns[7], 0);
+>>>>>>> New Everything
 		values = firstAdmin(p.getName(), values);
 		long id = database.insert(DB_Helper.DATABASE_TABLE_USERS, null, values);
 		return id;
 	}
 
+<<<<<<< HEAD
 	
 	 /**
      * user called admin is always an admin.
@@ -105,6 +148,34 @@ public class DB implements IModel {
 	public boolean findPerson(String uid, String password) {
 
 		String[] columns = new String[] {DB_Helper.KEY_NAME,
+=======
+	/**
+	 * user called admin is always an admin.
+	 * 
+	 * @param name
+	 *            of user, values of user to save
+	 */
+	private ContentValues firstAdmin(String name, ContentValues values) {
+
+		if ("admin".compareTo(name) == 0) {
+
+			values.put(DB_Helper.KEY_ADMIN, 1);
+			return values;
+		} else
+			return values;
+	}
+
+	@Override
+	/**
+	 * Method that is used during login. Want to know if there is a usr with the same password and id. 
+	 * If there is, return true; else return false
+	 * 
+	 * @param user id of person and their password
+	 */
+	public boolean findPerson(String uid, String password) {
+
+		String[] columns = new String[] { DB_Helper.KEY_NAME,
+>>>>>>> New Everything
 				DB_Helper.KEY_PASSWORD };
 		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
 				DB_Helper.KEY_PASSWORD + " = ? AND " + DB_Helper.KEY_NAME
@@ -120,8 +191,18 @@ public class DB implements IModel {
 		return true;
 	}
 
+<<<<<<< HEAD
 	
 	@Override
+=======
+	@Override
+	/**
+	 *Determines if a uid already exists in the database. Returns true if user exists; else false.
+	 *
+	 * @param String user id of person and their password
+	 * @return boolean
+	 */
+>>>>>>> New Everything
 	public boolean find_uid(String uid) {
 
 		String[] columns = new String[] { DB_Helper.KEY_NAME };
@@ -142,6 +223,17 @@ public class DB implements IModel {
 	}
 
 	@Override
+<<<<<<< HEAD
+=======
+	/**
+	 * Returns the number of times a usr has attempted to login according to uid
+	 * specified by parameter. Returns -1 if no user found. 
+	 * 
+	 * @param String
+	 *            user id of person and their password
+	 * @return int number of times attempted
+	 */
+>>>>>>> New Everything
 	public int getLoginAttempts(String u_name) {
 		// TODO Auto-generated method stub
 		String[] columns = new String[] { DB_Helper.KEY_NAME,
@@ -162,6 +254,16 @@ public class DB implements IModel {
 	}
 
 	@Override
+<<<<<<< HEAD
+=======
+	/**
+	 * Determines if user specified by uid has a particular password.
+	 * Returns true if user has password; false otherwise.
+	 * 
+	 * @param user id of person and their password
+	 * @return boolean 
+	 */
+>>>>>>> New Everything
 	public boolean find_password(String password, String uid) {
 		String[] columns = new String[] { DB_Helper.KEY_PASSWORD,
 				DB_Helper.KEY_NAME };
@@ -175,6 +277,15 @@ public class DB implements IModel {
 	}
 
 	@Override
+<<<<<<< HEAD
+=======
+	/**
+	 * Increases the number of login attempts according a parameter. 
+	 * 
+	 * @param String user id of person, int already incremented count
+	 * @return void
+	 */
+>>>>>>> New Everything
 	public void increase_login_attempts(int i, String u_name) {
 		// TODO Auto-generated method stub
 		String[] columns = new String[] { DB_Helper.KEY_NAME };
@@ -198,6 +309,15 @@ public class DB implements IModel {
 	}
 
 	@Override
+<<<<<<< HEAD
+=======
+	/**
+	 * Sets account to locked status
+	 * 
+	 * @param String uid
+	 * @return void
+	 */
+>>>>>>> New Everything
 	public void setLocked(String u_name) {
 		// TODO Auto-generated method stub
 		String[] columns = new String[] { DB_Helper.KEY_NAME };
@@ -209,46 +329,99 @@ public class DB implements IModel {
 		cv.put(DB_Helper.KEY_LOGIN_ATTEMPTS, 3);
 		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
 				+ "=?", new String[] { u_name });
+<<<<<<< HEAD
 	}
 
 	@Override
+=======
+		c.close();
+	}
+
+	@Override
+	/**
+	 * Returns all the items of a certain kind as an Item array of a current user.
+	 * key tells us what kind of item to search for. 
+	 * 
+	 * @param String current user, String key
+	 * @return Item []
+	 */
+>>>>>>> New Everything
 	public Item[] getItems(String current_user, String key) {
 		assert (key != null);
 		Cursor c = null;
 		String upper = key.toUpperCase(Locale.US);
+<<<<<<< HEAD
 
 		if ("L".compareTo(upper) == 0) {
 			c = database.query(DB_Helper.ITEM_TABLE, null,
 					DB_Helper.KEY_NAME + "=? AND " + DB_Helper.ITEM_CATEGORY
 							+ "=?", new String[] { current_user, "Lost" },
 					null, null, null);
+=======
+		if ("L".compareTo(upper) == 0) {
+			c = database.query(DB_Helper.ITEM_TABLE, null, DB_Helper.KEY_NAME
+					+ "=? AND " + DB_Helper.ITEM_CATEGORY + "=?", new String[] {
+					current_user, "Lost" }, null, null, null);
+>>>>>>> New Everything
 
 			if (!c.moveToFirst()) {
 				c.close();
 				return null;
 			}
+<<<<<<< HEAD
 		}else if("N".compareTo(upper) ==0){
 			c = database.query(DB_Helper.ITEM_TABLE, null,
 					DB_Helper.KEY_NAME + "=? AND " + DB_Helper.ITEM_CATEGORY
 							+ "=?", new String[] { current_user, "Needed" },
 					null, null, null);
+=======
+		} else if ("N".compareTo(upper) == 0) {
+			c = database.query(DB_Helper.ITEM_TABLE, null, DB_Helper.KEY_NAME
+					+ "=? AND " + DB_Helper.ITEM_CATEGORY + "=?", new String[] {
+					current_user, "Needed" }, null, null, null);
+>>>>>>> New Everything
 
 			if (!c.moveToFirst()) {
 				c.close();
 				return null;
 			}
 
+<<<<<<< HEAD
 		}else if("F".compareTo(upper)==0){
 			c = database.query(DB_Helper.ITEM_TABLE, null,
 					DB_Helper.KEY_NAME + "=? AND " + DB_Helper.ITEM_CATEGORY
 							+ "=?", new String[] { current_user, "Found" },
 					null, null, null);
+=======
+		} else if ("F".compareTo(upper) == 0) {
+			c = database.query(DB_Helper.ITEM_TABLE, null, DB_Helper.KEY_NAME
+					+ "=? AND " + DB_Helper.ITEM_CATEGORY + "=?", new String[] {
+					current_user, "Found" }, null, null, null);
+>>>>>>> New Everything
 
 			if (!c.moveToFirst()) {
 				c.close();
 				return null;
 			}
 		}
+<<<<<<< HEAD
+=======
+		// create a list of items
+		return createListofItems(c, current_user);
+	}
+
+	/**
+	 * Creates an array of items for the current user. Pass in cursor that
+	 * contains all the info. Method closes cursor.
+	 * 
+	 * @param Cursor
+	 *            c, String current_user
+	 * @return Item []
+	 */
+
+	private Item[] createListofItems(Cursor c, String current_user) {
+
+>>>>>>> New Everything
 		List<Item> items = new ArrayList<Item>();
 		int i = c.getCount();
 		while (!c.isAfterLast()) {
@@ -278,9 +451,21 @@ public class DB implements IModel {
 		a_item = items.toArray(a_item);
 		c.close();
 		return a_item;
+<<<<<<< HEAD
 	}
 
 	@Override
+=======
+
+	}
+
+	@Override
+	/**
+	 * Sets the current usr to the name passed in.
+	 * @param String name
+	 * 
+	 */
+>>>>>>> New Everything
 	public void setCurUser(String name) {
 		// TODO Auto-generated method stub
 		curUser = name;
@@ -288,18 +473,36 @@ public class DB implements IModel {
 	}
 
 	@Override
+<<<<<<< HEAD
+=======
+	/**
+	 *Returns the current_user 
+	 * 
+	 * @return String curUser
+	 */
+>>>>>>> New Everything
 	public String getCurUser() {
 		// TODO Auto-generated method stub
 		return curUser;
 	}
 
 	@Override
+<<<<<<< HEAD
 	public Item[] getItems(String current_user) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
+=======
+	/**
+	 * Saves an Item.Returns -1 if error
+	 * 
+	 * @param String name, String description, String status, int keep
+	 * int heir, Long date, String cur_User, String street, String zip, String type of item
+	 * @return Item []
+	 */
+>>>>>>> New Everything
 	public long saveItem(String name, String description, String status,
 			int keep, int heir, int misc, Long date, String curUser,
 			String street, String zip, String type) {
@@ -328,6 +531,15 @@ public class DB implements IModel {
 	}
 
 	@Override
+<<<<<<< HEAD
+=======
+	/**
+	 * Returns all the locked Accounts as a Collection<String> 
+	 * 
+	 * 
+	 * @return Collection<String>
+	 */
+>>>>>>> New Everything
 	public Collection<String> getLockedAccounts() {
 		// TODO Auto-generated method stub
 		// must prevent non-admin from calling this
@@ -351,28 +563,61 @@ public class DB implements IModel {
 	}
 
 	@Override
+<<<<<<< HEAD
+=======
+	/**
+	 * Sets a particular user to admin. Doesn't care if user is already admin.
+	 * If user doesn't exist, nothing will happen. 
+	 * 
+	 * @param String uid
+	 * @return void
+	 */
+>>>>>>> New Everything
 	public void setAdmin(String uid) {
 		// TODO Auto-generated method stub
 		String[] columns = new String[] { DB_Helper.KEY_NAME };
 
 		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+<<<<<<< HEAD
 				DB_Helper.KEY_NAME + "=?", new String[] { uid }, null,
 				null, null);
+=======
+				DB_Helper.KEY_NAME + "=?", new String[] { uid }, null, null,
+				null);
+>>>>>>> New Everything
 		ContentValues cv = new ContentValues();
 		cv.put(DB_Helper.KEY_ADMIN, TRUE);
 		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
 				+ "=?", new String[] { uid });
+<<<<<<< HEAD
 	}
 
 	@Override
+=======
+		c.close();
+	}
+
+	@Override
+	/**
+	 * Makes a user a regular user.
+	 * 
+	 * @param String current user, String key
+	 * @return void
+	 */
+>>>>>>> New Everything
 	public void removeAdmin(String uid) {
 		// TODO Auto-generated method stub
 
 		String[] columns = new String[] { DB_Helper.KEY_NAME };
 
 		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+<<<<<<< HEAD
 				DB_Helper.KEY_NAME + "=?", new String[] { uid }, null,
 				null, null);
+=======
+				DB_Helper.KEY_NAME + "=?", new String[] { uid }, null, null,
+				null);
+>>>>>>> New Everything
 		ContentValues cv = new ContentValues();
 		cv.put(DB_Helper.KEY_ADMIN, FALSE);
 		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
@@ -382,46 +627,96 @@ public class DB implements IModel {
 	}
 
 	@Override
+<<<<<<< HEAD
+=======
+	/**
+	 * Takes a user's account and sets it unlocked status. 
+	 * 
+	 * @param String uid
+	 * 
+	 */
+>>>>>>> New Everything
 	public void unlockAccount(String uid) {
 		// TODO Auto-generated method stub
 		String[] columns = new String[] { DB_Helper.KEY_NAME };
 
 		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+<<<<<<< HEAD
 				DB_Helper.KEY_NAME + " = ?", new String[] { uid }, null,
 				null, null);
 		ContentValues cv = new ContentValues();
 		cv.put(DB_Helper.KEY_LOGIN_ATTEMPTS,0);
+=======
+				DB_Helper.KEY_NAME + " = ?", new String[] { uid }, null, null,
+				null);
+		ContentValues cv = new ContentValues();
+		cv.put(DB_Helper.KEY_LOGIN_ATTEMPTS, 0);
+>>>>>>> New Everything
 		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
 				+ "=?", new String[] { uid });
 		c.close();
 	}
+<<<<<<< HEAD
 	@Override
+=======
+
+	@Override
+	/**
+	 * Takes a user's account and sets it to locked.
+	 * 
+	 * @param String uid
+	 * 
+	 */
+>>>>>>> New Everything
 	public void lockAccount(String uid) {
 		// TODO Auto-generated method stub
 		String[] columns = new String[] { DB_Helper.KEY_NAME };
 
 		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+<<<<<<< HEAD
 				DB_Helper.KEY_NAME + "=?", new String[] { uid }, null,
 				null, null);
 		ContentValues cv = new ContentValues();
 		cv.put(DB_Helper.KEY_LOGIN_ATTEMPTS,3);
+=======
+				DB_Helper.KEY_NAME + "=?", new String[] { uid }, null, null,
+				null);
+		ContentValues cv = new ContentValues();
+		cv.put(DB_Helper.KEY_LOGIN_ATTEMPTS, 3);
+>>>>>>> New Everything
 		database.update(DB_Helper.DATABASE_TABLE_USERS, cv, DB_Helper.KEY_NAME
 				+ "=?", new String[] { uid });
 		c.close();
 	}
 
 	@Override
+<<<<<<< HEAD
 	public boolean isAdmin(String uid) {
 
 		String [] columns = {DB_Helper.KEY_ADMIN, DB_Helper.KEY_NAME};
 		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
 				DB_Helper.KEY_ADMIN + "=? AND " + DB_Helper.KEY_NAME +"=?", new String[] { TRUE, uid },
 				null, null, null);
+=======
+	/**
+	 * Checks to see if user is an admin. If yes, return true; else false.
+	 * 
+	 * @param String current user
+	 * @return boolean
+	 */
+	public boolean isAdmin(String uid) {
+
+		String[] columns = { DB_Helper.KEY_ADMIN, DB_Helper.KEY_NAME };
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				DB_Helper.KEY_ADMIN + "=? AND " + DB_Helper.KEY_NAME + "=?",
+				new String[] { TRUE, uid }, null, null, null);
+>>>>>>> New Everything
 
 		boolean value = c.moveToFirst();
 		c.close();
 		return value;
 	}
+<<<<<<< HEAD
 	 @Override
 	 /**
 	     * Removes a user.
@@ -437,16 +732,53 @@ public class DB implements IModel {
 		close();
 		if(user_deleted == 0)return 0;
 		else return user_deleted + rows_deleted;
+=======
+
+	@Override
+	/**
+	 * Removes a user.
+	 * 
+	 * @param String uid of user to unlock
+	 *	@return returns number of items deleted + number of usrs deleted
+	 */
+	public int removeUser(String uid) {
+		open();
+		String[] where = { uid };
+		int user_deleted = database.delete(DB_Helper.DATABASE_TABLE_USERS,
+				DB_Helper.KEY_NAME + "=?", where);
+		int rows_deleted = database.delete(DB_Helper.ITEM_TABLE,
+				DB_Helper.KEY_NAME + "=?", where);
+		close();
+		if (user_deleted == 0)
+			return 0;
+		else
+			return user_deleted + rows_deleted;
+>>>>>>> New Everything
 
 	}
 
 	@Override
+<<<<<<< HEAD
 	public boolean find_email(String email,String uid) {
 		// TODO Auto-generated method stub
 		String [] columns = {DB_Helper.KEY_EMAIL, DB_Helper.KEY_NAME};
 		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
 				DB_Helper.KEY_EMAIL + "=? AND " + DB_Helper.KEY_NAME +"=?", new String[] { email, uid },
 				null, null, null);
+=======
+	/**
+	 * Determines if user has email. Returns true if user does; else false.
+	 * 
+	 * @param String email, String uid
+	 * @return boolean
+	 */
+	public boolean find_email(String email, String uid) {
+		// TODO Auto-generated method stub
+		String[] columns = { DB_Helper.KEY_EMAIL, DB_Helper.KEY_NAME };
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				DB_Helper.KEY_EMAIL + "=? AND " + DB_Helper.KEY_NAME + "=?",
+				new String[] { email, uid }, null, null, null);
+>>>>>>> New Everything
 
 		boolean value = c.moveToNext();
 		c.close();
@@ -454,6 +786,7 @@ public class DB implements IModel {
 	}
 
 	@Override
+<<<<<<< HEAD
 	public List<String> getAccounts() {
 		String [] columns = {DB_Helper.KEY_NAME};
 		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
@@ -489,10 +822,68 @@ public class DB implements IModel {
 
 		Cursor c = database.rawQuery(sql, args);
 
+=======
+	/**
+	 *Returns all user names of all accounts as a list. If no accounts, then return null; 
+	 * 
+	 * @param String current user, String key
+	 * @return List<String> of accounts
+	 */
+	public List<String> getAccounts() {
+		String[] columns = { DB_Helper.KEY_NAME };
+		Cursor c = database.query(DB_Helper.DATABASE_TABLE_USERS, columns,
+				null, null, null, null, null);
+
+		if (c.moveToFirst())
+			// this method closes the cursor
+			return createListOfAccounts(c);
+		else
+			return null;
+	}
+
+	/**
+	 * makes a list of accounts and returns it.Cursor must not be null
+	 * 
+	 * @param String
+	 *            Cursor c
+	 * @return List<String> of uids of accounts
+	 */
+	private List<String> createListOfAccounts(Cursor c) {
+		List<String> users = new ArrayList<String>();
+		while (!c.isAfterLast()) {
+			users.add(c.getString(c.getColumnIndex(DB_Helper.KEY_NAME)));
+			c.moveToNext();
+		}
+		c.close();
+		return users;
+	}
+
+	@Override
+	/**
+	 *Finds all items of a certain type (Lost, Found, Needed, Donations) on or after a date 
+	 *First parameter tells us the type.
+	 * 
+	 * @param String lost_etc_categories, String this_date
+	 * @return Cursor
+	 */
+	public Cursor searchByDate(String lost_etc_categories, String this_date) {
+		// TODO Auto-generated method stub
+
+		Long date = Long.parseLong(this_date);
+		String[] args = { this_date, lost_etc_categories };
+		String sql = "SELECT * FROM " + DB_Helper.ITEM_TABLE + " WHERE "
+				+ DB_Helper.ITEM_DATE + " >=?" + " AND "
+				+ DB_Helper.ITEM_CATEGORY + "=?" + " ORDER BY "
+				+ DB_Helper.ITEM_DATE + " DESC";
+
+		Cursor c = database.rawQuery(sql, args);
+		c.moveToFirst();
+>>>>>>> New Everything
 		return c;
 	}
 
 	@Override
+<<<<<<< HEAD
 	public Cursor searchByCategory(String lost_etc_categories,
 			String refined_search) {
 
@@ -517,10 +908,55 @@ public class DB implements IModel {
 		 c.moveToFirst();
 		 return c;
 
+=======
+	/**
+	 *Finds all items of a certain type (Lost, Found, Needed, Donations) by a predetermined Category (ex: Heirloom) 
+	 *First parameter tells us the type.
+	 * 
+	 * @param String lost_etc_categories, String refined_searchg
+	 * @return Cursor
+	 */
+	public Cursor searchByCategory(String lost_etc_categories,
+			String refined_search) {
+
+		refined_search = refined_search.toLowerCase(Locale.US);
+		int value = "item_keepsakes".compareTo("item_" + refined_search);
+		String[] args = { lost_etc_categories, "1" };
+
+		String sql = "SELECT * FROM " + DB_Helper.ITEM_TABLE + " WHERE "
+				+ DB_Helper.ITEM_CATEGORY + "=? AND " + "item_"
+				+ refined_search + "=?" + " ORDER BY " + DB_Helper.ITEM_DATE
+				+ " DESC";
+		Cursor c = database.rawQuery(sql, args);
+		c.moveToFirst();
+		return c;
+	}
+
+	@Override
+	/**
+	 *Finds all items of a certain type (Lost, Found, Needed, Donations) by status 
+	 *First parameter tells us the type.
+	 * 
+	 * @param String lost_etc_categories, String refined-search
+	 * @return Cursor
+	 */
+	public Cursor searchByStatus(String lost_etc_categories,
+			String refined_search) {
+
+		String[] args = { lost_etc_categories, refined_search };
+
+		String sql = "SELECT * FROM " + DB_Helper.ITEM_TABLE + " WHERE "
+				+ DB_Helper.ITEM_CATEGORY + "=? AND " + DB_Helper.ITEM_STATUS
+				+ "=?";
+		Cursor c = database.rawQuery(sql, args);
+		c.moveToFirst();
+		return c;
+>>>>>>> New Everything
 
 		// TODO Auto-generated method stub
 
 	}
+<<<<<<< HEAD
 	@Override
 	public Cursor searchByItemName( String lost_etc_categories, String [] name_location){
 		//first member in itemname should be the name, second the zip
@@ -545,10 +981,62 @@ public class DB implements IModel {
 					DB_Helper.ITEM_ZIP +"=?", new String[] { lost_etc_categories, itemName },
 					null, null, DB_Helper.ITEM_NAME + " ASC");
 		}
+=======
+
+	@Override
+	/**
+	 *Finds all items of a certain type (Lost, Found, Needed, Donations) by name and/or location of item 
+	 *First parameter tells us the type. Second parameter has name of item and/or location
+	 * 
+	 * @param String lost_etc_categories, String [] name_location
+	 * @return Cursor
+	 */
+	public Cursor searchByItemName(String lost_etc_categories,
+			String[] name_location) {
+		// first member in itemname should be the name, second the zip
+
+		Cursor c = database.query(
+				DB_Helper.ITEM_TABLE,
+				null,
+				DB_Helper.ITEM_CATEGORY + "=? AND " + DB_Helper.ITEM_NAME
+						+ "=? AND " + DB_Helper.ITEM_ZIP + "=?",
+				new String[] { lost_etc_categories,
+						name_location[0].toLowerCase(Locale.US),
+						name_location[1] }, null, null, DB_Helper.ITEM_NAME
+						+ " ASC");
+		c.moveToFirst();
 		return c;
 	}
 
 	@Override
+	/**
+	 *Finds all items of a certain type (Lost, Found, Needed, Donations) by name
+	 *First parameter tells us the type. Second parameter gives us the name of item or location but
+	 *not both
+	 * 
+	 * @param String lost_etc_categories, String itemName
+	 * @return Cursor
+	 */
+	public Cursor searchByItemName(String lost_etc_categories,
+			String itemNameLocation) {
+		// first member in itemname should be the name, second the zip
+
+		Cursor c = database.query(DB_Helper.ITEM_TABLE, null,
+				DB_Helper.ITEM_CATEGORY + "=? AND " + DB_Helper.ITEM_NAME
+						+ "=?", new String[] { lost_etc_categories,
+						itemNameLocation.toLowerCase() }, null, null,
+				DB_Helper.ITEM_NAME + " ASC");
+		if (!c.moveToFirst()) {
+			return searchByZip(lost_etc_categories, itemNameLocation);
+
+		}
+		c.moveToFirst();
+>>>>>>> New Everything
+		return c;
+	}
+
+	@Override
+<<<<<<< HEAD
 	public Cursor searchByZip(String lost_etc_categories,
 			String refined_search) {
 		// TODO Auto-generated method stub
@@ -565,4 +1053,24 @@ public class DB implements IModel {
 
 
 
+=======
+	/**
+	 *Search by ZipCode of item. 
+	 * 
+	 * @param String lost_etc_categories, String zip
+	 * @return Cursor
+	 */
+	public Cursor searchByZip(String lost_etc_categories, String i_zip) {
+		// TODO Auto-generated method stub
+
+		Cursor c = database
+				.query(DB_Helper.ITEM_TABLE, null, DB_Helper.ITEM_CATEGORY
+						+ "=? AND " + DB_Helper.ITEM_ZIP + "=?", new String[] {
+						lost_etc_categories, i_zip }, null, null,
+						DB_Helper.ITEM_NAME + " ASC");
+		c.moveToFirst();
+		return c;
+	}
+
+>>>>>>> New Everything
 }

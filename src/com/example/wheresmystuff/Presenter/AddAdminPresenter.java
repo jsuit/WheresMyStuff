@@ -10,6 +10,15 @@ import com.example.wheresmystuff.View.Register;
 import com.example.wheresmystuff.View.mainUserScreen;
 import com.example.wheresmystuff.validation.Validation;
 
+<<<<<<< HEAD
+=======
+/**
+ * Presenter class to add Admin to system, or changing status to Admin of existing user
+ * 
+ * 
+ */
+
+>>>>>>> New Everything
 public class AddAdminPresenter {
 
 	private final IModel myModel;
@@ -22,6 +31,16 @@ public class AddAdminPresenter {
 		
 	}
 	
+<<<<<<< HEAD
+=======
+	/**
+     *  Validates whether we have the right info to create a new user that is admin. Else Display error message 
+     * 
+     * @param String name, email, password, check_password
+     *	@return void
+     */
+	
+>>>>>>> New Everything
 	public void validate(String name, String email, String password, String check_password) {
 		
 		String [] error_messages = Validation.validate(name, null, null, email, password, check_password);
@@ -57,7 +76,18 @@ public class AddAdminPresenter {
 		
 	}
 	
+<<<<<<< HEAD
 	public void validate(String name, String email, String password, String check_password, String dummy){
+=======
+	/**
+     *  Changes the status of current usr to admin.
+     * 
+     * @param String name, email, password, check_password, dummy
+     *	@return void
+     */
+	
+	public void validate(String name, String email, String password, String check_password, String key){
+>>>>>>> New Everything
 		
 		String [] error_messages = Validation.validate(name, null, null, email, password, check_password);
 		StringBuffer error_text = new StringBuffer();
@@ -74,14 +104,27 @@ public class AddAdminPresenter {
 			myModel.open();
 			boolean personFound = myModel.findPerson(name, check_password);
 			boolean rightPassword = myModel.find_email(email, name);
+<<<<<<< HEAD
+=======
+			//if person is not found or wrong password, display error message
+>>>>>>> New Everything
 			if (!(personFound && rightPassword)) {
 				myView.alreadyTaken("Incorrect Info");	
 			}
 			else {
+<<<<<<< HEAD
 				if("s".compareTo(dummy)==0){
 					myModel.setAdmin(name);
 					myView.notify_of_error("Set " + name + " to an Admin.");
 				}else{
+=======
+				//if saving admin
+				if("s".compareTo(key)==0){
+					myModel.setAdmin(name);
+					myView.notify_of_error("Set " + name + " to an Admin.");
+				}else{
+					///remove admin status as long as it is not the user "admin"
+>>>>>>> New Everything
 					if("admin".compareTo(name) != 0){
 						myModel.removeAdmin(name);
 						myView.notify_of_error("Removed " + name);

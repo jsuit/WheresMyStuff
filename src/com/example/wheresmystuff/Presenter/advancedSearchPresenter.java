@@ -14,29 +14,63 @@ import com.example.wheresmystuff.View.IItemView2;
 import com.example.wheresmystuff.validation.CheckDisplayAll;
 import com.example.wheresmystuff.validation.CheckNameLocation;
 
+<<<<<<< HEAD
 public class advancedSearchPresenter {
 
+=======
+/**
+ * Class that searches and tells the UI how to display itself.
+ *
+ */
+
+public class advancedSearchPresenter {
+
+	//criteria is category, date, item name, etc.
+>>>>>>> New Everything
 	private String criteria;
 	private final IModel myModel;
 	/** the view to display to */
 	private final IItemView2 myView;
 	private String current_user;
+<<<<<<< HEAD
+=======
+	
+>>>>>>> New Everything
 	private String refined_search;
 	private String kind;
 	private String lost_etc_categories;
 	private String status;
 
+<<<<<<< HEAD
+=======
+	/**
+     * Constructor
+     * 
+     * @param myModel, view
+     *
+     */
+>>>>>>> New Everything
 	public advancedSearchPresenter(IModel myModel, IItemView2 view) {
 		myView = view;
 		this.myModel = myModel;
 	}
 
+<<<<<<< HEAD
+=======
+	/**
+     *  Criteria that determines what we are to search
+     * 
+     * @param String criteria
+     *	@return void
+     */
+>>>>>>> New Everything
 	public void getCriteria(String criteria) {
 		this.criteria = criteria;
 		this.criteria = this.criteria.toLowerCase(Locale.US);
 
 	}
 
+<<<<<<< HEAD
 	public void displayIfPossible() {
 		// TODO Auto-generated method stub
 
@@ -48,6 +82,11 @@ public class advancedSearchPresenter {
 		refined_search = category;
 		// setListAdapter if search returns something
 	}
+=======
+
+	
+	
+>>>>>>> New Everything
 
 	public void displayCategory() {
 		// TODO Auto-generated method stub
@@ -105,7 +144,11 @@ public class advancedSearchPresenter {
 			}
 
 			@Override
+<<<<<<< HEAD
 			public String name_location() {
+=======
+			public String getNameOrlocation() {
+>>>>>>> New Everything
 				// TODO Auto-generated method stub
 				return null;
 			}
@@ -135,11 +178,19 @@ public class advancedSearchPresenter {
 			if("item name".compareTo(criteria) == 0){
 				String [] array = myView.getNameLocation();
 				CheckDisplayAll check = new CheckNameLocation(array);
+<<<<<<< HEAD
 				
 				if(check.check())
 					c = myModel.searchByItemName(lost_etc_categories, array);
 				else{
 					String str = check.name_location();
+=======
+				//check for two items
+				if(check.check())
+					c = myModel.searchByItemName(lost_etc_categories, array);
+				else{
+					String str = check.getNameOrlocation();
+>>>>>>> New Everything
 					c = myModel.searchByItemName(lost_etc_categories, str);
 				}
 			}else{

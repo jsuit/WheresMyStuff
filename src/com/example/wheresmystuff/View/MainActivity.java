@@ -24,6 +24,10 @@ public class MainActivity extends Activity implements ILoginView{
 	private Login_Presenter myPresenter;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> New Everything
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		myPresenter = new Login_Presenter(this, new DB(this));

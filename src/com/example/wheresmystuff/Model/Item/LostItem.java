@@ -6,14 +6,18 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> New Everything
 import com.example.wheresmystuff.Model.User;
 
 public class LostItem implements Item {
 
 	private ItemInfo itemInfo;
 	private String user;
+<<<<<<< HEAD
 	
 	
 	public LostItem(String itemName, String itemCategory, String itemStatus, String itemDescription, String user, long date,
@@ -30,6 +34,18 @@ public class LostItem implements Item {
 
 
 
+=======
+
+	public LostItem(String itemName, String itemCategory, String itemStatus,
+			String itemDescription, String user, long date, int keepsake,
+			int heirloom, int misc, String zip, String street) {
+
+		itemInfo = new ItemInfo(itemName, keepsake, heirloom, misc, itemStatus,
+				itemDescription, itemCategory, date, zip, street);
+		this.user = user;
+
+	}
+>>>>>>> New Everything
 
 	@Override
 	public void setItemName(String newItemName) {
@@ -51,11 +67,19 @@ public class LostItem implements Item {
 		itemInfo.setItemStatus(newItemStatus);
 
 	}
+<<<<<<< HEAD
 	
 	@Override
 	public void setItemDescription(String newItemDescription) {
 		itemInfo.setItemDescription(newItemDescription);
 		
+=======
+
+	@Override
+	public void setItemDescription(String newItemDescription) {
+		itemInfo.setItemDescription(newItemDescription);
+
+>>>>>>> New Everything
 	}
 
 	@Override
@@ -75,6 +99,7 @@ public class LostItem implements Item {
 		// TODO Auto-generated method stub
 		return itemInfo.getItemStatus();
 	}
+<<<<<<< HEAD
 	
 	@Override
 	public String getItemDescription() {
@@ -82,12 +107,21 @@ public class LostItem implements Item {
 		
 	}
 
+=======
+
+	@Override
+	public String getItemDescription() {
+		return itemInfo.getItemDescription();
+
+	}
+>>>>>>> New Everything
 
 	@Override
 	public String getStreet() {
 		return itemInfo.getStreet();
 	}
 
+<<<<<<< HEAD
 
 	@Override
 	public String getZip() {
@@ -113,4 +147,28 @@ public class LostItem implements Item {
 
 
 
+=======
+	@Override
+	public String getZip() {
+		// TODO Auto-generated method stub
+
+		return itemInfo.getZip();
+	}
+
+	@Override
+	public int[] kindofItem() {
+		// TODO Auto-generated method stub
+		int[] bool = itemInfo.getItemInfo();
+		return bool;
+	}
+
+	public Long getDateAsString() {
+		Long date = itemInfo.getDate();
+		Calendar myCal = new GregorianCalendar();
+		// SimpleDateFormat date_format = new
+		// SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		return date;
+	}
+
+>>>>>>> New Everything
 }

@@ -17,7 +17,11 @@ public class AddItemPresenter {
 	private Item i;
 
 	/**
+<<<<<<< HEAD
 	 * Make a new presenter
+=======
+	 * Make a new presenter 
+>>>>>>> New Everything
 	 * 
 	 * @param m
 	 *            the model associated with this presenter
@@ -31,11 +35,24 @@ public class AddItemPresenter {
 	}
 	
 
+<<<<<<< HEAD
 	/** Takes in all the data to make an item and makes an item */
 
 	/** Takes in all the data to make an item and makes an item and confirms the save*/
 
 	
+=======
+
+
+	/** Takes in all the data to make an item and makes an item and confirms the save*/
+
+	/**
+     *  Takes all the info to make an item and rolls it into an item.
+     * 
+     * @param name, category, status, description, date zip, street, keep, heir, m
+     *	@return void
+     */
+>>>>>>> New Everything
 	public void makeAnItem(String name, String category, String status,
 			String description, Long date, String zip, String street,
 			int keep, int heir, int m) {
@@ -50,11 +67,23 @@ public class AddItemPresenter {
 
 	}
 
+<<<<<<< HEAD
 	/** method that takes in an item and uses the view to confirm whether this is item we want to save */
 
 	/** method that takes in an item and uses the view to confirm whether this is item we want to save. If we want to save it, then we save it
 	 * else we don't. */
 
+=======
+	
+	/**
+     *  Method that takes in an item and uses the view to confirm whether this is item we want to save.
+     *  Does error checking; makes sure we choose what kind of item the item is. Only save the information
+     *  if we confirm the save.
+     * 
+     * @param String name, email, password, check_password, dummy
+     *	@return void
+     */
+>>>>>>> New Everything
 	
 	public void confirmTheSave(Item i) {
 		// TODO Auto-generated method stub
@@ -73,7 +102,18 @@ public class AddItemPresenter {
 		}
 		myModel.close();
 	}
+<<<<<<< HEAD
 	/**  Takes in no parameters, but saves the item. Is called after an ok click. Must be called after makeAnItem and confirmTheSave  */
+=======
+	
+	/**
+     *  Method that tells the model to save the member item.
+     * 
+     * @param void
+     *	@return void
+     */
+	
+>>>>>>> New Everything
 	public void save() {
 		
 		String name = i.getItemName();
